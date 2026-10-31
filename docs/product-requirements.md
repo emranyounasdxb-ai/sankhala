@@ -6,15 +6,20 @@ Confirmed from the user's business brief on 31 October 2026. This document recor
 
 Sankhala collects staffing requirements from companies and CVs/applications from job seekers. The recruitment team manually reviews submissions, matches candidates, arranges interviews and follows hiring progress.
 
-Confirmed coverage: **Dubai and all UAE emirates**. This establishes the service area, not a verified street address, licence, office network or branch list.
+Confirmed coverage: **Dubai and all UAE emirates**. The user separately confirmed Office 218, Business Village B, Deira, Dubai and supplied its map. No licence, office network or branch list has been provided.
 
 | Official detail | Confirmed value |
 | --- | --- |
 | Website domain | `https://sankhala.ae` |
 | Public email | `info@sankhala.ae` |
-| Calls and WhatsApp | `+971 56 524 3800` |
-| Phone link | `tel:+971565243800` |
+| Calls | `+971 4 611 3100` |
+| WhatsApp | `+971 56 524 3800` |
+| Phone link | `tel:+97146113100` |
 | WhatsApp link | `https://wa.me/971565243800` |
+| Office | Office 218, Business Village B, Deira, Dubai |
+| Map directions | `https://maps.app.goo.gl/v5aCi9ZYTEtV4eQ67` |
+
+The supplied Google Maps embed uses a pin named ALIYAS Real Estate. Preserve the supplied location reference; do not describe it as Sankhala's verified Google Business profile.
 
 Specific industries and the initial authorized administrator's email remain pending. The public contact email must not be treated as an authorized admin identity without a separate designation.
 
@@ -134,7 +139,7 @@ Deferred: candidate accounts, employer dashboards, automated matching, automated
 
 ## Confirmed versus pending
 
-Confirmed: two audiences, manual recruitment workflow, private CV access, candidate pipeline, initial account-free submissions, Dubai/all-UAE coverage, official domain, email and call/WhatsApp number.
+Confirmed: two audiences, manual recruitment workflow, private CV access, candidate pipeline, initial account-free submissions, Dubai/all-UAE coverage, official domain, email, separate calling and WhatsApp numbers, and the Deira office address/map.
 
 The supplied [homepage concept](reference/sankhala-homepage-concept.png) and [modern layout reference](reference/modern-layout-reference.png) are preserved. The latest [design clarification](design-direction.md) supersedes the original brief's exact-copy instructions and requires both themes. The first image's bottom Design System strip is documentation only. Embedded workplace imagery is concept material, not proof of actual employees; a separate approved photography asset has not been supplied.
 

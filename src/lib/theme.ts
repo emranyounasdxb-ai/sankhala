@@ -56,6 +56,9 @@ export function subscribeToTheme(notify: () => void) {
   window.addEventListener(themeEvent, notify);
   window.addEventListener("storage", onStorage);
   preference.addEventListener("change", syncPreference);
+  // A system preference can change between the first paint script and hydration.
+  // Reconcile it after subscribing so that change cannot be missed.
+  syncPreference();
   return () => {
     window.removeEventListener(themeEvent, notify);
     window.removeEventListener("storage", onStorage);

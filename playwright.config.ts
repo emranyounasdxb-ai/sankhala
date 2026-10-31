@@ -19,10 +19,27 @@ export default defineConfig({
     {
       name: "mobile",
       use: {
-        ...devices["Desktop Chrome"],
-        viewport: { width: 390, height: 844 },
-        isMobile: true,
-        hasTouch: true,
+        ...devices["Pixel 7"],
+      },
+    },
+    {
+      name: "firefox",
+      use: {
+        ...devices["Desktop Firefox"],
+        viewport: { width: 1440, height: 1000 },
+      },
+    },
+    {
+      name: "webkit",
+      use: {
+        ...devices["Desktop Safari"],
+        viewport: { width: 1440, height: 1000 },
+      },
+    },
+    {
+      name: "iphone",
+      use: {
+        ...devices["iPhone 13"],
       },
     },
   ],

@@ -21,6 +21,40 @@
   color: var(--text-secondary);
   font-size: 14px;
 }
+.form-error-summary {
+  padding: 16px;
+  border: 1px solid var(--link);
+  border-radius: 8px;
+  background: var(--accent-soft);
+  font-size: 14px;
+  line-height: 20px;
+}
+.form-error-summary:focus {
+  outline: 2px solid var(--focus);
+  outline-offset: 4px;
+}
+.form-error-summary h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  line-height: 28px;
+}
+.form-error-summary ul {
+  margin-top: 12px;
+  padding-left: 24px;
+  list-style: disc;
+}
+.form-error-summary li + li {
+  margin-top: 8px;
+}
+.form-error-summary a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+.form-error-summary a:hover {
+  color: var(--text);
+}
 .intake-group {
   border: 0;
   margin: 0;

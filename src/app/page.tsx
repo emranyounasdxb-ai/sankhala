@@ -12,6 +12,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimatedHeading } from "@/components/motion/animated-heading";
 import { Reveal } from "@/components/motion/reveal";
+import { OrganizationData } from "@/components/organization-data";
 import { createPageMetadata } from "@/lib/page-metadata";
 import { site } from "@/lib/site";
 
@@ -133,6 +134,7 @@ const questions = [
 export default function Home() {
   return (
     <main id="main" tabIndex={-1}>
+      <OrganizationData />
       <section className="hero wrap" aria-labelledby="hero-heading">
         <div className="hero-media">
           <Image

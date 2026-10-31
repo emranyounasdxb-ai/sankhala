@@ -15,8 +15,9 @@ const navigation = [
   { href: "/contact", label: "Contact" },
 ];
 
-export function SiteHeader() {
+export function SiteHeader({ contactHref }: { contactHref: string }) {
   const pathname = usePathname();
+  const isHiringPage = pathname === "/hire-talent";
   const dialog = useRef<HTMLDialogElement>(null);
   const menuButton = useRef<HTMLButtonElement>(null);
   const firstMobileLink = useRef<HTMLAnchorElement>(null);
@@ -117,12 +118,24 @@ export function SiteHeader() {
           </nav>
           <div className="header-actions">
             <ThemeToggle />
-            <Link
-              href="/hire-talent"
-              className="button button-primary header-cta"
-            >
-              Hire Talent <ArrowUpRightIcon size={18} aria-hidden="true" />
-            </Link>
+            {isHiringPage ? (
+              <a
+                href={contactHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="button button-primary header-cta"
+              >
+                WhatsApp <ArrowUpRightIcon size={18} aria-hidden="true" />
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
+            ) : (
+              <Link
+                href="/hire-talent"
+                className="button button-primary header-cta"
+              >
+                Hire Talent <ArrowUpRightIcon size={18} aria-hidden="true" />
+              </Link>
+            )}
             <button
               ref={menuButton}
               type="button"
@@ -196,13 +209,26 @@ export function SiteHeader() {
               ))}
             </nav>
             <div className="mobile-menu-actions">
-              <Link
-                href="/hire-talent"
-                className="button button-primary"
-                onClick={closeMenu}
-              >
-                Hire Talent <ArrowUpRightIcon size={18} aria-hidden="true" />
-              </Link>
+              {isHiringPage ? (
+                <a
+                  href={contactHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="button button-primary"
+                  onClick={closeMenu}
+                >
+                  WhatsApp <ArrowUpRightIcon size={18} aria-hidden="true" />
+                  <span className="sr-only"> (opens in a new tab)</span>
+                </a>
+              ) : (
+                <Link
+                  href="/hire-talent"
+                  className="button button-primary"
+                  onClick={closeMenu}
+                >
+                  Hire Talent <ArrowUpRightIcon size={18} aria-hidden="true" />
+                </Link>
+              )}
               <Link
                 href="/jobs"
                 className="button button-secondary"

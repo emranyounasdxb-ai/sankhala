@@ -2,6 +2,8 @@
 
 31 October 2026. Scope: public frontend only. No backend, CRM, database, real vacancy data, analytics collection or online submission service was added.
 
+This records the earlier polish pass saved in commit `8bae605`. Later form, cross-browser, office-map and contact-number work is recorded in the [final frontend pass](frontend-final-pass.md).
+
 ## What changed
 
 - Explicit recruitment messaging and separate three-step employer/candidate journeys.

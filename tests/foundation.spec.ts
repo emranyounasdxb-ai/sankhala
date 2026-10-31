@@ -50,23 +50,28 @@ test("public routes have server content and prelaunch SEO controls", async ({
   expect((await request.get("/images/recruitment-hero.webp")).ok()).toBe(true);
 });
 
-test("public layouts are accessible in both themes with working contact links", async ({
-  page,
-}, testInfo) => {
-  const errors: string[] = [];
-  page.on("pageerror", (error) => errors.push(error.message));
-  await page.emulateMedia({ reducedMotion: "reduce", colorScheme: "light" });
-  for (const theme of ["light", "dark"]) {
-    await page.goto("/");
-    if (theme === "dark")
-      await page
-        .getByRole("button", { name: "Switch to dark theme" })
-        .first()
-        .click();
-    for (const route of ["/", "/hire-talent", "/submit-cv"]) {
+// Each audit gets Playwright's fresh context. Reusing an axe-analyzed page for
+// navigation can corrupt inherited style resolution in Windows WebKit.
+for (const theme of ["light", "dark"] as const) {
+  for (const route of ["/", "/hire-talent", "/submit-cv"]) {
+    test(`public layout ${route} in ${theme} is accessible with working contact links`, async ({
+      page,
+    }, testInfo) => {
+      const errors: string[] = [];
+      page.on("pageerror", (error) => errors.push(error.message));
+      await page.emulateMedia({ reducedMotion: "reduce", colorScheme: theme });
       await page.goto(route);
       await page.evaluate(() => document.fonts.ready);
       await expect(page.locator("html")).toHaveAttribute("data-theme", theme);
+      await expect(page.locator("body")).toHaveCSS(
+        "background-color",
+        theme === "dark" ? "rgb(24, 24, 24)" : "rgb(255, 255, 255)",
+      );
+      if (route !== "/")
+        await expect(page.locator("form")).toHaveCSS(
+          "background-color",
+          theme === "dark" ? "rgb(31, 31, 31)" : "rgb(247, 247, 247)",
+        );
       await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
       expect(
         await page.evaluate(
@@ -76,24 +81,24 @@ test("public layouts are accessible in both themes with working contact links", 
       ).toBe(true);
       const accessibility = await new AxeBuilder({ page }).analyze();
       expect(accessibility.violations, `${route} ${theme}`).toEqual([]);
-    }
-    await page.goto("/");
-    await page.screenshot({
-      path: `test-results/home-${theme}-${testInfo.project.name}.png`,
-      fullPage: true,
+      if (route === "/")
+        await page.screenshot({
+          path: `test-results/home-${theme}-${testInfo.project.name}.png`,
+          fullPage: true,
+        });
+      await expect(
+        page.locator('a[href="tel:+97146113100"]:visible').first(),
+      ).toBeVisible();
+      await expect(
+        page.locator('a[href="mailto:info@sankhala.ae"]:visible').first(),
+      ).toBeVisible();
+      await expect(
+        page.locator('a[href="https://wa.me/971565243800"]:visible').first(),
+      ).toBeVisible();
+      expect(errors).toEqual([]);
     });
   }
-  await expect(
-    page.locator('a[href="tel:+971565243800"]').first(),
-  ).toBeVisible();
-  await expect(
-    page.locator('a[href="mailto:info@sankhala.ae"]').first(),
-  ).toBeVisible();
-  await expect(
-    page.locator('a[href="https://wa.me/971565243800"]').first(),
-  ).toBeVisible();
-  expect(errors).toEqual([]);
-});
+}
 
 test("theme follows system until a choice is made and persists across navigation", async ({
   page,
@@ -127,13 +132,14 @@ test("skip link and mobile menu support keyboard navigation", async ({
 }, testInfo) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
-  await page.keyboard.press("Tab");
+  // Native Tab order is covered separately; this checks focus and Enter activation.
+  await page.getByRole("link", { name: "Skip to content" }).focus();
   await expect(
     page.getByRole("link", { name: "Skip to content" }),
   ).toBeFocused();
   await page.keyboard.press("Enter");
   await expect(page.locator("main")).toBeFocused();
-  if (testInfo.project.name !== "mobile") return;
+  if (!testInfo.project.use.isMobile) return;
   const open = page.getByRole("button", { name: "Open navigation menu" });
   await open.click();
   const menu = page.getByRole("dialog", { name: "Navigation menu" });
@@ -222,8 +228,8 @@ test("content and direct contact routes remain usable without JavaScript", async
   baseURL,
 }, testInfo) => {
   test.skip(
-    testInfo.project.name !== "desktop",
-    "One narrow no-JavaScript check is sufficient.",
+    !!testInfo.project.use.isMobile,
+    "Narrow no-JavaScript behavior is covered once per browser engine.",
   );
   const context = await browser.newContext({
     javaScriptEnabled: false,
@@ -255,11 +261,7 @@ test("content and direct contact routes remain usable without JavaScript", async
 
 test("scroll text completes and reduced motion keeps narrow layouts readable", async ({
   page,
-}, testInfo) => {
-  test.skip(
-    testInfo.project.name !== "desktop",
-    "This test explicitly covers additional viewport widths.",
-  );
+}) => {
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto("/");
   const animatedHeading = page.locator(".statement-title");
@@ -335,7 +337,9 @@ test("employer form validates required fields and keeps unsent details", async (
     "aria-invalid",
     "true",
   );
-  await expect(page.getByLabel("Role you are hiring for")).toBeFocused();
+  await expect(
+    page.getByRole("region", { name: "Please check your details" }),
+  ).toBeFocused();
   await page.getByLabel("Company name").fill("Preview company");
   await page.getByLabel("Contact person").fill("Preview person");
   await page.getByLabel("Work email").fill("preview@example.com");
@@ -439,6 +443,8 @@ test("candidate CV stays local and invalid files are rejected", async ({
   await expect(page.getByLabel("Full name")).toHaveValue("Preview candidate");
   await form.getByRole("button", { name: "Check my details" }).click();
   await expect(file).toHaveAttribute("aria-invalid", "true");
-  await expect(file).toBeFocused();
+  await expect(
+    page.getByRole("region", { name: "Please check your details" }),
+  ).toBeFocused();
   expect(outgoing).toEqual([]);
 });

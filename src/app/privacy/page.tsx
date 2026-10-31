@@ -32,6 +32,16 @@ export default function PrivacyPage() {
           handled outside this preview. Do not send identity documents, bank
           details or unrelated sensitive information with an initial inquiry.
         </p>
+        <h2 className="section-heading">Google Maps</h2>
+        <p>
+          The Contact page includes a Google Maps embed. When it loads, your
+          browser connects to Google to display the location. Google handles
+          those requests under its{" "}
+          <a href="https://policies.google.com/privacy" className="inline-link">
+            privacy policy
+          </a>
+          .
+        </p>
         <h2 className="section-heading">Your display preference</h2>
         <p>
           If you choose a light or dark theme, the website remembers that

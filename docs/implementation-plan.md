@@ -41,7 +41,7 @@ Admin pages, application records and CV downloads require authentication and app
 
 - The two primary actions and manual recruitment process are confirmed.
 - Service area wording can cover Dubai and all UAE emirates without inventing offices or branches.
-- The official domain is `https://sankhala.ae`, public email is `info@sankhala.ae`, and call/WhatsApp number is `+971 56 524 3800`. Contact link values are centralized in `src/lib/site.ts`; the admin identity remains to be designated.
+- The official domain is `https://sankhala.ae`, public email is `info@sankhala.ae`, calling number is `+971 4 611 3100`, and WhatsApp remains `+971 56 524 3800`. The confirmed office is Office 218, Business Village B, Deira, Dubai; the supplied Google map is included on Contact. Contact and office values are centralized in `src/lib/site.ts`; the admin identity remains to be designated.
 - Industry sections, detailed About copy, real vacancies and privacy content need actual business information.
 - Both reference images are saved. Follow [the latest clarification](design-direction.md): use them as inspiration for a more modern layout, with both light and dark themes, rather than copying the first concept exactly. Exclude the first image's bottom Design System strip. Separate approved photography remains unavailable.
 

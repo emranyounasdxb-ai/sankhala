@@ -44,6 +44,29 @@ function formatFileSize(bytes: number): string {
   return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 }
 
+type FormField = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+
+function validateField(field: FormField): string | undefined {
+  if (field instanceof HTMLInputElement && field.type === "file")
+    return checkFile(field.files?.[0] ?? null);
+  if (field.required && !field.value.trim())
+    return "Please complete this field.";
+  if (field.name === "phone") {
+    const phone = field.value.trim();
+    if (!/^[+\d\s().-]+$/.test(phone) || phone.replace(/\D/g, "").length < 6)
+      return "Enter a contact number, including your country code.";
+  }
+  if (field.name === "headcount") {
+    const count = Number(field.value);
+    if (!Number.isInteger(count) || count < 1)
+      return "Enter a whole number of at least 1.";
+  }
+  if (field.validity.typeMismatch && field.type === "email")
+    return "Enter an email address, for example name@company.com.";
+  if (!field.validity.valid) return field.validationMessage;
+  return undefined;
+}
+
 export function IntakeForm({ kind, contact }: IntakeFormProps) {
   const candidate = kind === "candidate";
   const interactive = useSyncExternalStore(
@@ -52,54 +75,54 @@ export function IntakeForm({ kind, contact }: IntakeFormProps) {
     () => false,
   );
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [hasChecked, setHasChecked] = useState(false);
   const [status, setStatus] = useState("");
   const [fileDetails, setFileDetails] = useState<{
     name: string;
     size: number;
   } | null>(null);
   const statusRef = useRef<HTMLDivElement>(null);
+  const errorSummaryRef = useRef<HTMLElement>(null);
   const fileRef = useRef<HTMLInputElement>(null);
+  const errorEntries = Object.entries(errors).filter(([, error]) => error);
+  const fieldLabels: Record<string, string> = {
+    role: candidate ? "Preferred role" : "Role you are hiring for",
+    headcount: "Number of people",
+    emirate: "Work emirate",
+    location: candidate ? "Current city and country" : "Work location or area",
+    company: "Company name",
+    fullName: candidate ? "Full name" : "Contact person",
+    email: candidate ? "Email address" : "Work email",
+    phone: "Phone number",
+    cv: "CV document",
+    message: candidate
+      ? "Anything else you would like to share?"
+      : "Additional requirements",
+  };
+
+  function fieldId(name: string) {
+    return `${kind}-${name === "fullName" ? "name" : name}`;
+  }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
-    const data = new FormData(form);
     const nextErrors: Record<string, string> = {};
-    const required = candidate
-      ? ["fullName", "email", "phone", "location", "role"]
-      : [
-          "role",
-          "headcount",
-          "emirate",
-          "location",
-          "company",
-          "fullName",
-          "email",
-          "phone",
-        ];
-    for (const field of required)
-      if (!String(data.get(field) ?? "").trim())
-        nextErrors[field] = "Please complete this field.";
-    const phone = String(data.get("phone") ?? "").trim();
-    if (!/^[+\d\s().-]+$/.test(phone) || phone.replace(/\D/g, "").length < 6)
-      nextErrors.phone = "Enter a contact number, including your country code.";
-    if (!candidate) {
-      const count = Number(data.get("headcount"));
-      if (!Number.isInteger(count) || count < 1)
-        nextErrors.headcount = "Enter a whole number of at least 1.";
+    for (const field of Array.from(form.elements)) {
+      if (
+        field instanceof HTMLInputElement ||
+        field instanceof HTMLSelectElement ||
+        field instanceof HTMLTextAreaElement
+      ) {
+        const error = validateField(field);
+        if (error) nextErrors[field.name] = error;
+      }
     }
-    if (candidate) {
-      const file = data.get("cv");
-      const error = checkFile(file instanceof File ? file : null);
-      if (error) nextErrors.cv = error;
-    }
+    setHasChecked(true);
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length) {
-      setStatus(
-        "Please check the highlighted fields. Your details have not been sent.",
-      );
-      const first = form.elements.namedItem(Object.keys(nextErrors)[0]);
-      if (first instanceof HTMLElement) first.focus();
+      setStatus("");
+      requestAnimationFrame(() => errorSummaryRef.current?.focus());
       return;
     }
     setStatus(
@@ -116,10 +139,16 @@ export function IntakeForm({ kind, contact }: IntakeFormProps) {
     ) : null;
   }
 
-  function fieldState(name: string) {
+  function fieldState(name: string, hint = false) {
+    const description = [
+      hint ? `${kind}-${name}-hint` : "",
+      errors[name] ? `${kind}-${name}-error` : "",
+    ]
+      .filter(Boolean)
+      .join(" ");
     return {
       "aria-invalid": !!errors[name],
-      "aria-describedby": errors[name] ? `${kind}-${name}-error` : undefined,
+      "aria-describedby": description || undefined,
     };
   }
 
@@ -128,7 +157,10 @@ export function IntakeForm({ kind, contact }: IntakeFormProps) {
     fileRef.current.value = "";
     fileRef.current.setCustomValidity("");
     setFileDetails(null);
-    setErrors((previous) => ({ ...previous, cv: "" }));
+    setErrors((previous) => ({
+      ...previous,
+      cv: hasChecked ? (checkFile(null) ?? "") : "",
+    }));
     setStatus("");
     fileRef.current.focus();
   }
@@ -185,11 +217,13 @@ export function IntakeForm({ kind, contact }: IntakeFormProps) {
           name="phone"
           type="tel"
           autoComplete="tel"
-          placeholder="+971"
           required
           maxLength={30}
-          {...fieldState("phone")}
+          {...fieldState("phone", true)}
         />
+        <p id={`${kind}-phone-hint`} className="field-hint">
+          Include your country code, for example +971 50 123 4567.
+        </p>
         {fieldError("phone")}
       </div>
       {candidate && (
@@ -201,8 +235,11 @@ export function IntakeForm({ kind, contact }: IntakeFormProps) {
             autoComplete="address-level2"
             required
             maxLength={200}
-            {...fieldState("location")}
+            {...fieldState("location", true)}
           />
+          <p id={`${kind}-location-hint`} className="field-hint">
+            For example, Dubai, UAE or Mumbai, India.
+          </p>
           {fieldError("location")}
         </div>
       )}
@@ -220,8 +257,11 @@ export function IntakeForm({ kind, contact }: IntakeFormProps) {
           name="role"
           required
           maxLength={160}
-          {...fieldState("role")}
+          {...fieldState("role", true)}
         />
+        <p id={`${kind}-role-hint`} className="field-hint">
+          For example, sales associate or office administrator.
+        </p>
         {fieldError("role")}
       </div>
       {!candidate && (
@@ -268,8 +308,11 @@ export function IntakeForm({ kind, contact }: IntakeFormProps) {
               autoComplete="off"
               required
               maxLength={200}
-              {...fieldState("location")}
+              {...fieldState("location", true)}
             />
+            <p id={`${kind}-location-hint`} className="field-hint">
+              For example, Business Bay, Dubai or Mussafah, Abu Dhabi.
+            </p>
             {fieldError("location")}
           </div>
         </>
@@ -300,7 +343,7 @@ export function IntakeForm({ kind, contact }: IntakeFormProps) {
                 setFileDetails(
                   file ? { name: file.name, size: file.size } : null,
                 );
-                const error = file ? checkFile(file) : undefined;
+                const error = file || hasChecked ? checkFile(file) : undefined;
                 event.currentTarget.setCustomValidity(error ?? "");
                 setErrors((previous) => ({ ...previous, cv: error ?? "" }));
               }}
@@ -346,6 +389,7 @@ export function IntakeForm({ kind, contact }: IntakeFormProps) {
     <form
       className="content-panel stack intake-form intake-form-polished"
       onSubmit={handleSubmit}
+      noValidate={interactive}
       onChange={(event) => {
         const target = event.target;
         if (
@@ -353,21 +397,13 @@ export function IntakeForm({ kind, contact }: IntakeFormProps) {
           target instanceof HTMLSelectElement ||
           target instanceof HTMLTextAreaElement
         ) {
-          if (target.name !== "cv")
-            setErrors((previous) => ({ ...previous, [target.name]: "" }));
+          if (target.name !== "cv" && hasChecked)
+            setErrors((previous) => ({
+              ...previous,
+              [target.name]: validateField(target) ?? "",
+            }));
           setStatus("");
         }
-      }}
-      onInvalid={(event) => {
-        const target = event.target;
-        if (
-          target instanceof HTMLInputElement ||
-          target instanceof HTMLSelectElement
-        )
-          setErrors((previous) => ({
-            ...previous,
-            [target.name]: target.validationMessage,
-          }));
       }}
     >
       <div className="intake-form-heading">
@@ -386,6 +422,36 @@ export function IntakeForm({ kind, contact }: IntakeFormProps) {
           <a href={contact.phoneHref}>give us a call</a>.
         </p>
       </div>
+      <section
+        ref={errorSummaryRef}
+        className="form-error-summary"
+        aria-labelledby={`${kind}-error-title`}
+        aria-describedby={`${kind}-error-description`}
+        tabIndex={-1}
+        hidden={!hasChecked || !errorEntries.length}
+      >
+        <h3 id={`${kind}-error-title`}>Please check your details</h3>
+        <p id={`${kind}-error-description`}>
+          {errorEntries.length}{" "}
+          {errorEntries.length === 1 ? "field needs" : "fields need"} attention.
+          Your details have not been sent.
+        </p>
+        <ul>
+          {errorEntries.map(([name, error]) => (
+            <li key={name}>
+              <a
+                href={`#${fieldId(name)}`}
+                onClick={(event) => {
+                  event.preventDefault();
+                  document.getElementById(fieldId(name))?.focus();
+                }}
+              >
+                {fieldLabels[name]}: {error}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
       <fieldset className="intake-group" disabled={!interactive}>
         <legend>
           <span className="intake-group-number" aria-hidden="true">

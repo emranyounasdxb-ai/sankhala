@@ -8,6 +8,7 @@ import {
 import Link from "next/link";
 import { createPageMetadata } from "@/lib/page-metadata";
 import { site } from "@/lib/site";
+import "./contact.css";
 
 export const metadata = createPageMetadata(
   "Contact Sankhala",
@@ -46,7 +47,7 @@ export default function ContactPage() {
             <WhatsappLogoIcon size={28} weight="light" aria-hidden="true" />
             <span>
               <span className="section-label">Message on WhatsApp</span>
-              <strong>{site.contact.phone}</strong>
+              <strong>{site.contact.whatsapp}</strong>
               <span className="sr-only">Opens in a new tab</span>
             </span>
             <ArrowUpRightIcon size={22} aria-hidden="true" />
@@ -76,6 +77,34 @@ export default function ContactPage() {
           </p>
         </aside>
       </div>
+
+      <section className="contact-office" aria-labelledby="office-heading">
+        <div className="contact-office-details">
+          <p className="eyebrow">Our office</p>
+          <h2 id="office-heading" className="section-heading">
+            Visit us in Deira.
+          </h2>
+          <address>{site.office.address}</address>
+          <a
+            href={site.office.mapsHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="button button-primary"
+          >
+            Get directions <ArrowUpRightIcon size={20} aria-hidden="true" />
+            <span className="sr-only"> (opens in a new tab)</span>
+          </a>
+        </div>
+        <iframe
+          src={site.office.mapEmbedUrl}
+          title="Google Maps location reference for Business Village, Deira"
+          width="600"
+          height="450"
+          loading="lazy"
+          allowFullScreen
+          referrerPolicy="strict-origin-when-cross-origin"
+        />
+      </section>
 
       <div className="content-grid">
         <Link href="/hire-talent" className="content-panel stack inline-link">

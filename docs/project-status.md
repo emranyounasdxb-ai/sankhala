@@ -1,6 +1,6 @@
 # Saved project progress
 
-Updated on 31 October 2026 after the frontend polish and performance pass. The user explicitly deferred backend, real jobs and CRM/database work.
+Updated on 31 October 2026 after the five approved frontend improvements and office/contact updates. The user explicitly deferred backend, real jobs and CRM/database work.
 
 ## Completed
 
@@ -14,7 +14,7 @@ Updated on 31 October 2026 after the frontend polish and performance pass. The u
 - Added a pinned, project-local Node 26.13.0 LTS and npm 12.2.1 setup; dependency versions are exact and repeatable installs use lockfiles.
 - Installed the locked dependencies and established local fonts, design color primitives, reusable motion components, native metadata, robots/sitemap routes, and browser checks. The earlier foundation stage passed its build, type, lint, browser and brand checks, and its dependency audit reported zero known vulnerabilities; that historical result is not a claim about the latest frontend revision.
 - Saved the confirmed two-audience recruitment workflow in `docs/product-requirements.md` and its routes, data relationships and implementation order in `docs/implementation-plan.md`.
-- Recorded Dubai and all UAE emirates as the service area; saved `https://sankhala.ae`, `info@sankhala.ae`, and `+971 56 524 3800` for public calls and WhatsApp in the shared site configuration. Specific industries and initial admin email remain pending.
+- Recorded Dubai and all UAE emirates as the service area; saved `https://sankhala.ae`, `info@sankhala.ae`, calling number `+971 4 611 3100` and separate WhatsApp number `+971 56 524 3800` in the shared site configuration. The user subsequently supplied Office 218, Business Village B, Deira, Dubai, with a Google Maps embed and directions link. Specific industries and initial admin email remain pending.
 - Preserved the supplied homepage concept unchanged at `docs/reference/sankhala-homepage-concept.png` for visual comparison.
 - Saved the second image at `docs/reference/modern-layout-reference.png` and recorded the latest direction in `docs/design-direction.md`: modernize the reference layout and provide complete light and dark themes. This supersedes the exact-copy language in the original brief.
 - Replaced the holding page with a modern homepage: photographic hero, separate employer and candidate routes, service cards, UAE coverage, the recruitment process, an opportunity introduction, native FAQ disclosures and contact links.
@@ -26,8 +26,14 @@ Updated on 31 October 2026 after the frontend polish and performance pass. The u
 - Polished recruitment copy, separate employer/candidate journeys, FAQ content, compact mobile spacing, stable sticky navigation and restrained hover/menu effects. About, Services and Contact use confirmed facts; no industries, team photos or business proof were invented.
 - Grouped the intake forms and added filename/size, replace/remove controls, accessible inline errors and keyboard focus restoration. Details and CVs remain local; backend integration is deferred.
 - Deferred optional GSAP downloads until sections approach the viewport, retained plain content for reduced motion, removed an unused font preload and corrected responsive logo/hero sizing. Approved font families and colors are unchanged.
-- Passed the production build, TypeScript and Biome checks and 17 browser checks; three duplicate viewport scenarios are intentionally skipped. Coverage includes route metadata, responsive layouts at 320/390/768/1440px, both themes, keyboard navigation, sticky-header geometry, accessibility, no-JavaScript content, actual scroll-text activation and local form behavior. Desktop, tablet and mobile screenshots were inspected.
+- The earlier polish pass passed its production build, TypeScript and Biome checks and 17 Chromium browser checks; three duplicate viewport scenarios were intentionally skipped. Coverage included route metadata, responsive layouts at 320/390/768/1440px, both themes, keyboard navigation, sticky-header geometry, accessibility, no-JavaScript content, actual scroll-text activation and local form behavior. Desktop, tablet and mobile screenshots were inspected.
 - Recorded a repeatable local production comparison: initial JavaScript 194,045 → 147,707 bytes (23.9% lower), resource transfer 348,613 → 268,127 bytes (23.1% lower), median LCP 1,688 → 1,600ms, observed CLS 0. These are simulated local samples, not field performance guarantees. [Conditions and raw reports](verification/frontend-polish.md).
+- Added persistent field examples and a focusable, linked validation summary on both forms; corrected fields update their feedback without losing entries or moving focus.
+- Replaced Hire Talent's header/menu self-link with WhatsApp and added mobile call/WhatsApp shortcuts before the form.
+- Added the confirmed office address, responsive Google map and directions to Contact; separated the new landline calling number from the existing WhatsApp number throughout public contacts and SEO data. The supplied map pin reads ALIYAS Real Estate; its use is recorded as a location reference.
+- Added homepage Organization JSON-LD from confirmed data and a brief Google Maps disclosure in the current privacy information.
+- Installed Firefox and WebKit browser binaries and expanded automated coverage to three desktop engines plus Pixel/iPhone emulation. Fixed a system-theme change missed before hydration and added a deterministic regression check. [Latest verification scope](verification/frontend-final-pass.md).
+- The current revision passed build, TypeScript and Biome checks. Across the full run and focused final rerun, all 101 supported scenarios passed, including 30 independent route/theme axe audits with zero violations. Four native Tab scenarios are explicitly unsupported in Windows WebKit; ten duplicate server/no-JavaScript scenarios are skipped. Physical phone testing remains unavailable. The final focused rerun was 46 passed, four skipped; [verification details and limitations](verification/frontend-final-pass.md).
 
 ## Recorded design direction
 

@@ -72,7 +72,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <a className="skip-link" href="#main">
           Skip to content
         </a>
-        <SiteHeader />
+        <SiteHeader contactHref={site.contact.whatsappHref} />
         {children}
         <SiteFooter />
       </body>
