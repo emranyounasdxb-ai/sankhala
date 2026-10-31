@@ -19,4 +19,3 @@ Composition is crucial: the LEFT 50 percent of the image must be dark charcoal a
 Warm daylight falls on the people from the right-side windows. The darkness on the left comes from the actual interior architecture and photographic exposure, not a graphic fade or synthetic gradient. Refined colors: charcoal, cream, taupe, natural skin tones. High-end editorial commercial photography, 35mm lens feel, realistic textures, crisp faces, subtle film grain, pleasing depth.
 No text at all. No logos, badges, captions, watermarks, graphs, overlays, graphic elements, illustrations, rendered UI, bright red clothing or artificial background gradients. Do not add the website heading. Deliver only the finished photograph with an opaque background.
 ```
-
