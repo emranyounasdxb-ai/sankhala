@@ -165,7 +165,7 @@ try {
           );
           await writeFile(`${release}/REVISION`, revision);
           await command(node, [npm, "ci", "--include=dev"], release);
-          await command(node, [npm, "run", "build"], release);
+          await command(node, [npm, "run", "build:cpanel"], release);
           await command(
             node,
             [

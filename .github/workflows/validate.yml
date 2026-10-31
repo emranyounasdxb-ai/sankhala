@@ -48,7 +48,7 @@ jobs:
       - run: npm run check
       - run: npm run typecheck
       - run: node tools/ats/migrate.mjs
-      - run: npm run build
+      - run: npm run build:cpanel
       - run: npm run test:e2e -- tests/ats-domain.spec.ts --project=desktop
       - name: Test the real ATS against isolated MariaDB
         shell: bash

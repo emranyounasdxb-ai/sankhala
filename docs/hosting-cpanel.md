@@ -13,4 +13,6 @@ The owner finalized **Node.js / Next.js backend**, superseding the interim PHP r
 
 ClamAV 1.5.4 was downloaded from its official distribution, verified with the Cisco Talos GPG signing key, and extracted privately. Signed daily/main/bytecode databases were downloaded and successfully tested by FreshClam. Relocated library/certificate paths are explicitly configured; no TLS or database signature checks were disabled.
 
+The hosting OS is AlmaLinux 8.10 with glibc 2.28. Next.js 16.4.3's native SWC/Turbopack binding requires glibc 2.29, so production uses the framework's supported `next build --webpack` compatibility mode. Local development/default builds retain Turbopack. The Node/Next application versions are unchanged; system glibc was not modified.
+
 Next integration work: finalize the runtime, provision scoped database credentials securely, apply reviewed migrations, configure staff authentication/private documents, implement durable submission and notification delivery, and test the actual application through Passenger/HTTPS. Storage directories and an empty database do not establish backups, authentication or a working ATS.
