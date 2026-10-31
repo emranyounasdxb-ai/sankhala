@@ -1,6 +1,6 @@
 # Sankhala
 
-The owner finalized **Node.js / Next.js** for the ATS, using existing InMotion cPanel hosting and MariaDB. Initial admin and HR notification email: **admin@sankhala.ae**. Local implementation now includes durable applications, private document quarantine, scoped staff authentication, recruitment management, status/history, duplicate review, CSV/XLSX exports and an email outbox. Local integration, browser/accessibility, TLS mail-sink delivery and encrypted backup restoration have been verified. cPanel deployment and automatic GitHub-to-server updates are being configured. [ATS requirements](docs/ats-requirements.md), [data model](docs/ats-data-model.md), [hosting status](docs/hosting-cpanel.md).
+The **Next.js / Node.js ATS** is deployed for review at [sankhala.ae](https://sankhala.ae/) on the owner's InMotion cPanel and MariaDB hosting. Staff sign-in: [/admin/login](https://sankhala.ae/admin/login), designated administrator **admin@sankhala.ae**. Candidate applications and CVs use durable database records, private document quarantine, scoped staff access, recruitment stages/history, duplicate review, CSV/XLSX exports and an email outbox. Live sign-in/private API checks and scanner validation have passed; automatic GitHub-to-cPanel deployment has passed its live test. [ATS requirements](docs/ats-requirements.md), [data model](docs/ats-data-model.md), [hosting and handover](docs/hosting-cpanel.md).
 
 Careers usability update: instant role/category search, compact vacancy sections, selected-role CV context and shareable/returnable category URLs are implemented. [Navigation behavior and privacy boundaries](docs/careers-navigation.md).
 
@@ -10,7 +10,7 @@ The public site now explains the owner's [six confirmed services and workforce c
 
 Careers now has a separate [design system and four-step preview](docs/careers-design-system.md) at `/design/careers`: filtering, role details, local application review and component states. The public `/jobs` page still shows no published vacancies.
 
-Latest update: validated forms now offer a reviewable message, Copy details and Prepare email draft. Candidates attach their CV manually in their email app. Editing a field clears the previous draft. See [handoff verification and remaining content needs](docs/verification/email-handoff.md).
+The employer form offers a reviewable message, Copy details and Prepare email draft. Candidate forms use the ATS when enabled; the previous email-draft CV flow is retained only when the backend is disabled. See [the earlier frontend handoff verification](docs/verification/email-handoff.md).
 
 Public website preview and branding assets for Sankhala Employment.
 
@@ -52,14 +52,14 @@ Browser scenarios in `tests/` cover public routes, metadata, organization markup
 
 The official domain is `https://sankhala.ae`. Public contact is `info@sankhala.ae`; calls use `+971 4 611 3100`, while WhatsApp remains `+971 56 524 3800`. The confirmed office is Office 218, Business Village B, Deira, Dubai. Coverage is Dubai and all UAE emirates; these values are centralized in `src/lib/site.ts`. The supplied Google Maps embed currently labels its pin “ALIYAS Real Estate”; it is a location reference, not a verified Sankhala business listing. The public email does not automatically authorize an admin account.
 
-The project defaults to `noindex`. Copy `.env.example` to `.env.local` when configuration is needed. The canonical domain is already configured; enable `SEO_INDEXABLE=true` only when the finished site is ready to launch, then rebuild. No hosting or public deployment has been configured.
+The project defaults to `noindex`, including the current production review deployment. Copy `.env.example` to `.env.local` when configuration is needed. Enable `SEO_INDEXABLE=true` and rebuild when the content and launch review are complete. Production secrets, database records and private documents remain outside Git.
 
 ## What remains before launch
 
-- Configure the production database, private CV storage, team authentication and authorized admin access.
-- Connect staffing requirements, job applications and general CV submissions to durable storage and the manual recruitment workflow.
-- Build private administration for jobs, applications and statuses; supply genuine vacancies and provision the designated initial administrator.
-- Confirm detailed company and industry information and approve the complete privacy, access and retention arrangements before accepting online applications.
+- Confirm the HR notification mailbox/destination. SMTP authentication/TLS has passed; external inbox delivery remains unverified.
+- Supply genuine employer-confirmed vacancies. Production contains no demo job or candidate seed data.
+- Connect employer requirements to durable CRM storage when that workflow is implemented; its current intake uses an email draft.
+- Confirm remaining company history, office hours/visit policy and the final privacy/retention arrangements; configure an independent offsite backup destination.
 
 The current hero is a generated representative office scene, not a photograph of Sankhala's actual staff or office. Its original, optimized web export and generation prompt are preserved in the repository. The public page labels it as illustrative photography.
 

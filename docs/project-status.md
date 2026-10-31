@@ -2,11 +2,13 @@
 
 ## Current ATS work — 31 October 2026
 
-The owner requested backend/ATS implementation and finalized **Node.js / Next.js on existing InMotion cPanel**, superseding the earlier frontend-only deferral and interim PHP request. Initial admin and HR notification recipient: **admin@sankhala.ae**. The isolated production database/private directories are provisioned; production credentials, application release and automatic deployment are being configured.
+The owner requested backend/ATS implementation and finalized **Node.js / Next.js on existing InMotion cPanel**, superseding the earlier frontend-only deferral and interim PHP request. The site is deployed for review at [sankhala.ae](https://sankhala.ae/), with private staff access at [/admin/login](https://sankhala.ae/admin/login). Initial admin and HR notification recipient: **admin@sankhala.ae**. Production database/private storage, scoped credentials, initial staff access, verified SMTP TLS and antivirus scanning are configured. The HR recipient mailbox decision is pending; no external inbox-delivery claim is made.
 
 Implemented the local ATS: database transactions and idempotency, separate candidate/job/application records, immutable application snapshots, duplicate review/linking, private documents with quarantine, authenticated scoped staff access, jobs/client/team management, filters, notes, interviews, status history, Talent Pool, CSV/XLSX and a notification outbox. The public candidate form supports review and durable submission. Local integration and 20 desktop/mobile theme accessibility audits passed. Six candidate/HR emails reached an isolated STARTTLS mail sink, and encrypted SQL plus three documents were restored into a separate scratch database; corrupt backup authentication failed as expected. Employer intake retains its email-draft handoff. Local records labeled `[TEST]` are not seeded on production.
 
-The historical frontend progress below describes earlier milestones; earlier references to a pending admin email or deferred backend are superseded by this update.
+Production backup generation passed. Scheduled GitHub-to-cPanel deployment passed against checked commit `5c9a968`, including exact-revision live HTTPS verification, staff sign-in/private API checks and the host's required UTF-8 database conversion. Background processing runs every two minutes; encrypted backups are scheduled daily and scanner definition updates every four hours. See [hosting status and handover](hosting-cpanel.md) for the exact runtime boundary, release process and private credential location.
+
+The historical frontend progress below describes earlier milestones; references there to a pending admin email, deferred backend, local-only forms or no public deployment are superseded by this update.
 
 Latest navigation pass: public Careers now searches role/category names, keeps keyword/open-category state in shareable URLs and restores it from the CV page or browser back. Empty vacancy messaging is compact and selected CV roles are visible above the form. [Navigation details](careers-navigation.md).
 
@@ -65,15 +67,14 @@ The [supplied specification](../design.md) describes Barlow Condensed headings, 
 
 Font loading, the homepage, public navigation, service cards, inquiry form previews and theme tokens are implemented. The reusable animation components enhance server-rendered text while preserving readable content without JavaScript or with reduced motion. The existing `public/brand/brand-colors.css` contains asset color primitives; application tokens and responsive layouts are in `src/app/globals.css`. The design-system strip in the supplied concept remains outside the public homepage.
 
-The current local preview serves the optimized production build at `http://127.0.0.1:3001` using `npm run start -- --port 3001`. Development still uses `npm run dev` with hot reloading; use its printed port if 3000 is occupied. No public deployment has taken place.
+The local preview remains available at `http://127.0.0.1:3001`. Development uses `npm run dev` with hot reloading; use its printed port if 3000 is occupied. The public review deployment is on `https://sankhala.ae` with indexing disabled.
 
 ## Work to resume later
 
-- Connect the implemented public frontend to the confirmed recruitment MVP: company staff requirements, jobs, job applications, general CV submission and private team administration with manual matching. Candidate login, employer dashboards and automatic matching are deferred.
-- Select and configure the production database, private file storage and team authentication. No application backend has been provisioned yet.
-- Build authorized private administration for jobs, company requirements, candidates and the New → Reviewed → Shortlisted → Interview → Hired pipeline. CV access must be restricted to the authorized team.
+- Confirm the HR notification mailbox/destination. Independently hosted offsite backups remain unconfigured.
+- Add durable employer requirements/CRM intake when that workflow is implemented; the employer form currently retains its email-draft handoff. Candidate login, employer dashboards and automatic matching remain deferred.
 - Review the generated representative hero or replace it with approved company photography if desired. It must not be described as actual team photography without confirmation.
-- Obtain detailed company history, approved photography, office hours/visit policy, initial admin email, real vacancies and the data-retention/privacy information needed before launch. Services, sectors and worker categories are confirmed in the latest business-content update.
+- Obtain detailed company history, approved photography, office hours/visit policy, real vacancies and final data-retention/privacy arrangements. Services, sectors, worker categories and the initial admin email are confirmed.
 - Approve and publish complete privacy information before opening online applications, then verify backend access, storage, submissions and administration end to end.
 
-The public frontend is implemented for local review. The recruitment MVP is not complete: public forms are explicitly labeled previews, and durable application storage, private CV storage, authentication and the admin panel remain pending. The canonical domain and official contact information are configured; keep `SEO_INDEXABLE=false` until the finished site and approved content are ready.
+Candidate submissions, private storage and the staff ATS are implemented and deployed for review. The broader recruitment MVP still needs durable employer/CRM intake and the operational/content decisions listed above. Keep `SEO_INDEXABLE=false` until launch review is complete.
