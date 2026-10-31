@@ -15,7 +15,11 @@ export async function GET(request: Request) {
     await getPool().execute("SELECT 1");
     await privateRoot();
     return Response.json(
-      { ok: true, revision: process.env.ATS_RELEASE_SHA ?? null },
+      {
+        ok: true,
+        revision: process.env.ATS_RELEASE_SHA ?? null,
+        node: process.version,
+      },
       { headers: { "Cache-Control": "no-store" } },
     );
   } catch {

@@ -1,6 +1,7 @@
 import { execFile, spawn } from "node:child_process";
 import { once } from "node:events";
 import {
+  chmod,
   mkdir,
   readFile,
   readlink,
@@ -47,7 +48,10 @@ async function revisionAtLive() {
 async function health(origin, revision) {
   try {
     const response = await fetch(`${origin}/api/ats/health`, {
-      headers: { "x-health-key": healthKey },
+      headers: {
+        "x-health-key": healthKey,
+        "User-Agent": "Sankhala-Deployment/1.0 (health verification)",
+      },
       signal: AbortSignal.timeout(15000),
     });
     const data = await response.json();
@@ -131,7 +135,8 @@ try {
         if (!passed) {
           console.log(`Waiting for successful GitHub checks on ${revision}.`);
         } else {
-          await mkdir(releases, { recursive: true, mode: 0o700 });
+          await mkdir(releases, { recursive: true, mode: 0o711 });
+          await chmod(releases, 0o711);
           const release = `${releases}/${revision}`;
           try {
             await stat(release);
@@ -146,7 +151,9 @@ try {
           } catch (error) {
             if (error.code !== "ENOENT") throw error;
           }
-          await mkdir(release, { mode: 0o700 });
+          // Apache must traverse the code directory to detect the Passenger app.
+          // Credentials and documents remain in the separate owner-only root.
+          await mkdir(release, { mode: 0o755 });
           const archive = spawn("git", ["archive", revision], {
               cwd: repository,
               stdio: ["ignore", "pipe", "inherit"],
