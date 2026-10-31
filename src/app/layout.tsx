@@ -8,6 +8,7 @@ import { bodyFont, headingFont } from "./fonts";
 import "./globals.css";
 import "@/components/navigation-polish.css";
 import "@/components/forms/intake-form-polish.css";
+import "@/components/ats/ats.css";
 
 export const metadata: Metadata = {
   title: { default: site.name, template: `%s | ${site.name}` },

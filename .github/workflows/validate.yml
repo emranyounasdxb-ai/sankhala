@@ -1,0 +1,59 @@
+name: Validate Sankhala
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: validation-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      database:
+        image: mariadb:10.11.19
+        env:
+          MARIADB_DATABASE: sankhala_ats_local
+          MARIADB_USER: sankhala_atsapp
+          MARIADB_PASSWORD: disposable-ci-database-password-12345
+          MARIADB_ROOT_PASSWORD: disposable-ci-root-password-12345
+        ports: ['3311:3306']
+        options: >-
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-interval=5s --health-timeout=5s --health-retries=20
+    env:
+      SEO_INDEXABLE: 'false'
+      ATS_ENABLED: 'true'
+      ATS_DB_HOST: 127.0.0.1
+      ATS_DB_PORT: '3311'
+      ATS_DB_NAME: sankhala_ats_local
+      ATS_DB_USER: sankhala_atsapp
+      ATS_DB_PASSWORD: disposable-ci-database-password-12345
+      BETTER_AUTH_SECRET: disposable-ci-auth-secret-used-only-on-ephemeral-runners
+      ATS_PUBLIC_ORIGIN: http://127.0.0.1:3001
+      ATS_INITIAL_ADMIN_EMAIL: admin@sankhala.ae
+      ATS_HR_EMAIL: admin@sankhala.ae
+      ATS_PRIVATE_ROOT: .runtime/ats-private
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: 26.13.0
+          cache: npm
+      - run: npm install --global npm@12.2.1
+      - run: npm ci
+      - run: npm run check
+      - run: npm run typecheck
+      - run: node tools/ats/migrate.mjs
+      - run: npm run build
+      - run: npm run test:e2e -- tests/ats-domain.spec.ts --project=desktop
+      - name: Test the real ATS against isolated MariaDB
+        shell: bash
+        run: |
+          npm run start -- --port 3001 > .runtime/ci-server.log 2>&1 &
+          curl --retry 30 --retry-connrefused --retry-delay 1 --fail http://127.0.0.1:3001/jobs > /dev/null
+          node tools/ats/integration-test.mjs
+      - run: npm audit --omit=dev

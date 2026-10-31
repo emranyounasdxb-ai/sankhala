@@ -1,6 +1,8 @@
 import { ArrowRightIcon, FileTextIcon } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
+import { ApplicationForm } from "@/components/ats/application-form";
 import { IntakeForm } from "@/components/forms/intake-form";
+import { atsEnabled } from "@/lib/ats/db";
 import { allRoleTitles } from "@/lib/job-categories";
 import { createPageMetadata } from "@/lib/page-metadata";
 import { safeJobsReturn } from "@/lib/role-navigation";
@@ -18,6 +20,7 @@ export default async function SubmitCVPage({
   searchParams: Promise<{ role?: string | string[]; from?: string | string[] }>;
 }) {
   const { role, from } = await searchParams;
+  const online = atsEnabled();
   const backHref = safeJobsReturn(from);
   const initialRole =
     typeof role === "string" && allRoleTitles.includes(role) ? role : "";
@@ -28,8 +31,10 @@ export default async function SubmitCVPage({
         <h1 className="page-title">Share your experience.</h1>
         <p className="lead">
           Introduce your skills and the role you are looking for, even when no
-          suitable vacancy is listed. You can contact our team directly by
-          email.
+          suitable vacancy is listed.{" "}
+          {online
+            ? "Complete your recruitment profile and send your CV securely."
+            : "You can contact our team directly by email."}
         </p>
       </header>
       <div className="content-grid intake-layout">
@@ -37,12 +42,16 @@ export default async function SubmitCVPage({
           <Link className="inline-link cv-role-back" href={backHref}>
             Back to role categories
           </Link>
-          <IntakeForm
-            key={initialRole}
-            kind="candidate"
-            contact={site.contact}
-            initialRole={initialRole}
-          />
+          {online ? (
+            <ApplicationForm initialRole={initialRole} />
+          ) : (
+            <IntakeForm
+              key={initialRole}
+              kind="candidate"
+              contact={site.contact}
+              initialRole={initialRole}
+            />
+          )}
         </div>
         <aside className="page-aside stack intake-aside">
           <div className="content-panel content-panel-dark stack">
@@ -88,14 +97,18 @@ export default async function SubmitCVPage({
           <div>
             <h3>Does selecting a CV send it to the team?</h3>
             <p>
-              No. Select a file to check its format and size, then review your
-              introduction. Attach the CV yourself when you send the email.
+              {online
+                ? "Selecting a file does not send it. Review your details, then choose Send application. A reference appears only after your application has been saved."
+                : "No. Select a file to check its format and size, then review your introduction. Attach the CV yourself when you send the email."}
             </p>
           </div>
           <div>
             <h3>Can I introduce myself without a listed vacancy?</h3>
             <p>
-              Yes. Email a general CV with your preferred role and location.
+              Yes.{" "}
+              {online
+                ? "Send a general CV with your preferred role and location."
+                : "Email a general CV with your preferred role and location."}
               Published vacancies will appear on the jobs page when available.
             </p>
           </div>

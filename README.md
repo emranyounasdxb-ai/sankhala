@@ -1,5 +1,7 @@
 # Sankhala
 
+The owner finalized **Node.js / Next.js** for the ATS, using existing InMotion cPanel hosting and MariaDB. Initial admin and HR notification email: **admin@sankhala.ae**. Local implementation now includes durable applications, private document quarantine, scoped staff authentication, recruitment management, status/history, duplicate review, CSV/XLSX exports and an email outbox. Local integration, browser/accessibility, TLS mail-sink delivery and encrypted backup restoration have been verified. cPanel deployment and automatic GitHub-to-server updates are being configured. [ATS requirements](docs/ats-requirements.md), [data model](docs/ats-data-model.md), [hosting status](docs/hosting-cpanel.md).
+
 Careers usability update: instant role/category search, compact vacancy sections, selected-role CV context and shareable/returnable category URLs are implemented. [Navigation behavior and privacy boundaries](docs/careers-navigation.md).
 
 Public Careers now includes the approved categories, priority role interests and separate own-team/client sections. Only real employer-confirmed vacancies may be published; category links open a general CV introduction for future opportunities. See [the Careers publication policy](docs/careers-content-policy.md).
@@ -14,7 +16,7 @@ Public website preview and branding assets for Sankhala Employment.
 
 The stack is locked to stable versions verified on 31 October 2026: Next.js App Router, React, TypeScript, Tailwind CSS and GSAP. The public frontend now includes the homepage, About, Services, Contact, Careers, Hire Talent, Submit CV and Privacy pages. It uses the approved local Barlow Condensed and Inter fonts, the supplied brand assets, persistent light/dark themes, responsive navigation, and selective scroll and text effects with reduced-motion support.
 
-This is a frontend preview, not the completed recruitment MVP. Hiring and CV forms validate fields locally and clearly state that nothing is sent or saved. CV selection does not upload a file. Working email, call and WhatsApp links provide direct contact options; the jobs page shows an honest empty state until real vacancies are available.
+With `ATS_ENABLED=true` and private configuration, candidate applications and general CVs save to MariaDB and private storage, and staff use `/admin`. With ATS disabled, the earlier email-draft CV preview remains available. The employer intake currently retains its reviewed email-draft handoff. No genuine vacancies have been supplied; local test records are labeled `[TEST]`, and test vacancies are closed or drafts. Production receives no demo vacancy seed data.
 
 The frontend polish adds clearer recruitment copy, separate employer/candidate journeys, stable sticky navigation, grouped forms and local CV replace/remove controls. Forms now include persistent examples and a linked error summary; hiring-page contact actions are available before the mobile form. The Contact page includes the confirmed Deira office address, Google map and directions. Optional GSAP code loads near its section rather than with the initial page; reduced-motion visitors do not load it. The approved font families are unchanged. Only the Barlow Condensed 600 weight currently used by headings is downloaded; the unused 700 preload was removed.
 
@@ -56,7 +58,7 @@ The project defaults to `noindex`. Copy `.env.example` to `.env.local` when conf
 
 - Configure the production database, private CV storage, team authentication and authorized admin access.
 - Connect staffing requirements, job applications and general CV submissions to durable storage and the manual recruitment workflow.
-- Build private administration for jobs, applications and statuses; supply genuine vacancies and confirm the initial admin email.
+- Build private administration for jobs, applications and statuses; supply genuine vacancies and provision the designated initial administrator.
 - Confirm detailed company and industry information and approve the complete privacy, access and retention arrangements before accepting online applications.
 
 The current hero is a generated representative office scene, not a photograph of Sankhala's actual staff or office. Its original, optimized web export and generation prompt are preserved in the repository. The public page labels it as illustrative photography.

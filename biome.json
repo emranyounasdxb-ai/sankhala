@@ -6,9 +6,12 @@
       "src/**",
       "tests/**",
       "tools/frontend/**",
+      "tools/ats/**",
+      "tools/hosting/**",
       "*.json",
       "*.ts",
       "*.mjs",
+      "app.js",
       "!package-lock.json",
       "!next-env.d.ts"
     ]

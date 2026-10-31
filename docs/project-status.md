@@ -1,5 +1,13 @@
 # Saved project progress
 
+## Current ATS work — 31 October 2026
+
+The owner requested backend/ATS implementation and finalized **Node.js / Next.js on existing InMotion cPanel**, superseding the earlier frontend-only deferral and interim PHP request. Initial admin and HR notification recipient: **admin@sankhala.ae**. The isolated production database/private directories are provisioned; production credentials, application release and automatic deployment are being configured.
+
+Implemented the local ATS: database transactions and idempotency, separate candidate/job/application records, immutable application snapshots, duplicate review/linking, private documents with quarantine, authenticated scoped staff access, jobs/client/team management, filters, notes, interviews, status history, Talent Pool, CSV/XLSX and a notification outbox. The public candidate form supports review and durable submission. Local integration and 20 desktop/mobile theme accessibility audits passed. Six candidate/HR emails reached an isolated STARTTLS mail sink, and encrypted SQL plus three documents were restored into a separate scratch database; corrupt backup authentication failed as expected. Employer intake retains its email-draft handoff. Local records labeled `[TEST]` are not seeded on production.
+
+The historical frontend progress below describes earlier milestones; earlier references to a pending admin email or deferred backend are superseded by this update.
+
 Latest navigation pass: public Careers now searches role/category names, keeps keyword/open-category state in shareable URLs and restores it from the CV page or browser back. Empty vacancy messaging is compact and selected CV roles are visible above the form. [Navigation details](careers-navigation.md).
 
 Navigation verification: build/type/lint passed; 31 supported checks passed across five browser projects (four duplicate server cases skipped). Final layout follow-up passed seven desktop/iPhone checks with one duplicate skip. Physical-device testing remains unverified.

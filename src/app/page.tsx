@@ -121,7 +121,7 @@ const questions = [
   ],
   [
     "Which CV files can I choose?",
-    "The form preview accepts PDF or DOCX files up to 5 MB. Online uploads are not open yet, so your selected file stays on your device. You can email your CV to our team in the meantime.",
+    "Use PDF or DOCX. Check the size limit shown on the application form, review your details before sending, and keep your application reference. You can also email the recruitment team.",
   ],
 ];
 
