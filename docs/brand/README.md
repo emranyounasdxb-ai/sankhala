@@ -2,6 +2,8 @@
 
 This pack adapts the two supplied Sankhala Employment logos for web use. It establishes reusable artwork and measured color primitives; it does not finalize the website design system or its UI font.
 
+The subsequently supplied [website design specification](../../design.md) records the intended typography and UI direction. This asset guide describes the existing exports; implementing that specification is a later step.
+
 ## Source artwork and colors
 
 The original 6250 × 6250 transparent PNGs are preserved unchanged in `brand/originals/`. Both contain artwork within `(1313, 2191)–(4954, 3819)`, a trimmed area of 3641 × 1628 pixels.
