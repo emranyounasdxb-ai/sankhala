@@ -1,5 +1,9 @@
 # Saved project progress
 
+Careers follow-up: implemented the four approved frontend steps under `/design/careers`, including sample filters, role details, local application/review, and a foundations/state gallery. Public `/jobs` remains empty; fictional fixtures have no JobPosting markup, sitemap entry or indexing permission. [Design system and integration contract](careers-design-system.md).
+
+Careers validation: build, type and lint passed, and 55 distinct focused browser scenarios were verified across five projects, including 40 route/theme axe audits. Physical devices remain unverified; no backend or live jobs were added.
+
 Latest follow-up: forms now provide a reviewable email message, clipboard copying with manual fallback and an encoded email-draft link after validation. Editing fields or changing the CV clears stale drafts; candidates attach files manually. Services briefing guidance, candidate FAQs, visit guidance and privacy wording are updated. Build/type/lint passed, as did 20 focused cross-browser checks and four final mobile checks. [Details, local lab report and pending business facts](verification/email-handoff.md).
 
 Updated on 31 October 2026 after the five approved frontend improvements and office/contact updates. The user explicitly deferred backend, real jobs and CRM/database work.

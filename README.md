@@ -1,5 +1,7 @@
 # Sankhala
 
+Careers now has a separate [design system and four-step preview](docs/careers-design-system.md) at `/design/careers`: filtering, role details, local application review and component states. The public `/jobs` page still shows no published vacancies.
+
 Latest update: validated forms now offer a reviewable message, Copy details and Prepare email draft. Candidates attach their CV manually in their email app. Editing a field clears the previous draft. See [handoff verification and remaining content needs](docs/verification/email-handoff.md).
 
 Public website preview and branding assets for Sankhala Employment.
