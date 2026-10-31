@@ -6,6 +6,8 @@ The stack is locked to stable versions verified on 31 October 2026: Next.js App 
 
 This is a frontend preview, not the completed recruitment MVP. Hiring and CV forms validate fields locally and clearly state that nothing is sent or saved. CV selection does not upload a file. Working email, call and WhatsApp links provide direct contact options; the jobs page shows an honest empty state until real vacancies are available.
 
+The frontend polish adds clearer recruitment copy, separate employer/candidate journeys, stable sticky navigation, grouped forms and local CV replace/remove controls. Optional GSAP code loads near its section rather than with the initial page; reduced-motion visitors do not load it. The approved font families are unchanged. Only the Barlow Condensed 600 weight currently used by headings is downloaded; the unused 700 preload was removed.
+
 - [Locked stack and exact versions](docs/stack.md)
 - [Confirmed MVP requirements](docs/product-requirements.md)
 - [MVP implementation structure](docs/implementation-plan.md)
@@ -15,6 +17,7 @@ This is a frontend preview, not the completed recruitment MVP. Hiring and CV for
 - [Modern layout reference](docs/reference/modern-layout-reference.png)
 - [Generated hero image provenance](docs/reference/hero-image.md)
 - [Saved project progress](docs/project-status.md)
+- [Frontend verification and local performance comparison](docs/verification/frontend-polish.md)
 - [Brand asset guide](docs/brand/README.md)
 - [Asset preview](docs/brand/preview.png)
 - [Generated inventory](docs/brand/asset-manifest.json)

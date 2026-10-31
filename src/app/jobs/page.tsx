@@ -5,10 +5,11 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { createPageMetadata } from "@/lib/page-metadata";
+import { site } from "@/lib/site";
 
 export const metadata = createPageMetadata(
   "Find a job",
-  "Explore published opportunities with Sankhala across Dubai and the UAE, or learn how to share a general CV.",
+  "Check for published vacancies with Sankhala across Dubai and the UAE, or contact our recruitment team with your CV and preferred role.",
   "/jobs",
 );
 
@@ -17,10 +18,10 @@ export default function JobsPage() {
     <main id="main" tabIndex={-1} className="page-shell">
       <header className="page-intro">
         <p className="eyebrow">For job seekers</p>
-        <h1 className="page-title">Your next chapter starts here.</h1>
+        <h1 className="page-title">Job opportunities across the UAE.</h1>
         <p className="lead">
-          Explore opportunities across the UAE. Find a role that fits where you
-          want to go next.
+          Check for published vacancies or introduce yourself to our recruitment
+          team with your experience, preferred role and location.
         </p>
       </header>
 
@@ -34,9 +35,16 @@ export default function JobsPage() {
           No vacancies are published yet.
         </h2>
         <p>
-          New openings will appear here when they are available. In the
-          meantime, you can explore the general CV route or contact our team
-          about your preferred role.
+          Open roles will appear here when they are published. You can still
+          share a general CV for consideration when a suitable opportunity
+          becomes available.
+        </p>
+        <p className="field-hint">
+          Online applications are not open yet. To send your CV now, email{" "}
+          <a href={site.contact.emailHref} className="inline-link">
+            {site.contact.email}
+          </a>{" "}
+          and include your preferred role.
         </p>
         <div className="button-row">
           <Link href="/submit-cv" className="button button-primary">

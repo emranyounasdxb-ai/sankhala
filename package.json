@@ -14,6 +14,7 @@
     "check": "biome check .",
     "format": "biome check --write .",
     "typecheck": "next typegen && tsc --noEmit",
+    "audit:performance": "node tools/frontend/audit-performance.mjs",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "browsers:install": "playwright install chromium",

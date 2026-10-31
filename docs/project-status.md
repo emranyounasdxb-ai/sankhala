@@ -1,6 +1,6 @@
 # Saved project progress
 
-Updated on 31 October 2026 while implementing the public website and local browser preview requested by the user.
+Updated on 31 October 2026 after the frontend polish and performance pass. The user explicitly deferred backend, real jobs and CRM/database work.
 
 ## Completed
 
@@ -23,7 +23,11 @@ Updated on 31 October 2026 while implementing the public website and local brows
 - Applied the locked Barlow Condensed and Inter fonts throughout the responsive light and dark layouts. GSAP enhancements support section entrances and text effects while keeping the underlying content server rendered and respecting reduced motion.
 - Created a representative hero scene, preserved the PNG in `brand/photography/`, and saved its optimized WebP in `public/images/`. [Provenance and the exact prompt](reference/hero-image.md) document that it is generated imagery, not actual Sankhala staff or premises.
 - Added employer and candidate form previews with field validation, file-type and size checks, explanatory notices and direct contact alternatives. The forms do not send or save details; selected CVs stay on the device. The jobs page contains no invented vacancies.
-- Expanded the browser scenarios in `tests/foundation.spec.ts` to cover the public frontend. The final frontend run passed the production build, TypeScript check, Biome check, and 13 browser checks; three duplicate viewport scenarios are intentionally skipped. Browser coverage includes route metadata, responsive layouts at 320/390/768/1440px, both themes, keyboard navigation, accessibility, no-JavaScript content, scroll text and local form behavior. Desktop, tablet and mobile screenshots were also inspected.
+- Polished recruitment copy, separate employer/candidate journeys, FAQ content, compact mobile spacing, stable sticky navigation and restrained hover/menu effects. About, Services and Contact use confirmed facts; no industries, team photos or business proof were invented.
+- Grouped the intake forms and added filename/size, replace/remove controls, accessible inline errors and keyboard focus restoration. Details and CVs remain local; backend integration is deferred.
+- Deferred optional GSAP downloads until sections approach the viewport, retained plain content for reduced motion, removed an unused font preload and corrected responsive logo/hero sizing. Approved font families and colors are unchanged.
+- Passed the production build, TypeScript and Biome checks and 17 browser checks; three duplicate viewport scenarios are intentionally skipped. Coverage includes route metadata, responsive layouts at 320/390/768/1440px, both themes, keyboard navigation, sticky-header geometry, accessibility, no-JavaScript content, actual scroll-text activation and local form behavior. Desktop, tablet and mobile screenshots were inspected.
+- Recorded a repeatable local production comparison: initial JavaScript 194,045 → 147,707 bytes (23.9% lower), resource transfer 348,613 → 268,127 bytes (23.1% lower), median LCP 1,688 → 1,600ms, observed CLS 0. These are simulated local samples, not field performance guarantees. [Conditions and raw reports](verification/frontend-polish.md).
 
 ## Recorded design direction
 
@@ -31,7 +35,7 @@ The [supplied specification](../design.md) describes Barlow Condensed headings, 
 
 Font loading, the homepage, public navigation, service cards, inquiry form previews and theme tokens are implemented. The reusable animation components enhance server-rendered text while preserving readable content without JavaScript or with reduced motion. The existing `public/brand/brand-colors.css` contains asset color primitives; application tokens and responsive layouts are in `src/app/globals.css`. The design-system strip in the supplied concept remains outside the public homepage.
 
-The current local preview uses `http://127.0.0.1:3001`. The development command normally starts on port 3000 and falls back to another available port when needed; use the URL printed by Next.js after a restart. No public deployment has taken place.
+The current local preview serves the optimized production build at `http://127.0.0.1:3001` using `npm run start -- --port 3001`. Development still uses `npm run dev` with hot reloading; use its printed port if 3000 is occupied. No public deployment has taken place.
 
 ## Work to resume later
 

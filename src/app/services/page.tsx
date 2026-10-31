@@ -18,13 +18,13 @@ const services = [
     id: "employers",
     Icon: BriefcaseIcon,
     label: "For employers",
-    title: "Your requirement. Our starting point.",
+    title: "Staff recruitment",
     description:
-      "Tell us the role, number of people and location. Our team discusses the requirement, reviews potential candidates and coordinates the next steps.",
+      "Share the roles you need to fill, how many people you need and where they will work. Our team supports the recruitment conversation from requirement to interview.",
     items: [
-      "Staffing requirement review",
-      "Candidate shortlisting",
-      "Interview coordination and hiring follow-up",
+      "Discuss the role and required experience",
+      "Review and shortlist potential candidates",
+      "Coordinate interviews and follow hiring progress",
     ],
     href: "/hire-talent",
     action: "Share your staffing needs",
@@ -33,16 +33,16 @@ const services = [
     id: "candidates",
     Icon: FileTextIcon,
     label: "For candidates",
-    title: "Make your next move.",
+    title: "Candidate applications",
     description:
-      "Explore published vacancies and apply for a suitable role. If the right opportunity is not listed, you can share a general CV with the team.",
+      "Share your experience, preferred role and location with our team. A general CV gives us a starting point even when a suitable vacancy is not listed.",
     items: [
-      "Public vacancy information",
-      "Applications linked to the right role",
-      "General CV consideration",
+      "Introduce your experience and skills",
+      "Discuss suitable published opportunities",
+      "Share a general CV for future consideration",
     ],
     href: "/submit-cv",
-    action: "Explore the CV route",
+    action: "Submit your CV",
   },
 ];
 
@@ -51,10 +51,11 @@ export default function ServicesPage() {
     <main id="main" tabIndex={-1} className="page-shell">
       <header className="page-intro">
         <p className="eyebrow">What we do</p>
-        <h1 className="page-title">Recruitment, guided by people.</h1>
+        <h1 className="page-title">Recruitment support across the UAE.</h1>
         <p className="lead">
-          Clear routes for companies and candidates. A team that brings the two
-          together through a considered hiring process.
+          Staff requirements for businesses. Applications and CVs from
+          candidates. Our team brings the two together through review,
+          shortlisting and interview coordination.
         </p>
       </header>
 
@@ -82,13 +83,11 @@ export default function ServicesPage() {
       <section className="content-panel content-panel-dark stack">
         <UsersThreeIcon size={40} weight="light" aria-hidden="true" />
         <span className="section-label">Across the UAE</span>
-        <h2 className="section-heading">
-          Start with the role, not a category.
-        </h2>
+        <h2 className="section-heading">Tell us where you need people.</h2>
         <p>
-          Have a specific position or location in mind? Share the details with
-          us. We will discuss your requirement directly rather than ask you to
-          fit it into a predefined industry list.
+          Our service area includes Dubai and all UAE emirates. Share your
+          position, required experience and work location so our team can
+          discuss the requirement with you.
         </p>
         <Link href="/contact" className="button button-secondary">
           Discuss a requirement <ArrowRightIcon size={20} aria-hidden="true" />

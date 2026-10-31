@@ -34,7 +34,7 @@ const services = [
   {
     number: "01",
     icon: UsersThreeIcon,
-    title: "People for your business.",
+    title: "Staff recruitment.",
     text: "Tell us who you need. Our team reviews your requirements and helps you find suitable candidates.",
     label: "Hire talent",
     href: "/hire-talent",
@@ -43,7 +43,7 @@ const services = [
   {
     number: "02",
     icon: BriefcaseIcon,
-    title: "Space for your ambition.",
+    title: "Job opportunities.",
     text: "Explore available roles and find a new opportunity to put your experience to work.",
     label: "Explore opportunities",
     href: "/jobs",
@@ -52,26 +52,56 @@ const services = [
   {
     number: "03",
     icon: FileTextIcon,
-    title: "A conversation that counts.",
+    title: "General CV submission.",
     text: "No suitable vacancy yet? Share your CV and tell our team what you would like to do next.",
     label: "Submit your CV",
     href: "/submit-cv",
     category: "For your next step",
   },
 ];
-const steps = [
-  [
-    "Tell us what’s next.",
-    "A new role or a growing team. Start by sharing what you’re looking for.",
-  ],
-  [
-    "Find the right fit.",
-    "Our team reviews requirements and applications, then coordinates suitable introductions.",
-  ],
-  [
-    "Move forward, together.",
-    "From shortlisting to interviews, we follow the conversation through to hiring.",
-  ],
+const journeys = [
+  {
+    audience: "For companies",
+    title: "Build your team.",
+    icon: UsersThreeIcon,
+    href: "/hire-talent",
+    action: "Share a requirement",
+    steps: [
+      [
+        "Tell us who you need",
+        "Share the role, number of staff and work location.",
+      ],
+      [
+        "Review suitable candidates",
+        "Our team reviews profiles and prepares a shortlist for your requirement.",
+      ],
+      [
+        "Meet your next hire",
+        "We coordinate interviews and follow the hiring process with you.",
+      ],
+    ],
+  },
+  {
+    audience: "For job seekers",
+    title: "Put your experience forward.",
+    icon: BriefcaseIcon,
+    href: "/submit-cv",
+    action: "Submit your CV",
+    steps: [
+      [
+        "Introduce yourself",
+        "Share your CV, experience and the type of role you’re looking for.",
+      ],
+      [
+        "Let our team review",
+        "We review your profile against the requirements we receive.",
+      ],
+      [
+        "Discuss a suitable role",
+        "When there’s a potential fit, our team contacts you about the opportunity.",
+      ],
+    ],
+  },
 ];
 const questions = [
   [
@@ -90,6 +120,14 @@ const questions = [
     "Do I need to create an account?",
     "No candidate or company account is needed for the initial inquiry. Your first conversation is directly with our recruitment team.",
   ],
+  [
+    "What should I include in a staffing inquiry?",
+    "Include the job role, number of staff, emirate, work location and your contact details. Add any skills or experience the role needs so our team can understand your requirement.",
+  ],
+  [
+    "Which CV files can I choose?",
+    "The form preview accepts PDF or DOCX files up to 5 MB. Online uploads are not open yet, so your selected file stays on your device. You can email your CV to our team in the meantime.",
+  ],
 ];
 
 export default function Home() {
@@ -102,7 +140,7 @@ export default function Home() {
             alt="An illustrative scene of professionals collaborating in a contemporary office"
             fill
             preload
-            sizes="(max-width: 767px) 100vw, 1280px"
+            sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1344px) calc(100vw - 64px), 1280px"
           />
         </div>
         <div className="hero-shade" aria-hidden="true" />
@@ -119,9 +157,8 @@ export default function Home() {
             </span>
           </h1>
           <p className="hero-description">
-            The people your business needs.
-            <br />
-            The opportunity you’ve been looking for.
+            Recruitment support for companies and job seekers across Dubai and
+            the UAE.
           </p>
           <div className="hero-actions">
             <Link href="/hire-talent" className="button button-primary">
@@ -143,29 +180,28 @@ export default function Home() {
         <span className="image-caption">Illustrative photography</span>
       </section>
       <div className="hero-footnote wrap">
-        <span>For growing teams.</span>
-        <span>For new beginnings.</span>
-        <span>
-          For the right connection.
-          <span className="red-dot" />
-        </span>
+        <span>Dubai and all seven emirates.</span>
+        <span>Companies and job seekers.</span>
+        <a href="#how-it-works">
+          See how it works <ArrowDownRightIcon size={16} aria-hidden="true" />
+        </a>
       </div>
       <section className="section wrap" aria-labelledby="services-heading">
         <div className="section-heading section-heading-split">
           <div>
-            <p className="eyebrow">A more personal approach</p>
+            <p className="eyebrow">What we do</p>
             <h2 id="services-heading">
-              The right support.
+              Recruitment support.
               <br />
-              For your next move<span className="accent-dot">.</span>
+              Built around people<span className="accent-dot">.</span>
             </h2>
           </div>
           <p className="section-description">
-            Behind every vacancy is a business moving forward. Behind every CV
-            is a person ready for what’s next. We bring the two together.
+            Share a staffing requirement, explore available roles or introduce
+            yourself with a CV. Our team takes the conversation from there.
           </p>
         </div>
-        <Reveal className="services-grid">
+        <Reveal className="services-grid" stagger>
           {services.map(
             ({ number, icon: Icon, title, text, label, href, category }) => (
               <article className="service-card" key={number}>
@@ -236,13 +272,18 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="process-section" aria-labelledby="process-heading">
+      <section
+        id="how-it-works"
+        className="process-section"
+        aria-labelledby="process-heading"
+      >
         <div className="section wrap">
           <div className="section-heading section-heading-split">
             <div>
-              <p className="eyebrow">Simple steps. Real conversations.</p>
+              <p className="eyebrow">How it works</p>
               <h2 id="process-heading">
-                A clear path forward<span className="accent-dot">.</span>
+                Two paths. A personal approach
+                <span className="accent-dot">.</span>
               </h2>
             </div>
             <Link href="/about" className="inline-link">
@@ -250,24 +291,36 @@ export default function Home() {
               <ArrowUpRightIcon size={20} aria-hidden="true" />
             </Link>
           </div>
-          <ol className="process-grid">
-            {steps.map(([title, description], i) => (
-              <li key={title}>
-                <div className="step-top">
-                  <span>0{i + 1}</span>
-                  {i !== 2 && (
-                    <ArrowRightIcon
-                      size={24}
-                      weight="light"
-                      aria-hidden="true"
-                    />
-                  )}
-                </div>
-                <h3>{title}</h3>
-                <p>{description}</p>
-              </li>
-            ))}
-          </ol>
+          <div className="journeys-grid">
+            {journeys.map(
+              ({ audience, title, icon: Icon, steps, href, action }) => (
+                <article className="journey-card" key={audience}>
+                  <div className="journey-top">
+                    <p className="eyebrow">{audience}</p>
+                    <Icon size={28} weight="light" aria-hidden="true" />
+                  </div>
+                  <h3>{title}</h3>
+                  <ol className="journey-steps">
+                    {steps.map(([label, description], index) => (
+                      <li key={label}>
+                        <span className="journey-number" aria-hidden="true">
+                          0{index + 1}
+                        </span>
+                        <div>
+                          <h4>{label}</h4>
+                          <p>{description}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                  <Link className="inline-link" href={href}>
+                    {action}
+                    <ArrowUpRightIcon size={18} aria-hidden="true" />
+                  </Link>
+                </article>
+              ),
+            )}
+          </div>
         </div>
       </section>
       <section
@@ -275,16 +328,15 @@ export default function Home() {
         aria-labelledby="opportunities-heading"
       >
         <div>
-          <p className="eyebrow">Your next chapter</p>
+          <p className="eyebrow">For candidates</p>
           <h2 id="opportunities-heading">
-            Good things
+            Your experience.
             <br />
-            start with a hello<span className="accent-dot">.</span>
+            Your next opportunity<span className="accent-dot">.</span>
           </h2>
           <p className="section-description">
-            Looking for your next role? Introduce yourself.
-            <br />
-            We’d like to know where you want to go.
+            Let our team know the work you’re looking for, your experience and
+            your preferred location.
           </p>
         </div>
         <div className="opportunity-card">
@@ -292,14 +344,10 @@ export default function Home() {
             <BriefcaseIcon size={28} weight="light" aria-hidden="true" />
             <span className="chip">Career opportunities</span>
           </div>
-          <h3>
-            Your next role could be
-            <br />
-            just a conversation away.
-          </h3>
+          <h3>No suitable vacancy yet?</h3>
           <p>
-            New vacancies will appear here when they’re published. In the
-            meantime, share your CV with our team.
+            Published jobs will appear on our careers page. You can still
+            introduce yourself by emailing your CV to our recruitment team.
           </p>
           <div className="opportunity-actions">
             <Link href="/submit-cv" className="button button-primary">
@@ -316,11 +364,9 @@ export default function Home() {
         aria-labelledby="faq-heading"
       >
         <div>
-          <p className="eyebrow">A little clarity</p>
+          <p className="eyebrow">Common questions</p>
           <h2 id="faq-heading">
-            Before your
-            <br />
-            next step<span className="accent-dot">.</span>
+            Before you get in touch<span className="accent-dot">.</span>
           </h2>
           <Link href="/contact" className="inline-link">
             Ask us something else{" "}
@@ -346,13 +392,13 @@ export default function Home() {
         <div>
           <p className="eyebrow">Let’s start a conversation</p>
           <h2 id="contact-heading">
-            Your next move.
+            Hiring or looking for work?
             <br />
-            Our next conversation<span className="accent-dot">.</span>
+            Let’s talk<span className="accent-dot">.</span>
           </h2>
         </div>
         <Link href="/contact" className="button button-primary">
-          Get in touch <ArrowUpRightIcon size={22} aria-hidden="true" />
+          Contact our team <ArrowUpRightIcon size={22} aria-hidden="true" />
         </Link>
       </section>
     </main>

@@ -1,0 +1,202 @@
+/* Shared tokens come from globals.css. This layer only refines the intake flow. */
+.intake-form.intake-form-polished {
+  gap: 32px;
+}
+.intake-form-polished .intake-form-heading h2 {
+  margin-bottom: 8px;
+}
+.intake-form-polished .form-notice {
+  padding: 16px;
+  margin: 0;
+  border: 1px solid var(--border);
+  background: var(--background);
+}
+.intake-form-polished .form-notice strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+}
+.intake-form-polished .form-notice p {
+  margin-top: 8px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+.intake-group {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+.intake-group legend {
+  width: 100%;
+  padding: 0 0 24px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 28px;
+}
+.intake-group-number {
+  display: inline-block;
+  margin-right: 12px;
+  color: var(--link);
+  font-size: 12px;
+  font-weight: 500;
+  vertical-align: middle;
+}
+.intake-form-polished .form-grid {
+  gap: 24px;
+}
+.intake-form-polished .form-field textarea {
+  min-height: 96px;
+}
+.cv-picker {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 16px;
+  border: 1px dashed var(--input-border);
+  border-radius: 8px;
+  background: var(--background);
+  text-align: center;
+}
+.cv-picker:hover {
+  background: var(--surface-raised);
+}
+.cv-picker:focus-within {
+  outline: 2px solid var(--focus);
+  outline-offset: 4px;
+}
+.cv-picker-invalid {
+  border-color: var(--link);
+}
+.intake-form-polished .cv-picker input[type="file"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.cv-picker-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+.cv-picker-format {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+.cv-file-summary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--background);
+  padding: 12px 16px;
+}
+.cv-file-details {
+  min-width: 0;
+  flex: 1;
+}
+.cv-file-name {
+  overflow-wrap: anywhere;
+  font-size: 14px;
+  line-height: 20px;
+}
+.cv-file-details .field-hint {
+  margin-top: 4px;
+}
+.cv-remove {
+  flex-shrink: 0;
+  min-height: 44px;
+  padding: 8px;
+  color: var(--link);
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+}
+.cv-remove:hover {
+  background: var(--accent-soft);
+}
+.cv-remove:active {
+  transform: translateY(1px);
+}
+.intake-form-end {
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+}
+.intake-form-end > .button {
+  margin-top: 8px;
+  max-width: 100%;
+  white-space: normal;
+}
+.intake-form-end a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.intake-form-polished .form-status {
+  margin: 0;
+  padding: 16px;
+}
+.intake-contact-options {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 24px;
+  row-gap: 4px;
+}
+.intake-contact-options a {
+  overflow-wrap: anywhere;
+}
+.intake-aside .content-panel {
+  gap: 16px;
+  padding: 32px;
+}
+.intake-aside .content-panel h2 {
+  margin-bottom: 0;
+}
+.intake-aside .content-panel > .button {
+  margin-top: 8px;
+  max-width: 100%;
+  white-space: normal;
+}
+.intake-aside .info-list {
+  list-style: decimal;
+}
+@media (max-width: 767px) {
+  .intake-form.intake-form-polished {
+    gap: 24px;
+  }
+  .intake-form-polished .form-grid {
+    gap: 16px;
+  }
+  .intake-group legend {
+    padding-bottom: 16px;
+  }
+  .cv-file-summary {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .cv-remove {
+    padding-left: 0;
+  }
+  .intake-aside .content-panel {
+    padding: 24px;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cv-picker,
+  .cv-remove {
+    transition: background-color 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}

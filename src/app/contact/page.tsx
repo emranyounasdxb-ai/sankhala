@@ -20,10 +20,10 @@ export default function ContactPage() {
     <main id="main" tabIndex={-1} className="page-shell">
       <header className="page-intro">
         <p className="eyebrow">Contact us</p>
-        <h1 className="page-title">Let’s make the next move.</h1>
+        <h1 className="page-title">Talk to our recruitment team.</h1>
         <p className="lead">
-          Hiring for your team or considering your next opportunity? Start a
-          conversation with Sankhala.
+          Call, message or email Sankhala about a staffing requirement or your
+          job search. Choose the way that works for you.
         </p>
       </header>
 
@@ -47,6 +47,7 @@ export default function ContactPage() {
             <span>
               <span className="section-label">Message on WhatsApp</span>
               <strong>{site.contact.phone}</strong>
+              <span className="sr-only">Opens in a new tab</span>
             </span>
             <ArrowUpRightIcon size={22} aria-hidden="true" />
           </a>
@@ -62,16 +63,16 @@ export default function ContactPage() {
 
         <aside className="content-panel content-panel-dark stack">
           <MapPinIcon size={40} weight="light" aria-hidden="true" />
-          <span className="section-label">Our reach</span>
-          <h2 className="section-heading">Dubai. And every emirate.</h2>
+          <span className="section-label">Service area</span>
+          <h2 className="section-heading">Dubai and all UAE emirates.</h2>
           <p>
-            We work with staffing requirements and candidates across the UAE.
-            Include your location when you get in touch so we can understand
-            your next step.
+            We welcome inquiries from Dubai, Abu Dhabi, Sharjah, Ajman, Ras Al
+            Khaimah, Fujairah and Umm Al Quwain.
           </p>
           <p className="field-hint">
-            For hiring inquiries, share the role and number of people needed.
-            For career inquiries, include your preferred role.
+            Include the role and location in your message. If you are hiring,
+            let us know how many people you need. If you are looking for work,
+            tell us about your experience.
           </p>
         </aside>
       </div>
@@ -79,12 +80,12 @@ export default function ContactPage() {
       <div className="content-grid">
         <Link href="/hire-talent" className="content-panel stack inline-link">
           <span className="section-label">I represent a company</span>
-          <span>Share a staffing requirement</span>
+          <span>Prepare your staffing requirement</span>
           <ArrowUpRightIcon size={24} aria-hidden="true" />
         </Link>
         <Link href="/jobs" className="content-panel stack inline-link">
           <span className="section-label">I’m looking for work</span>
-          <span>Explore career opportunities</span>
+          <span>View job opportunities</span>
           <ArrowUpRightIcon size={24} aria-hidden="true" />
         </Link>
       </div>

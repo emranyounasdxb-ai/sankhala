@@ -7,11 +7,6 @@ export const headingFont = localFont({
       weight: "600",
       style: "normal",
     },
-    {
-      path: "../../node_modules/@fontsource/barlow-condensed/files/barlow-condensed-latin-700-normal.woff2",
-      weight: "700",
-      style: "normal",
-    },
   ],
   variable: "--font-barlow-condensed",
   display: "swap",

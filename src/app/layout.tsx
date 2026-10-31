@@ -6,6 +6,8 @@ import { site } from "@/lib/site";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
 import { bodyFont, headingFont } from "./fonts";
 import "./globals.css";
+import "@/components/navigation-polish.css";
+import "@/components/forms/intake-form-polish.css";
 
 export const metadata: Metadata = {
   title: { default: site.name, template: `%s | ${site.name}` },

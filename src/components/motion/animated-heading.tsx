@@ -1,10 +1,8 @@
 "use client";
 
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
-import { useRef } from "react";
+import type { SplitText as SplitTextInstance } from "gsap/SplitText";
+import { useEffect, useRef } from "react";
+import { loadScrollMotion, observeMotion } from "./deferred-motion";
 
 type AnimatedHeadingProps = {
   children: string;
@@ -21,18 +19,22 @@ export function AnimatedHeading({
   const heading = useRef<HTMLHeadingElement>(null);
   const played = useRef(false);
 
-  useGSAP(
-    () => {
-      const element = heading.current;
-      if (!element) return;
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Changing the heading tag replaces the observed DOM element.
+  useEffect(() => {
+    const element = heading.current;
+    if (!element) return;
 
-      played.current = false;
-      gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
-      const media = gsap.matchMedia();
-      media.add("(prefers-reduced-motion: no-preference)", () => {
-        if (played.current) return;
-        let split: SplitText | undefined;
-
+    played.current = false;
+    return observeMotion(element, async (isCurrent) => {
+      if (played.current) return;
+      const [gsap, { SplitText }] = await Promise.all([
+        loadScrollMotion(),
+        import("gsap/SplitText"),
+      ]);
+      if (!isCurrent()) return;
+      gsap.registerPlugin(SplitText);
+      let split: SplitTextInstance | undefined;
+      const context = gsap.context(() => {
         try {
           split = SplitText.create(element, {
             type: "lines,words",
@@ -42,15 +44,14 @@ export function AnimatedHeading({
               // Returning this animation lets SplitText revert and time-sync resplits.
               return gsap.fromTo(
                 self.words,
-                { yPercent: 35, opacity: 0 },
+                { opacity: 0.3 },
                 {
-                  yPercent: 0,
                   opacity: 1,
                   duration: 0.65,
                   stagger: { amount: 0.3 },
                   ease: "power3.out",
                   immediateRender: false,
-                  clearProps: "transform,opacity",
+                  clearProps: "opacity",
                   scrollTrigger: {
                     trigger: element,
                     start: "top 88%",
@@ -70,14 +71,13 @@ export function AnimatedHeading({
           element.textContent = children;
           element.removeAttribute("aria-label");
         }
-
-        return () => split?.revert();
-      });
-
-      return () => media.revert();
-    },
-    { scope: heading, dependencies: [children, Heading], revertOnUpdate: true },
-  );
+      }, element);
+      return () => {
+        context.revert();
+        split?.revert();
+      };
+    });
+  }, [children, Heading]);
 
   return (
     <Heading

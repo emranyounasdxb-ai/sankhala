@@ -26,11 +26,10 @@ export function ThemeToggle() {
       aria-label={label}
       title={label}
     >
-      {theme === "dark" ? (
-        <SunIcon size={20} weight="regular" aria-hidden="true" />
-      ) : (
-        <MoonIcon size={20} weight="regular" aria-hidden="true" />
-      )}
+      <span className="theme-glyph" aria-hidden="true">
+        <SunIcon size={20} weight="regular" className="theme-glyph-sun" />
+        <MoonIcon size={20} weight="regular" className="theme-glyph-moon" />
+      </span>
     </button>
   );
 }

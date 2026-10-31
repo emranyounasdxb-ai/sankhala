@@ -8,7 +8,7 @@ import { createPageMetadata } from "@/lib/page-metadata";
 
 export const metadata = createPageMetadata(
   "About Sankhala",
-  "Get to know Sankhala's people focused approach to recruitment for companies and candidates across Dubai and the UAE.",
+  "Learn how Sankhala connects company staffing requirements with candidate applications through a team led recruitment process across the UAE.",
   "/about",
 );
 
@@ -17,40 +17,40 @@ export default function AboutPage() {
     <main id="main" tabIndex={-1} className="page-shell">
       <header className="page-intro">
         <p className="eyebrow">About Sankhala</p>
-        <h1 className="page-title">People make the difference.</h1>
+        <h1 className="page-title">Connecting companies and candidates.</h1>
         <p className="lead">
-          Behind every staffing requirement is a business moving forward. Behind
-          every CV is a person ready for what comes next.
+          Sankhala Employment supports businesses looking for staff and people
+          looking for work across Dubai and all UAE emirates.
         </p>
       </header>
 
       <div className="content-grid">
         <section className="content-panel stack">
-          <span className="section-label">Our purpose</span>
-          <h2 className="section-heading">
-            Connecting ambition with opportunity.
-          </h2>
+          <span className="section-label">Our role</span>
+          <h2 className="section-heading">A team behind the hiring process.</h2>
           <p>
-            Sankhala brings companies looking for staff and people looking for
-            work into one recruitment process. We serve Dubai and all UAE
-            emirates.
+            Companies share the roles they need to fill. Candidates share their
+            experience and the work they are looking for. Our team reviews both
+            to identify suitable introductions.
           </p>
           <p>
-            Our team reviews requirements and applications, shortlists
-            candidates, coordinates interviews and follows the hiring process.
-            The matching happens through people and conversations.
+            From understanding the requirement to shortlisting candidates and
+            coordinating interviews, recruitment is handled through direct
+            conversations with our team.
           </p>
           <Link href="/services" className="inline-link">
-            Explore our approach <ArrowRightIcon size={20} aria-hidden="true" />
+            View recruitment services{" "}
+            <ArrowRightIcon size={20} aria-hidden="true" />
           </Link>
         </section>
 
         <section className="content-panel content-panel-dark stack">
           <ChatsCircleIcon size={40} weight="light" aria-hidden="true" />
-          <h2 className="section-heading">A conversation comes first.</h2>
+          <h2 className="section-heading">Start with the role and location.</h2>
           <p>
-            Tell us what your business needs, or where you want your career to
-            go. That gives our team a useful place to start.
+            Tell us who your business needs to hire, or which role you would
+            like to find. Include your work location so we can understand your
+            requirements from the start.
           </p>
           <Link href="/contact" className="button button-secondary">
             Talk to our team <ArrowRightIcon size={20} aria-hidden="true" />
@@ -60,14 +60,14 @@ export default function AboutPage() {
 
       <section className="content-panel stack">
         <HandshakeIcon size={40} weight="light" aria-hidden="true" />
-        <span className="section-label">Two paths, one approach</span>
-        <h2 className="section-heading">The next step should be clear.</h2>
+        <span className="section-label">Choose your starting point</span>
+        <h2 className="section-heading">Hiring staff or looking for work?</h2>
         <div className="content-grid">
           <div className="stack">
             <h3>For companies</h3>
             <p>
-              Share the role, team size and work location. We discuss your needs
-              before reviewing potential candidates.
+              Share the job role, number of staff and work location. Our team
+              discusses the requirement before reviewing potential candidates.
             </p>
             <Link href="/hire-talent" className="inline-link">
               Hire Talent <ArrowRightIcon size={20} aria-hidden="true" />
@@ -76,8 +76,8 @@ export default function AboutPage() {
           <div className="stack">
             <h3>For candidates</h3>
             <p>
-              Look through published vacancies or share your CV for
-              consideration when a suitable opportunity becomes available.
+              Check published vacancies or introduce yourself with a general CV.
+              Tell us about your experience and preferred type of work.
             </p>
             <Link href="/jobs" className="inline-link">
               Find a Job <ArrowRightIcon size={20} aria-hidden="true" />

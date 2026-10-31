@@ -16,19 +16,19 @@ export default function HireTalentPage() {
         <p className="eyebrow">For employers</p>
         <h1 className="page-title">Build your next team.</h1>
         <p className="lead">
-          The right conversation starts with your needs. Tell us about the role,
-          the people and the place.
+          Tell us the role, how many people you need and where they will work.
+          Our team helps you plan the next step across Dubai and the UAE.
         </p>
       </header>
       <div className="content-grid intake-layout">
         <IntakeForm kind="employer" contact={site.contact} />
-        <aside className="page-aside stack">
+        <aside className="page-aside stack intake-aside">
           <div className="content-panel content-panel-dark stack">
             <ChatsCircleIcon size={40} weight="light" aria-hidden="true" />
             <h2 className="section-heading">Prefer a conversation?</h2>
             <p>
-              Speak with our team about the positions you need to fill and the
-              location of your work.
+              Call us to discuss your staffing needs while online submissions
+              are being prepared.
             </p>
             <a
               href={site.contact.phoneHref}
@@ -40,9 +40,18 @@ export default function HireTalentPage() {
           <div className="content-panel stack">
             <span className="section-label">How we work</span>
             <ol className="info-list">
-              <li>Understand your staffing requirement.</li>
-              <li>Review and shortlist potential candidates.</li>
-              <li>Coordinate interviews and follow the hire.</li>
+              <li>
+                <strong>Your requirement.</strong> We discuss the role,
+                headcount and location.
+              </li>
+              <li>
+                <strong>A suitable shortlist.</strong> Our team reviews
+                potential candidates.
+              </li>
+              <li>
+                <strong>The hiring conversation.</strong> We coordinate
+                interviews and follow the hire.
+              </li>
             </ol>
             <p className="field-hint">
               Our coverage includes Dubai and all UAE emirates.

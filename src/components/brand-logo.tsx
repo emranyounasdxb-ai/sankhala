@@ -17,7 +17,7 @@ export function BrandLogo({
           alt="Sankhala Employment"
           width={400}
           height={179}
-          sizes="(max-width: 767px) 135px, 150px"
+          sizes="(max-width: 900px) 112px, 128px"
           className="brand-logo-light"
         />
       )}
@@ -26,7 +26,7 @@ export function BrandLogo({
         alt="Sankhala Employment"
         width={400}
         height={179}
-        sizes={inverse ? "180px" : "(max-width: 767px) 135px, 150px"}
+        sizes={inverse ? "160px" : "(max-width: 900px) 112px, 128px"}
         className={inverse ? "brand-logo-white" : "brand-logo-dark"}
       />
     </span>

@@ -5,6 +5,7 @@
     "includes": [
       "src/**",
       "tests/**",
+      "tools/frontend/**",
       "*.json",
       "*.ts",
       "*.mjs",
