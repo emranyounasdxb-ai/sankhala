@@ -1,5 +1,7 @@
 # Saved project progress
 
+Latest follow-up: forms now provide a reviewable email message, clipboard copying with manual fallback and an encoded email-draft link after validation. Editing fields or changing the CV clears stale drafts; candidates attach files manually. Services briefing guidance, candidate FAQs, visit guidance and privacy wording are updated. Build/type/lint passed, as did 20 focused cross-browser checks and four final mobile checks. [Details, local lab report and pending business facts](verification/email-handoff.md).
+
 Updated on 31 October 2026 after the five approved frontend improvements and office/contact updates. The user explicitly deferred backend, real jobs and CRM/database work.
 
 ## Completed

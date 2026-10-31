@@ -27,6 +27,12 @@ export default function PrivacyPage() {
         </p>
         <h2 className="section-heading">Contacting us directly</h2>
         <p>
+          After checking your form, you can review a message, copy it to your
+          clipboard or open an email draft. These actions happen only when you
+          choose them. The website does not send the email or attach your CV;
+          you review and send it in your email app.
+        </p>
+        <p>
           Email, call and WhatsApp links open the relevant service on your
           device. Information you choose to send through those services is
           handled outside this preview. Do not send identity documents, bank

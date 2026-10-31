@@ -59,6 +59,35 @@ export default function SubmitCVPage() {
           </div>
         </aside>
       </div>
+      <section className="content-panel stack" aria-labelledby="cv-questions">
+        <span className="section-label">Before you contact us</span>
+        <h2 id="cv-questions" className="section-heading">
+          Your CV, your next step.
+        </h2>
+        <div className="stack">
+          <div>
+            <h3>Does selecting a CV send it to the team?</h3>
+            <p>
+              No. Select a file to check its format and size, then review your
+              introduction. Attach the CV yourself when you send the email.
+            </p>
+          </div>
+          <div>
+            <h3>Can I introduce myself without a listed vacancy?</h3>
+            <p>
+              Yes. Email a general CV with your preferred role and location.
+              Published vacancies will appear on the jobs page when available.
+            </p>
+          </div>
+          <div>
+            <h3>Does sharing my CV guarantee an interview?</h3>
+            <p>
+              An introduction does not guarantee an interview or a job. Our team
+              reviews your experience against suitable requirements.
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

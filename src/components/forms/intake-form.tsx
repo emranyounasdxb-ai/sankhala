@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { type FormEvent, useRef, useState, useSyncExternalStore } from "react";
+import { type EmailDraft, EmailHandoff } from "./email-handoff";
 
 type IntakeFormProps = {
   kind: "employer" | "candidate";
@@ -77,6 +78,7 @@ export function IntakeForm({ kind, contact }: IntakeFormProps) {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [hasChecked, setHasChecked] = useState(false);
   const [status, setStatus] = useState("");
+  const [draft, setDraft] = useState<EmailDraft | null>(null);
   const [fileDetails, setFileDetails] = useState<{
     name: string;
     size: number;
@@ -121,12 +123,53 @@ export function IntakeForm({ kind, contact }: IntakeFormProps) {
     setHasChecked(true);
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length) {
+      setDraft(null);
       setStatus("");
       requestAnimationFrame(() => errorSummaryRef.current?.focus());
       return;
     }
+    const data = new FormData(form);
+    const value = (name: string) => String(data.get(name) ?? "").trim();
+    const rows = candidate
+      ? [
+          ["Name", value("fullName")],
+          ["Email", value("email")],
+          ["Phone", value("phone")],
+          ["Current location", value("location")],
+          ["Preferred role", value("role")],
+        ]
+      : [
+          ["Company", value("company")],
+          ["Contact person", value("fullName")],
+          ["Email", value("email")],
+          ["Phone", value("phone")],
+          ["Role", value("role")],
+          ["Number of people", value("headcount")],
+          ["Emirate", value("emirate")],
+          ["Work location", value("location")],
+        ];
+    setDraft({
+      subject: candidate
+        ? `CV introduction: ${value("role")}`
+        : `Staffing requirement: ${value("role")}`,
+      body: [
+        "Hello Sankhala team,",
+        "",
+        candidate
+          ? "I would like to share my profile for consideration."
+          : "I would like to discuss this staffing requirement.",
+        "",
+        ...rows.map(([label, entry]) => `${label}: ${entry}`),
+        ...(value("message")
+          ? ["", "Additional information:", value("message")]
+          : []),
+        ...(candidate
+          ? ["", "I will attach my CV before sending this email."]
+          : []),
+      ].join("\n"),
+    });
     setStatus(
-      "Your details have not been sent. Online submissions are not open yet. Please email or call our team using the links below.",
+      "Your details have not been sent. Your message is ready to review below.",
     );
     requestAnimationFrame(() => statusRef.current?.focus());
   }
@@ -162,6 +205,7 @@ export function IntakeForm({ kind, contact }: IntakeFormProps) {
       cv: hasChecked ? (checkFile(null) ?? "") : "",
     }));
     setStatus("");
+    setDraft(null);
     fileRef.current.focus();
   }
 
@@ -403,6 +447,7 @@ export function IntakeForm({ kind, contact }: IntakeFormProps) {
               [target.name]: validateField(target) ?? "",
             }));
           setStatus("");
+          setDraft(null);
         }
       }}
     >
@@ -417,7 +462,7 @@ export function IntakeForm({ kind, contact }: IntakeFormProps) {
       <div className="form-notice" role="note">
         <strong>Online submissions are not open yet.</strong>
         <p>
-          Explore this form without sending or saving details. For now,{" "}
+          Prepare your details and review an email draft here. You can also{" "}
           <a href={contact.emailHref}>email our team</a> or{" "}
           <a href={contact.phoneHref}>give us a call</a>.
         </p>
@@ -500,6 +545,13 @@ export function IntakeForm({ kind, contact }: IntakeFormProps) {
       >
         {status}
       </div>
+      {draft && (
+        <EmailHandoff
+          draft={draft}
+          emailHref={contact.emailHref}
+          candidate={candidate}
+        />
+      )}
       <div className="intake-contact-options">
         <a href={contact.emailHref} className="inline-link">
           {contact.email}

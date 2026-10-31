@@ -85,6 +85,10 @@ export default function ContactPage() {
             Visit us in Deira.
           </h2>
           <address>{site.office.address}</address>
+          <p>
+            Call our team before travelling to confirm availability and arrange
+            your visit.
+          </p>
           <a
             href={site.office.mapsHref}
             target="_blank"

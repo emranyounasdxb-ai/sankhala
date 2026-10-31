@@ -1,5 +1,7 @@
 # Sankhala
 
+Latest update: validated forms now offer a reviewable message, Copy details and Prepare email draft. Candidates attach their CV manually in their email app. Editing a field clears the previous draft. See [handoff verification and remaining content needs](docs/verification/email-handoff.md).
+
 Public website preview and branding assets for Sankhala Employment.
 
 The stack is locked to stable versions verified on 31 October 2026: Next.js App Router, React, TypeScript, Tailwind CSS and GSAP. The public frontend now includes the homepage, About, Services, Contact, Careers, Hire Talent, Submit CV and Privacy pages. It uses the approved local Barlow Condensed and Inter fonts, the supplied brand assets, persistent light/dark themes, responsive navigation, and selective scroll and text effects with reduced-motion support.

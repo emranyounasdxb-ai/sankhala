@@ -2,7 +2,6 @@ import {
   ArrowRightIcon,
   BriefcaseIcon,
   FileTextIcon,
-  UsersThreeIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { createPageMetadata } from "@/lib/page-metadata";
@@ -80,18 +79,40 @@ export default function ServicesPage() {
         )}
       </div>
 
-      <section className="content-panel content-panel-dark stack">
-        <UsersThreeIcon size={40} weight="light" aria-hidden="true" />
-        <span className="section-label">Across the UAE</span>
-        <h2 className="section-heading">Tell us where you need people.</h2>
-        <p>
-          Our service area includes Dubai and all UAE emirates. Share your
-          position, required experience and work location so our team can
-          discuss the requirement with you.
-        </p>
-        <Link href="/contact" className="button button-secondary">
-          Discuss a requirement <ArrowRightIcon size={20} aria-hidden="true" />
-        </Link>
+      <section
+        className="content-panel content-panel-dark stack"
+        aria-labelledby="brief-heading"
+      >
+        <span className="section-label">A useful starting point</span>
+        <h2 id="brief-heading" className="section-heading">
+          Help us understand the role.
+        </h2>
+        <div className="content-grid">
+          <div className="stack">
+            <h3>For your hiring brief</h3>
+            <p>
+              Include the main responsibilities, essential experience, number of
+              people and work location. Add any language or shift requirements
+              relevant to the role.
+            </p>
+            <Link href="/hire-talent" className="inline-link">
+              Prepare your requirement{" "}
+              <ArrowRightIcon size={20} aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="stack">
+            <h3>For your candidate introduction</h3>
+            <p>
+              Include your recent experience, relevant skills, preferred role
+              and current location. Keep your contact details up to date and
+              attach your CV when emailing the team.
+            </p>
+            <Link href="/submit-cv" className="inline-link">
+              Prepare your introduction{" "}
+              <ArrowRightIcon size={20} aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
       </section>
     </main>
   );
