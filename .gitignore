@@ -2,3 +2,12 @@ node_modules/
 .DS_Store
 Thumbs.db
 tools/brand/.tmp/
+.runtime/
+.next/
+out/
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+.env*
+!.env.example

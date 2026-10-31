@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+:root {
+  --brand-charcoal: #2e2e2e;
+  --brand-red: #ff3131;
+  --action: #d92323;
+  --action-hover: #b91c1c;
+  --background: #ffffff;
+  --surface: #f7f7f7;
+  --text: #2e2e2e;
+  --text-secondary: #525252;
+  --border: #dedede;
+  --input-border: #858585;
+  --accent-soft: #fff1f1;
+  --radius-button: 8px;
+  --radius-card: 12px;
+  --radius-image: 20px;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-barlow-condensed);
+  --color-brand: var(--brand-charcoal);
+  --color-accent: var(--brand-red);
+  --color-action: var(--action);
+  --color-surface: var(--surface);
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  line-height: 1.6;
+}
+h1,
+h2 {
+  font-family: var(--font-barlow-condensed), sans-serif;
+  font-weight: 600;
+  text-wrap: balance;
+}
+h1 {
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+  line-height: 1.08;
+}
+p {
+  text-wrap: pretty;
+}
+/* SplitText manages line boundaries; balanced wrapping conflicts with measurement. */
+.animated-heading {
+  text-wrap: wrap;
+}
+:focus-visible {
+  outline: 2px solid var(--brand-charcoal);
+  outline-offset: 4px;
+}
+.skip-link {
+  position: absolute;
+  z-index: 10;
+  top: 16px;
+  left: 16px;
+  padding: 12px 16px;
+  background: var(--background);
+  color: var(--text);
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+.foundation {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 64px;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: 88px 32px;
+}
+.brand-logo {
+  width: 240px;
+  max-width: 100%;
+  height: auto;
+}
+.foundation-copy {
+  max-width: 680px;
+}
+.foundation-copy p {
+  color: var(--text-secondary);
+  font-size: 18px;
+  margin-top: 24px;
+}
+.home-link {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  padding: 8px 24px;
+  border-radius: var(--radius-button);
+  background: var(--action);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.home-link:hover {
+  background: var(--action-hover);
+}
+@media (max-width: 767px) {
+  .foundation {
+    padding: 48px 20px;
+    gap: 48px;
+  }
+  .foundation-copy p {
+    font-size: 16px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto;
+  }
+}

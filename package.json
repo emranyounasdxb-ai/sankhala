@@ -1,0 +1,46 @@
+{
+  "name": "sankhala",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "npm@12.2.1",
+  "engines": {
+    "node": "26.13.0",
+    "npm": "12.2.1"
+  },
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1",
+    "build": "next build",
+    "start": "next start --hostname 127.0.0.1",
+    "check": "biome check .",
+    "format": "biome check --write .",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "browsers:install": "playwright install chromium",
+    "brand:verify": "node tools/brand/verify.mjs"
+  },
+  "dependencies": {
+    "@fontsource/barlow-condensed": "5.3.0",
+    "@fontsource/inter": "5.3.0",
+    "@gsap/react": "2.1.2",
+    "@phosphor-icons/react": "2.1.10",
+    "gsap": "3.15.0",
+    "next": "16.4.3",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "sharp": "0.35.5",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "@biomejs/biome": "2.6.4",
+    "@playwright/test": "1.64.1",
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "26.6.6",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "postcss": "8.5.32",
+    "tailwindcss": "4.3.3",
+    "typescript": "7.0.2"
+  }
+}
