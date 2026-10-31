@@ -135,8 +135,8 @@ export const priorityRoles = [
 export const allRoleTitles = [
   ...new Set(jobCategories.flatMap((category) => category.roles)),
 ];
-export const futureCVHref = (role: string) =>
-  `/submit-cv?role=${encodeURIComponent(role)}`;
+export const futureCVHref = (role: string, returnTo = "/jobs") =>
+  `/submit-cv?role=${encodeURIComponent(role)}&from=${encodeURIComponent(returnTo)}`;
 
 // Required editorial fields for a future employer-confirmed job post.
 export const jobPostFields = [

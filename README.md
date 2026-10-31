@@ -1,5 +1,7 @@
 # Sankhala
 
+Careers usability update: instant role/category search, compact vacancy sections, selected-role CV context and shareable/returnable category URLs are implemented. [Navigation behavior and privacy boundaries](docs/careers-navigation.md).
+
 Public Careers now includes the approved categories, priority role interests and separate own-team/client sections. Only real employer-confirmed vacancies may be published; category links open a general CV introduction for future opportunities. See [the Careers publication policy](docs/careers-content-policy.md).
 
 The public site now explains the owner's [six confirmed services and workforce categories](docs/company-services.md), covering recruitment, manpower supply, outsourcing, HR/PRO, payroll/workforce management and bulk hiring.

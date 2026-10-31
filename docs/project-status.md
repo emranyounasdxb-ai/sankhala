@@ -1,5 +1,9 @@
 # Saved project progress
 
+Latest navigation pass: public Careers now searches role/category names, keeps keyword/open-category state in shareable URLs and restores it from the CV page or browser back. Empty vacancy messaging is compact and selected CV roles are visible above the form. [Navigation details](careers-navigation.md).
+
+Navigation verification: build/type/lint passed; 31 supported checks passed across five browser projects (four duplicate server cases skipped). Final layout follow-up passed seven desktop/iPhone checks with one duplicate skip. Physical-device testing remains unverified.
+
 Latest Careers content: added the owner's 12 categories, supplied role titles, 12 priority role interests and separate Sankhala/client vacancy sections. Both vacancy sections remain empty until real employer-confirmed roles are supplied. Future-interest links prefill the editable general CV role. Preview job details reserve all 11 required employment fields without inventing terms. [Publication policy](careers-content-policy.md).
 
 This business-content pass passed build/type/lint, 35 service-content checks and 20 Careers-category checks across three desktop browser engines plus Pixel/iPhone emulation. The local production preview remains on port 3001.

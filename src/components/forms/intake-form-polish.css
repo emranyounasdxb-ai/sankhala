@@ -1,4 +1,22 @@
 /* Shared tokens come from globals.css. This layer only refines the intake flow. */
+.cv-role-back {
+  margin-bottom: 16px;
+  min-height: 44px;
+}
+.cv-intake-main {
+  min-width: 0;
+}
+.cv-role-context {
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--background);
+  margin-bottom: 24px;
+  overflow-wrap: anywhere;
+}
+.cv-role-context > p + p {
+  margin-top: 8px;
+}
 .intake-form.intake-form-polished {
   gap: 32px;
 }

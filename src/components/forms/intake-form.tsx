@@ -83,6 +83,7 @@ export function IntakeForm({
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [hasChecked, setHasChecked] = useState(false);
   const [status, setStatus] = useState("");
+  const [preferredRole, setPreferredRole] = useState(initialRole);
   const [draft, setDraft] = useState<EmailDraft | null>(null);
   const [fileDetails, setFileDetails] = useState<{
     name: string;
@@ -305,6 +306,11 @@ export function IntakeForm({
           id={`${kind}-role`}
           name="role"
           defaultValue={candidate ? initialRole : ""}
+          onChange={
+            candidate
+              ? (event) => setPreferredRole(event.currentTarget.value)
+              : undefined
+          }
           required
           maxLength={160}
           {...fieldState("role", true)}
@@ -458,6 +464,17 @@ export function IntakeForm({
       }}
     >
       <div className="intake-form-heading">
+        {candidate && preferredRole.trim() && (
+          <div className="cv-role-context">
+            <p>
+              <strong>Future opportunities: {preferredRole.trim()}</strong>
+            </p>
+            <p className="field-hint">
+              General CV introduction. This is not an application for a
+              confirmed vacancy.
+            </p>
+          </div>
+        )}
         <h2>
           {candidate ? "Your candidate profile" : "Your staffing requirement"}
         </h2>

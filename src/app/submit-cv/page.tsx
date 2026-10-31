@@ -3,6 +3,7 @@ import Link from "next/link";
 import { IntakeForm } from "@/components/forms/intake-form";
 import { allRoleTitles } from "@/lib/job-categories";
 import { createPageMetadata } from "@/lib/page-metadata";
+import { safeJobsReturn } from "@/lib/role-navigation";
 import { site } from "@/lib/site";
 
 export const metadata = createPageMetadata(
@@ -14,9 +15,10 @@ export const metadata = createPageMetadata(
 export default async function SubmitCVPage({
   searchParams,
 }: {
-  searchParams: Promise<{ role?: string | string[] }>;
+  searchParams: Promise<{ role?: string | string[]; from?: string | string[] }>;
 }) {
-  const { role } = await searchParams;
+  const { role, from } = await searchParams;
+  const backHref = safeJobsReturn(from);
   const initialRole =
     typeof role === "string" && allRoleTitles.includes(role) ? role : "";
   return (
@@ -31,12 +33,17 @@ export default async function SubmitCVPage({
         </p>
       </header>
       <div className="content-grid intake-layout">
-        <IntakeForm
-          key={initialRole}
-          kind="candidate"
-          contact={site.contact}
-          initialRole={initialRole}
-        />
+        <div className="cv-intake-main">
+          <Link className="inline-link cv-role-back" href={backHref}>
+            Back to role categories
+          </Link>
+          <IntakeForm
+            key={initialRole}
+            kind="candidate"
+            contact={site.contact}
+            initialRole={initialRole}
+          />
+        </div>
         <aside className="page-aside stack intake-aside">
           <div className="content-panel content-panel-dark stack">
             <FileTextIcon size={40} weight="light" aria-hidden="true" />

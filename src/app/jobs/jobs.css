@@ -7,8 +7,108 @@
 .job-opportunities-grid .inline-link {
   white-space: normal;
 }
+.jobs-availability {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+}
+.jobs-availability > div {
+  flex: 1 1 320px;
+  min-width: 0;
+}
+.jobs-availability h2 {
+  font-size: 24px;
+  line-height: 32px;
+  margin-bottom: 8px;
+}
+.jobs-availability p {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+.job-opportunities-grid .content-panel {
+  padding: 24px;
+  gap: 16px;
+}
+.job-opportunities-grid .section-heading {
+  font-size: 30px;
+  line-height: 36px;
+  margin: 0;
+}
+.job-role-search {
+  margin-top: 24px;
+}
+html:not([data-theme]) .job-role-search:not(.native-role-search) {
+  display: none;
+}
+.job-role-search label {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.job-role-search > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.job-role-search input[type="search"] {
+  flex: 1 1 320px;
+  min-width: 0;
+  min-height: 48px;
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  padding: 12px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+.job-results-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 32px;
+}
+.job-results-bar button {
+  min-height: 44px;
+}
+.job-category-share {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+}
+.job-category-share button {
+  min-height: 48px;
+  font-size: 14px;
+}
+.job-no-results {
+  margin-top: 24px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: grid;
+  justify-items: start;
+  gap: 16px;
+  background: var(--surface);
+}
 .job-role-section {
   margin-top: 64px;
+}
+.job-priority-section {
+  margin-block: 24px;
+}
+.job-priority-section h2 {
+  font-size: 30px;
+  line-height: 36px;
 }
 .job-role-section h2 {
   margin-block: 12px 24px;
@@ -92,6 +192,13 @@
   flex-shrink: 0;
 }
 @media (max-width: 767px) {
+  .jobs-availability {
+    padding: 16px;
+    gap: 16px;
+  }
+  .jobs-availability > svg {
+    display: none;
+  }
   .job-opportunities-grid,
   .job-category-grid {
     grid-template-columns: 1fr;
