@@ -1,106 +1,309 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
-test("server HTML contains text and prelaunch SEO controls", async ({
+const routes = [
+  "/",
+  "/about",
+  "/services",
+  "/contact",
+  "/jobs",
+  "/hire-talent",
+  "/submit-cv",
+  "/privacy",
+];
+
+test("public routes have server content and prelaunch SEO controls", async ({
   request,
-}) => {
-  const response = await request.get("/");
-  expect(response.status()).toBe(200);
-  const html = await response.text();
-  expect(html).toContain("Our website is taking shape.");
-  expect(html).toContain('name="robots" content="noindex, nofollow"');
-  expect(html).toContain("<title>Sankhala Employment</title>");
-  const canonical = html.match(/rel="canonical" href="([^"]+)"/)?.[1];
-  expect(canonical && new URL(canonical).href).toBe("https://sankhala.ae/");
-  expect(html).toContain(
-    'property="og:image" content="https://sankhala.ae/brand/social/og-light-1200x630.png"',
+}, testInfo) => {
+  test.skip(
+    testInfo.project.name !== "desktop",
+    "HTTP output is shared across viewports.",
   );
+  const titles = new Set<string>();
+  for (const route of routes) {
+    const response = await request.get(route);
+    expect(response.status(), route).toBe(200);
+    const html = await response.text();
+    expect(html, route).toContain('<main id="main"');
+    expect(html, route).toContain('name="robots" content="noindex, nofollow"');
+    const canonical = html.match(/rel="canonical" href="([^"]+)"/)?.[1];
+    expect(canonical && new URL(canonical).href, route).toBe(
+      new URL(route, "https://sankhala.ae").href,
+    );
+    expect(html, route).toContain(
+      'property="og:image" content="https://sankhala.ae/brand/social/og-light-1200x630.png"',
+    );
+    const title = html.match(/<title>(.*?)<\/title>/)?.[1];
+    expect(title, route).toContain("Sankhala Employment");
+    expect(title?.match(/Sankhala Employment/g), route).toHaveLength(1);
+    titles.add(title ?? "");
+  }
+  expect(titles.size).toBe(routes.length);
   expect(await (await request.get("/sitemap.xml")).text()).not.toContain(
     "<loc>",
   );
+  // Crawling stays allowed so search engines can read the noindex metadata.
+  const robots = await (await request.get("/robots.txt")).text();
+  expect(robots).toContain("Allow: /");
+  expect(robots).not.toContain("Sitemap:");
   expect((await request.get("/favicon.ico")).ok()).toBe(true);
+  expect((await request.get("/images/recruitment-hero.webp")).ok()).toBe(true);
 });
 
-test("fonts, animation and accessible layout load without errors", async ({
+test("public layouts are accessible in both themes with working contact links", async ({
   page,
 }, testInfo) => {
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
+  await page.emulateMedia({ reducedMotion: "reduce", colorScheme: "light" });
+  for (const theme of ["light", "dark"]) {
+    await page.goto("/");
+    if (theme === "dark")
+      await page
+        .getByRole("button", { name: "Switch to dark theme" })
+        .first()
+        .click();
+    for (const route of ["/", "/hire-talent", "/submit-cv"]) {
+      await page.goto(route);
+      await page.evaluate(() => document.fonts.ready);
+      await expect(page.locator("html")).toHaveAttribute("data-theme", theme);
+      await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+      expect(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth <= window.innerWidth,
+        ),
+        `${route} ${theme}`,
+      ).toBe(true);
+      const accessibility = await new AxeBuilder({ page }).analyze();
+      expect(accessibility.violations, `${route} ${theme}`).toEqual([]);
+    }
+    await page.goto("/");
+    await page.screenshot({
+      path: `test-results/home-${theme}-${testInfo.project.name}.png`,
+      fullPage: true,
+    });
+  }
+  await expect(
+    page.locator('a[href="tel:+971565243800"]').first(),
+  ).toBeVisible();
+  await expect(
+    page.locator('a[href="mailto:info@sankhala.ae"]').first(),
+  ).toBeVisible();
+  await expect(
+    page.locator('a[href="https://wa.me/971565243800"]').first(),
+  ).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test("theme follows system until a choice is made and persists across navigation", async ({
+  page,
+}) => {
+  await page.emulateMedia({ colorScheme: "dark", reducedMotion: "reduce" });
   await page.goto("/");
-  const heading = page.getByRole("heading", { level: 1 });
-  await expect(heading).toBeVisible();
-  await page.evaluate(() => document.fonts.ready);
-  await expect(page.locator(".foundation-copy")).toHaveCSS("opacity", "1");
-  await expect.poll(() => heading.getAttribute("aria-label")).toBe(null);
-  await expect(heading).toHaveCSS("opacity", "1");
-  await expect
-    .poll(() =>
-      page.evaluate(
-        () => document.documentElement.scrollWidth <= window.innerWidth,
-      ),
-    )
-    .toBe(true);
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  await page.emulateMedia({ colorScheme: "light" });
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+  await page
+    .getByRole("button", { name: "Switch to dark theme" })
+    .first()
+    .click();
+  await page.reload();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  await page.goto("/jobs");
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  await expect(
+    page.getByRole("heading", { name: "No vacancies are published yet." }),
+  ).toBeVisible();
+  await page
+    .getByRole("link", { name: "Submit CV", exact: true })
+    .first()
+    .click();
+  await expect(page).toHaveURL(/\/submit-cv$/);
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+});
+
+test("skip link and mobile menu support keyboard navigation", async ({
+  page,
+}, testInfo) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
   await page.keyboard.press("Tab");
   await expect(
     page.getByRole("link", { name: "Skip to content" }),
   ).toBeFocused();
   await page.keyboard.press("Enter");
   await expect(page.locator("main")).toBeFocused();
-  const accessibility = await new AxeBuilder({ page }).analyze();
-  expect(accessibility.violations).toEqual([]);
-  expect(errors).toEqual([]);
-  await page.screenshot({
-    path: `test-results/foundation-${testInfo.project.name}.png`,
-    fullPage: true,
-  });
+  if (testInfo.project.name !== "mobile") return;
+  const open = page.getByRole("button", { name: "Open navigation menu" });
+  await open.click();
+  const menu = page.getByRole("dialog", { name: "Navigation menu" });
+  await expect(menu).toBeVisible();
+  await expect(
+    menu.getByRole("link", { name: "Home", exact: true }),
+  ).toBeFocused();
+  await page.keyboard.press("Escape");
+  await expect(menu).not.toBeVisible();
+  await expect(open).toBeFocused();
+  await expect(page.locator("body")).not.toHaveCSS("overflow", "hidden");
+  await open.click();
+  await menu.getByRole("link", { name: "About", exact: true }).click();
+  await expect(page).toHaveURL(/\/about$/);
+  await expect(menu).not.toBeVisible();
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "People make the difference.",
+  );
 });
 
-test("text remains available without JavaScript", async ({ browser }) => {
+test("content and direct contact routes remain usable without JavaScript", async ({
+  browser,
+  baseURL,
+}, testInfo) => {
+  test.skip(
+    testInfo.project.name !== "desktop",
+    "One narrow no-JavaScript check is sufficient.",
+  );
   const context = await browser.newContext({
     javaScriptEnabled: false,
     viewport: { width: 320, height: 700 },
+    baseURL,
   });
   const page = await context.newPage();
-  await page.goto("http://127.0.0.1:3100/");
+  await page.goto("/");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "Connecting people.Building futures.",
+  );
   await expect(
-    page.getByRole("heading", { name: "Our website is taking shape." }),
+    page.getByRole("heading", { name: "Behind every role, there’s a person." }),
+  ).toBeVisible();
+  await page
+    .getByRole("link", { name: "Hire Talent", exact: true })
+    .first()
+    .click();
+  await expect(page).toHaveURL(/\/hire-talent$/);
+  await expect(page.getByLabel("Company name")).toBeDisabled();
+  await expect(
+    page.getByRole("button", { name: "Check my details" }),
+  ).toBeDisabled();
+  await expect(
+    page.getByRole("link", { name: "email our team", exact: true }),
   ).toBeVisible();
   await context.close();
 });
 
-test("scroll text effects complete and respond to reduced motion", async ({
+test("scroll text completes and reduced motion keeps narrow layouts readable", async ({
   page,
-}) => {
-  await page.setViewportSize({ width: 1024, height: 260 });
-  await page.goto("/");
-  const heading = page.getByRole("heading", { level: 1 });
-  await expect(heading).toHaveAttribute(
-    "aria-label",
-    "Our website is taking shape.",
+}, testInfo) => {
+  test.skip(
+    testInfo.project.name !== "desktop",
+    "This test explicitly covers additional viewport widths.",
   );
-  await heading.scrollIntoViewIfNeeded();
-  await expect.poll(() => heading.getAttribute("aria-label")).toBe(null);
-  await expect(heading).toHaveText("Our website is taking shape.");
-  await page.emulateMedia({ reducedMotion: "reduce" });
-  await expect(page.locator(".foundation-copy")).toHaveCSS("opacity", "1");
-  await expect(page.locator(".foundation-copy")).toHaveCSS("transform", "none");
-});
-
-test("reduced motion shows readable text at 320px and 768px", async ({
-  page,
-}) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/");
+  const animatedHeading = page.locator(".statement-title");
+  await animatedHeading.scrollIntoViewIfNeeded();
+  await expect
+    .poll(() => animatedHeading.getAttribute("aria-label"))
+    .toBe(null);
+  await expect(animatedHeading).toHaveText(
+    "Behind every role, there’s a person.",
+  );
   await page.emulateMedia({ reducedMotion: "reduce" });
   for (const width of [320, 768]) {
     await page.setViewportSize({ width, height: 900 });
-    await page.goto("/");
-    const heading = page.getByRole("heading", { level: 1 });
-    await expect(heading).toHaveText("Our website is taking shape.");
-    await expect(heading).toHaveCSS("transform", "none");
-    await expect(heading).toHaveCSS("opacity", "1");
-    expect(
-      await page.evaluate(
-        () => document.documentElement.scrollWidth <= window.innerWidth,
-      ),
-    ).toBe(true);
+    for (const route of [
+      "/",
+      "/services",
+      "/contact",
+      "/hire-talent",
+      "/submit-cv",
+    ]) {
+      await page.goto(route);
+      await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+      expect(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth <= window.innerWidth,
+        ),
+        `${route} at ${width}px`,
+      ).toBe(true);
+    }
   }
+});
+
+test("employer form validates required fields and keeps unsent details", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/hire-talent");
+  const form = page.locator("form");
+  await expect(
+    form.getByText("Online submissions are not open yet.", { exact: true }),
+  ).toBeVisible();
+  await form.getByRole("button", { name: "Check my details" }).click();
+  await expect(page.getByLabel("Company name")).toHaveAttribute(
+    "aria-invalid",
+    "true",
+  );
+  await page.getByLabel("Company name").fill("Preview company");
+  await page.getByLabel("Contact person").fill("Preview person");
+  await page.getByLabel("Work email").fill("preview@example.com");
+  await page.getByLabel("Phone number").fill("+971565243800");
+  await page.getByLabel("Role you are hiring for").fill("Sales associate");
+  await page.getByLabel("Number of people").fill("5");
+  await page.getByLabel("Work emirate").selectOption("Dubai");
+  await page.getByLabel("Work location or area").fill("Dubai");
+  const outgoing: string[] = [];
+  page.on("request", (request) => {
+    if (["POST", "PUT", "PATCH"].includes(request.method()))
+      outgoing.push(request.url());
+  });
+  await form.getByRole("button", { name: "Check my details" }).click();
+  await expect(form.getByRole("status")).toContainText(
+    "Your details have not been sent.",
+  );
+  await expect(page.getByLabel("Company name")).toHaveValue("Preview company");
+  await expect(page.getByLabel("Number of people")).toHaveValue("5");
+  expect(outgoing).toEqual([]);
+  await expect(page).toHaveURL(/\/hire-talent$/);
+});
+
+test("candidate CV stays local and invalid files are rejected", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/submit-cv");
+  const form = page.locator("form");
+  await page.getByLabel("Full name").fill("Preview candidate");
+  await page.getByLabel("Email address").fill("candidate@example.com");
+  await page.getByLabel("Phone number").fill("+971565243800");
+  await page.getByLabel("Preferred role").fill("Sales associate");
+  await page.getByLabel("Current city and country").fill("Dubai, UAE");
+  const outgoing: string[] = [];
+  page.on("request", (request) => {
+    if (["POST", "PUT", "PATCH"].includes(request.method()))
+      outgoing.push(request.url());
+  });
+  const file = page.getByLabel("CV document");
+  await file.setInputFiles({
+    name: "cv.exe",
+    mimeType: "application/octet-stream",
+    buffer: Buffer.from("invalid"),
+  });
+  await expect(
+    page.getByText("Choose a PDF or DOCX file.", { exact: true }),
+  ).toBeVisible();
+  await expect(file).toHaveAttribute("aria-invalid", "true");
+  await file.setInputFiles({
+    name: "preview-cv.pdf",
+    mimeType: "application/pdf",
+    buffer: Buffer.from("%PDF-1.4 preview fixture"),
+  });
+  await form.getByRole("button", { name: "Check my details" }).click();
+  await expect(form.getByRole("status")).toContainText(
+    "Your details have not been sent.",
+  );
+  await expect(
+    page.getByText("Selected: preview-cv.pdf", { exact: true }),
+  ).toBeVisible();
+  await expect(page.getByLabel("Full name")).toHaveValue("Preview candidate");
+  expect(outgoing).toEqual([]);
 });

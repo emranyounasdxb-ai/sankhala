@@ -45,4 +45,4 @@ Avoid long animation sequences, animation on every element, scroll trapping or e
 
 Review the implemented design at desktop, tablet and mobile widths, including 320px, in both themes. Verify original logo proportions, contrast, theme persistence, keyboard access, form states, reduced motion and working routes.
 
-The reference files and updated direction are saved. The current running page is still the minimal stack-validation holding page; this document does not claim the full modern homepage or theme switcher is implemented.
+The modern homepage, public pages, persistent theme switcher and responsive navigation are now implemented for local review. See `project-status.md` for completed frontend work and the remaining backend and administration scope. Online forms are clearly marked as previews and do not transmit or save details.

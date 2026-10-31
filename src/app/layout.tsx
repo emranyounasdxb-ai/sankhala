@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
 import { site } from "@/lib/site";
+import { THEME_INIT_SCRIPT } from "@/lib/theme";
 import { bodyFont, headingFont } from "./fonts";
 import "./globals.css";
 
@@ -45,16 +48,31 @@ export const metadata: Metadata = {
     : {}),
 };
 
-export const viewport: Viewport = { themeColor: "#FFFFFF" };
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
+    { media: "(prefers-color-scheme: dark)", color: "#181818" },
+  ],
+};
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${headingFont.variable} ${bodyFont.variable}`}>
+    <html
+      lang="en"
+      className={`${headingFont.variable} ${bodyFont.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        {/* This fixed, local script applies the saved theme before first paint. */}
+        <script>{THEME_INIT_SCRIPT}</script>
+      </head>
       <body>
         <a className="skip-link" href="#main">
           Skip to content
         </a>
+        <SiteHeader />
         {children}
+        <SiteFooter />
       </body>
     </html>
   );
