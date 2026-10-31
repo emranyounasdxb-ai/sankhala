@@ -1,5 +1,11 @@
 # Saved project progress
 
+Latest Careers content: added the owner's 12 categories, supplied role titles, 12 priority role interests and separate Sankhala/client vacancy sections. Both vacancy sections remain empty until real employer-confirmed roles are supplied. Future-interest links prefill the editable general CV role. Preview job details reserve all 11 required employment fields without inventing terms. [Publication policy](careers-content-policy.md).
+
+This business-content pass passed build/type/lint, 35 service-content checks and 20 Careers-category checks across three desktop browser engines plus Pixel/iPhone emulation. The local production preview remains on port 3001.
+
+Latest business-content update: the owner confirmed six services, four sectors and four worker categories. Home, Services, About, Contact and Hire Talent now reflect this broader scope, with HR/PRO and payroll inquiries directed to Contact. [Confirmed company services](company-services.md) supersedes earlier industry-pending notes. Office timings, company photos/history and live vacancies remain pending.
+
 Careers follow-up: implemented the four approved frontend steps under `/design/careers`, including sample filters, role details, local application/review, and a foundations/state gallery. Public `/jobs` remains empty; fictional fixtures have no JobPosting markup, sitemap entry or indexing permission. [Design system and integration contract](careers-design-system.md).
 
 Careers validation: build, type and lint passed, and 55 distinct focused browser scenarios were verified across five projects, including 40 route/theme axe audits. Physical devices remain unverified; no backend or live jobs were added.
@@ -55,7 +61,7 @@ The current local preview serves the optimized production build at `http://127.0
 - Select and configure the production database, private file storage and team authentication. No application backend has been provisioned yet.
 - Build authorized private administration for jobs, company requirements, candidates and the New → Reviewed → Shortlisted → Interview → Hired pipeline. CV access must be restricted to the authorized team.
 - Review the generated representative hero or replace it with approved company photography if desired. It must not be described as actual team photography without confirmation.
-- Obtain specific industries, detailed company information, initial admin email, real vacancies and the data-retention/privacy information needed before launch.
+- Obtain detailed company history, approved photography, office hours/visit policy, initial admin email, real vacancies and the data-retention/privacy information needed before launch. Services, sectors and worker categories are confirmed in the latest business-content update.
 - Approve and publish complete privacy information before opening online applications, then verify backend access, storage, submissions and administration end to end.
 
 The public frontend is implemented for local review. The recruitment MVP is not complete: public forms are explicitly labeled previews, and durable application storage, private CV storage, authentication and the admin panel remain pending. The canonical domain and official contact information are configured; keep `SEO_INDEXABLE=false` until the finished site and approved content are ready.

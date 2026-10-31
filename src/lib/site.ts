@@ -32,7 +32,7 @@ if (indexable && (url.protocol !== "https:" || url.hostname === "localhost")) {
 export const site = {
   name: "Sankhala Employment",
   description:
-    "Recruitment services for companies and job seekers across Dubai and the UAE.",
+    "Recruitment, manpower supply, staff outsourcing, HR & PRO support and payroll services across Dubai and all UAE emirates.",
   serviceArea: "Dubai and all UAE emirates",
   office: {
     address: "Office 218, Business Village B, Deira, Dubai",

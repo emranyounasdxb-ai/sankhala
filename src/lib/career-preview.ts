@@ -8,6 +8,7 @@ export type PreviewJob = {
   emirate: string;
   type: "Full time" | "Contract";
   department: string;
+  origin: "sankhala" | "client";
   closed: boolean;
   summary: string;
   responsibilities: string[];
@@ -32,6 +33,7 @@ export const previewJobs: PreviewJob[] = [
     emirate: "Dubai",
     type: "Full time",
     department: "Customer service",
+    origin: "client",
     closed: false,
     summary:
       "A sample customer-facing role used to demonstrate the recruitment journey.",
@@ -53,6 +55,7 @@ export const previewJobs: PreviewJob[] = [
     emirate: "Abu Dhabi",
     type: "Contract",
     department: "Administration",
+    origin: "sankhala",
     closed: false,
     summary:
       "A sample administration role showing a different location and employment type.",
@@ -72,6 +75,7 @@ export const previewJobs: PreviewJob[] = [
     emirate: "Sharjah",
     type: "Full time",
     department: "Operations",
+    origin: "client",
     closed: true,
     summary:
       "A closed sample role demonstrating how unavailable opportunities are presented.",

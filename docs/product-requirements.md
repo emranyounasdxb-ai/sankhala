@@ -1,5 +1,7 @@
 # Sankhala recruitment MVP
 
+Careers content update: use the owner's 12 categories and supplied role titles, with separate Jobs at Sankhala and Jobs with Our Clients sections. Publish only genuinely available employer-confirmed vacancies, with all 11 required employment fields; otherwise offer a general CV introduction for future opportunities. [Full category/publication policy](careers-content-policy.md).
+
 Confirmed from the user's business brief on 31 October 2026. This document records product requirements; it does not claim the features below are implemented.
 
 ## Purpose and coverage
@@ -21,7 +23,7 @@ Confirmed coverage: **Dubai and all UAE emirates**. The user separately confirme
 
 The supplied Google Maps embed uses a pin named ALIYAS Real Estate. Preserve the supplied location reference; do not describe it as Sankhala's verified Google Business profile.
 
-Specific industries and the initial authorized administrator's email remain pending. The public contact email must not be treated as an authorized admin identity without a separate designation.
+The owner subsequently confirmed recruitment & hiring, manpower supply, staff outsourcing, HR & PRO support, payroll & workforce management, and bulk hiring. Sectors are construction, cleaning, security and logistics; worker categories include drivers, cleaners, helpers and construction workers. [Confirmed service scope](company-services.md). The initial authorized administrator's email remains pending; the public email does not authorize an admin account.
 
 ## First release
 
@@ -143,4 +145,4 @@ Confirmed: two audiences, manual recruitment workflow, private CV access, candid
 
 The supplied [homepage concept](reference/sankhala-homepage-concept.png) and [modern layout reference](reference/modern-layout-reference.png) are preserved. The latest [design clarification](design-direction.md) supersedes the original brief's exact-copy instructions and requires both themes. The first image's bottom Design System strip is documentation only. Embedded workplace imagery is concept material, not proof of actual employees; a separate approved photography asset has not been supplied.
 
-Pending: specific industries, detailed company/about information, initial admin email, real vacancies, separate approved photography, production backend/storage/authentication setup and retention/privacy decisions.
+Pending: detailed company history, office timings/visit policy, initial admin email, real vacancies, approved company photography, production backend/storage/authentication setup and retention/privacy decisions.

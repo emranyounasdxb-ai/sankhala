@@ -6,6 +6,7 @@ import {
   previewJobs,
   previewMetadata,
 } from "@/lib/career-preview";
+import { jobPostFields } from "@/lib/job-categories";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -48,6 +49,29 @@ export default async function RolePreview({
       </header>
       <div className="career-detail-grid">
         <div className="career-card career-copy">
+          <h2>Job information</h2>
+          <p>
+            Required fields for a future job post. This fictional sample has no
+            employer-confirmed vacancy or employment terms.
+          </p>
+          <dl className="career-review">
+            {jobPostFields.map((label, index) => (
+              <div key={label}>
+                <dt>{label}</dt>
+                <dd>
+                  {index === 0
+                    ? job.title
+                    : index === 1
+                      ? job.emirate
+                      : index === 2
+                        ? job.origin === "sankhala"
+                          ? "Sankhala (fictional internal opening)"
+                          : "Sankhala client (fictional example)"
+                        : "Awaiting employer confirmation"}
+                </dd>
+              </div>
+            ))}
+          </dl>
           <h2>About this sample role</h2>
           <p>{job.summary}</p>
           <h2>Responsibilities</h2>

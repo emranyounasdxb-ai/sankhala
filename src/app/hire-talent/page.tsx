@@ -22,7 +22,9 @@ export default function HireTalentPage() {
         <h1 className="page-title">Build your next team.</h1>
         <p className="lead">
           Tell us the role, how many people you need and where they will work.
-          Our team helps you plan the next step across Dubai and the UAE.
+          Whether you need drivers, cleaners, helpers or construction workers,
+          our team helps you plan recruitment, manpower supply, outsourcing or
+          bulk hiring across Dubai and the UAE.
         </p>
         <nav
           className="hire-contact-shortcuts"

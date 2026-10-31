@@ -1,5 +1,7 @@
 # Email handoff and content improvements
 
+Later update: the owner has now confirmed services, sectors and worker categories in [company services](../company-services.md). The pending list below records what was unknown during this earlier pass.
+
 31 October 2026. Backend, CRM, real jobs and public deployment remain deferred.
 
 ## Implemented

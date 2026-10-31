@@ -12,7 +12,7 @@ import "./contact.css";
 
 export const metadata = createPageMetadata(
   "Contact Sankhala",
-  "Call, WhatsApp or email Sankhala to discuss staffing requirements and career opportunities across Dubai and the UAE.",
+  "Call, WhatsApp or email Sankhala for recruitment, manpower supply, outsourcing, HR & PRO, payroll and workforce support across the UAE.",
   "/contact",
 );
 
@@ -23,8 +23,9 @@ export default function ContactPage() {
         <p className="eyebrow">Contact us</p>
         <h1 className="page-title">Talk to our recruitment team.</h1>
         <p className="lead">
-          Call, message or email Sankhala about a staffing requirement or your
-          job search. Choose the way that works for you.
+          Talk to Sankhala about recruitment, manpower supply, staff
+          outsourcing, HR &amp; PRO support, payroll or your job search. Choose
+          the way that works for you.
         </p>
       </header>
 

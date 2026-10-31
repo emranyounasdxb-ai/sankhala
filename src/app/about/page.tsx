@@ -8,7 +8,7 @@ import { createPageMetadata } from "@/lib/page-metadata";
 
 export const metadata = createPageMetadata(
   "About Sankhala",
-  "Learn how Sankhala connects company staffing requirements with candidate applications through a team led recruitment process across the UAE.",
+  "Learn about Sankhala's recruitment, manpower supply, outsourcing, HR & PRO and payroll support across Dubai and the UAE.",
   "/about",
 );
 
@@ -19,28 +19,32 @@ export default function AboutPage() {
         <p className="eyebrow">About Sankhala</p>
         <h1 className="page-title">Connecting companies and candidates.</h1>
         <p className="lead">
-          Sankhala Employment supports businesses looking for staff and people
-          looking for work across Dubai and all UAE emirates.
+          Sankhala Employment provides recruitment, manpower supply and staff
+          outsourcing across Dubai and all UAE emirates, alongside HR &amp; PRO,
+          payroll and workforce management support.
         </p>
       </header>
 
       <div className="content-grid">
         <section className="content-panel stack">
           <span className="section-label">Our role</span>
-          <h2 className="section-heading">A team behind the hiring process.</h2>
+          <h2 className="section-heading">
+            Support from hiring to workforce management.
+          </h2>
           <p>
-            Companies share the roles they need to fill. Candidates share their
-            experience and the work they are looking for. Our team reviews both
-            to identify suitable introductions.
+            We help companies find candidates, shortlist CVs, coordinate
+            interviews and make selections. We also arrange workers for
+            construction, cleaning, security and logistics requirements,
+            including larger project and company hiring needs.
           </p>
           <p>
-            From understanding the requirement to shortlisting candidates and
-            coordinating interviews, recruitment is handled through direct
-            conversations with our team.
+            Beyond hiring, our support covers visa processing, labour contracts,
+            joining documents, salary processing, attendance and employee
+            records. Drivers, cleaners, helpers and construction workers are
+            among the workforce categories we support.
           </p>
           <Link href="/services" className="inline-link">
-            View recruitment services{" "}
-            <ArrowRightIcon size={20} aria-hidden="true" />
+            Explore our services <ArrowRightIcon size={20} aria-hidden="true" />
           </Link>
         </section>
 

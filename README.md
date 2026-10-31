@@ -1,5 +1,9 @@
 # Sankhala
 
+Public Careers now includes the approved categories, priority role interests and separate own-team/client sections. Only real employer-confirmed vacancies may be published; category links open a general CV introduction for future opportunities. See [the Careers publication policy](docs/careers-content-policy.md).
+
+The public site now explains the owner's [six confirmed services and workforce categories](docs/company-services.md), covering recruitment, manpower supply, outsourcing, HR/PRO, payroll/workforce management and bulk hiring.
+
 Careers now has a separate [design system and four-step preview](docs/careers-design-system.md) at `/design/careers`: filtering, role details, local application review and component states. The public `/jobs` page still shows no published vacancies.
 
 Latest update: validated forms now offer a reviewable message, Copy details and Prepare email draft. Candidates attach their CV manually in their email app. Editing a field clears the previous draft. See [handoff verification and remaining content needs](docs/verification/email-handoff.md).

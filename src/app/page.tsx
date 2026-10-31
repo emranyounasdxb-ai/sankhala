@@ -14,7 +14,13 @@ import { AnimatedHeading } from "@/components/motion/animated-heading";
 import { Reveal } from "@/components/motion/reveal";
 import { OrganizationData } from "@/components/organization-data";
 import { createPageMetadata } from "@/lib/page-metadata";
+import {
+  recruitmentServices,
+  supportedSectors,
+  workforceCategories,
+} from "@/lib/services";
 import { site } from "@/lib/site";
+import "./service-scope.css";
 
 export const metadata = createPageMetadata(
   "Recruitment across the UAE",
@@ -31,35 +37,15 @@ const emirates = [
   "Fujairah",
   "Umm Al Quwain",
 ];
-const services = [
-  {
-    number: "01",
-    icon: UsersThreeIcon,
-    title: "Staff recruitment.",
-    text: "Tell us who you need. Our team reviews your requirements and helps you find suitable candidates.",
-    label: "Hire talent",
-    href: "/hire-talent",
-    category: "For employers",
-  },
-  {
-    number: "02",
-    icon: BriefcaseIcon,
-    title: "Job opportunities.",
-    text: "Explore available roles and find a new opportunity to put your experience to work.",
-    label: "Explore opportunities",
-    href: "/jobs",
-    category: "For job seekers",
-  },
-  {
-    number: "03",
-    icon: FileTextIcon,
-    title: "General CV submission.",
-    text: "No suitable vacancy yet? Share your CV and tell our team what you would like to do next.",
-    label: "Submit your CV",
-    href: "/submit-cv",
-    category: "For your next step",
-  },
-];
+const serviceIcons = [UsersThreeIcon, BriefcaseIcon, FileTextIcon];
+const services = recruitmentServices.map((service, index) => ({
+  ...service,
+  number: `0${index + 1}`,
+  icon: serviceIcons[index % serviceIcons.length],
+  text: service.description,
+  label: "Explore service",
+  href: `/services#${service.id}`,
+}));
 const journeys = [
   {
     audience: "For companies",
@@ -105,6 +91,14 @@ const journeys = [
   },
 ];
 const questions = [
+  [
+    "Which services does Sankhala provide?",
+    "Our services include recruitment & hiring, manpower supply, staff outsourcing, HR & PRO support, payroll & workforce management, and bulk hiring.",
+  ],
+  [
+    "Which workers can my company request?",
+    "Our workforce categories include drivers, cleaners, helpers and construction workers. We support staffing needs in construction, cleaning, security and logistics. Tell our team the role, headcount and location.",
+  ],
   [
     "How can my company request staff?",
     "Start with Hire Talent and share the role, number of people and work location. You can also speak to our team directly by phone, WhatsApp or email.",
@@ -159,8 +153,8 @@ export default function Home() {
             </span>
           </h1>
           <p className="hero-description">
-            Recruitment support for companies and job seekers across Dubai and
-            the UAE.
+            Recruitment, manpower supply and workforce support for businesses
+            across Dubai and the UAE. New opportunities for job seekers.
           </p>
           <div className="hero-actions">
             <Link href="/hire-talent" className="button button-primary">
@@ -171,7 +165,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="hero-bottom">
-            <span>Recruitment. With a human touch.</span>
+            <span>People, hiring and workforce support.</span>
             <ArrowDownRightIcon size={22} aria-hidden="true" />
           </div>
         </div>
@@ -193,14 +187,15 @@ export default function Home() {
           <div>
             <p className="eyebrow">What we do</p>
             <h2 id="services-heading">
-              Recruitment support.
+              Hiring and workforce support.
               <br />
               Built around people<span className="accent-dot">.</span>
             </h2>
           </div>
           <p className="section-description">
-            Share a staffing requirement, explore available roles or introduce
-            yourself with a CV. Our team takes the conversation from there.
+            From finding candidates to arranging workers and supporting HR,
+            payroll and employee administration, our team helps businesses
+            manage their staffing needs.
           </p>
         </div>
         <Reveal className="services-grid" stagger>
@@ -216,12 +211,31 @@ export default function Home() {
                 <p className="service-copy">{text}</p>
                 <Link className="card-link" href={href}>
                   {label}
+                  <span className="sr-only">: {title}</span>
                   <ArrowUpRightIcon size={20} aria-hidden="true" />
                 </Link>
               </article>
             ),
           )}
         </Reveal>
+        <div className="service-scope">
+          <div>
+            <p className="eyebrow">Teams we support</p>
+            <h3>People for everyday operations.</h3>
+            <p>
+              Staffing support for{" "}
+              {supportedSectors
+                .map((sector) => sector.toLowerCase())
+                .join(", ")}
+              .
+            </p>
+          </div>
+          <ul aria-label="Worker categories">
+            {workforceCategories.map((category) => (
+              <li key={category}>{category}</li>
+            ))}
+          </ul>
+        </div>
       </section>
       <section className="statement-section" aria-label="Our approach">
         <div className="statement-inner wrap">

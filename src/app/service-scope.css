@@ -1,0 +1,41 @@
+.service-scope {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 32px;
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+}
+.service-scope h3 {
+  font-family: var(--font-barlow-condensed), sans-serif;
+  font-size: 30px;
+  line-height: 36px;
+  margin-block: 12px;
+}
+.service-scope p:not(.eyebrow) {
+  color: var(--text-secondary);
+}
+.service-scope ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+}
+.service-scope li {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 14px;
+}
+@media (max-width: 767px) {
+  .service-scope {
+    grid-template-columns: 1fr;
+    padding: 24px;
+    gap: 24px;
+  }
+}

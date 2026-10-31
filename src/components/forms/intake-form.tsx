@@ -6,6 +6,7 @@ import { type EmailDraft, EmailHandoff } from "./email-handoff";
 
 type IntakeFormProps = {
   kind: "employer" | "candidate";
+  initialRole?: string;
   contact: {
     email: string;
     emailHref: string;
@@ -68,7 +69,11 @@ function validateField(field: FormField): string | undefined {
   return undefined;
 }
 
-export function IntakeForm({ kind, contact }: IntakeFormProps) {
+export function IntakeForm({
+  kind,
+  contact,
+  initialRole = "",
+}: IntakeFormProps) {
   const candidate = kind === "candidate";
   const interactive = useSyncExternalStore(
     subscribeToClient,
@@ -299,6 +304,7 @@ export function IntakeForm({ kind, contact }: IntakeFormProps) {
         <input
           id={`${kind}-role`}
           name="role"
+          defaultValue={candidate ? initialRole : ""}
           required
           maxLength={160}
           {...fieldState("role", true)}

@@ -1,6 +1,7 @@
 import { ArrowRightIcon, FileTextIcon } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { IntakeForm } from "@/components/forms/intake-form";
+import { allRoleTitles } from "@/lib/job-categories";
 import { createPageMetadata } from "@/lib/page-metadata";
 import { site } from "@/lib/site";
 
@@ -10,7 +11,14 @@ export const metadata = createPageMetadata(
   "/submit-cv",
 );
 
-export default function SubmitCVPage() {
+export default async function SubmitCVPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ role?: string | string[] }>;
+}) {
+  const { role } = await searchParams;
+  const initialRole =
+    typeof role === "string" && allRoleTitles.includes(role) ? role : "";
   return (
     <main id="main" tabIndex={-1} className="page-shell">
       <header className="page-intro">
@@ -23,7 +31,12 @@ export default function SubmitCVPage() {
         </p>
       </header>
       <div className="content-grid intake-layout">
-        <IntakeForm kind="candidate" contact={site.contact} />
+        <IntakeForm
+          key={initialRole}
+          kind="candidate"
+          contact={site.contact}
+          initialRole={initialRole}
+        />
         <aside className="page-aside stack intake-aside">
           <div className="content-panel content-panel-dark stack">
             <FileTextIcon size={40} weight="light" aria-hidden="true" />

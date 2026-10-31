@@ -1,5 +1,7 @@
 # Careers design system and preview
 
+The owner subsequently supplied the [public category and publication policy](careers-content-policy.md). The public Careers page now exposes future-interest categories while vacancy sections remain empty. Preview details reserve all 11 required employment fields; unknown terms are marked awaiting confirmation. Fixture origins distinguish fictional internal and client roles.
+
 31 October 2026. This is a reusable frontend design system for the four approved Careers steps. It uses the locked Sankhala brand and existing stack. Sample roles are fictional fixtures, not vacancies, clients or confirmed recruitment specialisms.
 
 ## Foundations

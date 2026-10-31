@@ -18,6 +18,11 @@ export function JobFacts({ job }: { job: PreviewJob }) {
         {job.type}
       </li>
       <li>{job.reference}</li>
+      <li>
+        {job.origin === "sankhala"
+          ? "Sankhala role preview"
+          : "Client role preview"}
+      </li>
     </ul>
   );
 }
