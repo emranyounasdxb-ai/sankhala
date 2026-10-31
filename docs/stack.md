@@ -32,7 +32,7 @@ The selected runtime is the newest LTS recorded in the [Node release index](http
 | `sharp` | 0.35.5 | Image processing and optimization |
 | `zod` | 4.6.7 | Runtime validation for configuration and future form inputs |
 
-The supplied [design specification](../design.md) remains the visual reference. Load its Barlow Condensed and Inter WOFF2 files from the installed Fontsource packages through `next/font/local`; the browser should not depend on a font CDN. Load only required weights and subsets. [Next font documentation](https://nextjs.org/docs/app/api-reference/components/font#local-fonts)
+The [current design direction](design-direction.md) updates the original specification: a more modern design inspired by the supplied references, with full light/dark themes. Retain the selected Barlow Condensed and Inter WOFF2 files from the installed Fontsource packages through `next/font/local`; the browser should not depend on a font CDN. Load only required weights and subsets. [Next font documentation](https://nextjs.org/docs/app/api-reference/components/font#local-fonts)
 
 GSAP is the single animation engine. Use ScrollTrigger for viewport and scroll-linked effects, SplitText for restrained word or line reveals, and `useGSAP` for scoped lifecycle cleanup. Keep native scrolling; no smooth-scroll replacement is selected. See [ScrollTrigger](https://gsap.com/docs/v3/Plugins/ScrollTrigger/), [SplitText](https://gsap.com/docs/v3/Plugins/SplitText/), and [GSAP with React](https://gsap.com/resources/React/).
 
@@ -77,8 +77,8 @@ Use Next's native [Metadata API](https://nextjs.org/docs/app/getting-started/met
 - Use semantic HTML, a logical heading hierarchy, descriptive internal links, image alt text, and content that is available in the rendered HTML.
 - Use `next/image` with correct dimensions and responsive sizes; prioritize the actual largest visible image and lazy-load appropriate lower content. [Image API](https://nextjs.org/docs/app/api-reference/components/image)
 - Add Organization or JobPosting structured data only when its business and vacancy details are confirmed. Serialize JSON-LD safely and validate it; do not invent addresses, reviews, salaries, or vacancies. [Next JSON-LD guidance](https://nextjs.org/docs/app/guides/json-ld)
-- The foundation defaults to `SEO_INDEXABLE=false` and has no configured `SITE_URL`. It emits noindex metadata, permits crawling so that noindex can be read, and exposes no sitemap entries for an unfinished site.
-- Before launch, set `SITE_URL` to the real HTTPS origin and deliberately enable `SEO_INDEXABLE=true` only with approved content and completed routes. Check canonical URLs, sitemap entries, robots behavior, metadata, and social images on the deployed origin.
+- The foundation defaults to `SEO_INDEXABLE=false`. The user subsequently confirmed `https://sankhala.ae` as the default `SITE_URL`, so canonical and social image URLs use that origin. Prelaunch pages still emit noindex metadata, permit crawling so that noindex can be read, and expose no sitemap entries.
+- Before launch, verify the confirmed domain and deliberately enable `SEO_INDEXABLE=true` only with approved content and completed routes. Rebuild, then check canonical URLs, sitemap entries, robots behavior, metadata and social images on the deployed origin.
 
 CMS, database, authentication, mail delivery, analytics, and hosting remain unselected until the business requirements establish a need. A form validation package does not imply that a submission service exists.
 

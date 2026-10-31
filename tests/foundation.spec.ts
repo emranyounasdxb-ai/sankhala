@@ -10,7 +10,11 @@ test("server HTML contains text and prelaunch SEO controls", async ({
   expect(html).toContain("Our website is taking shape.");
   expect(html).toContain('name="robots" content="noindex, nofollow"');
   expect(html).toContain("<title>Sankhala Employment</title>");
-  expect(html).not.toContain('rel="canonical"');
+  const canonical = html.match(/rel="canonical" href="([^"]+)"/)?.[1];
+  expect(canonical && new URL(canonical).href).toBe("https://sankhala.ae/");
+  expect(html).toContain(
+    'property="og:image" content="https://sankhala.ae/brand/social/og-light-1200x630.png"',
+  );
   expect(await (await request.get("/sitemap.xml")).text()).not.toContain(
     "<loc>",
   );
