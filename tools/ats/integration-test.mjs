@@ -105,7 +105,7 @@ try {
   assert.equal(publicRole.status, 200);
   assert.ok((await publicRole.text()).includes(job.title));
   const candidate = {
-    fullName: `[TEST] Ahmed ${run}`,
+    fullName: `[TEST] Ahmed أحمد اردو 🧑 ${run}`,
     email: `ats-${run}@example.invalid`,
     phone: `+97150${String(Date.now()).slice(-7)}`,
     country: "United Arab Emirates",

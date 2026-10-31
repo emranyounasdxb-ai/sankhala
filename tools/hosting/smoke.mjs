@@ -69,6 +69,11 @@ const db = await createConnection({
 try {
   const [[charset]] = await db.query("SELECT @@character_set_database charset");
   assert.equal(charset.charset, "utf8mb4");
+  const [[tables]] = await db.execute(
+    "SELECT COUNT(*) invalid FROM information_schema.TABLES WHERE TABLE_SCHEMA=? AND TABLE_TYPE='BASE TABLE' AND TABLE_COLLATION NOT LIKE 'utf8mb4%'",
+    [process.env.ATS_DB_NAME],
+  );
+  assert.equal(tables.invalid, 0);
 } finally {
   await db.end();
 }
