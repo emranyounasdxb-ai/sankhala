@@ -1,0 +1,437 @@
+{
+  "schemaVersion": 1,
+  "generator": "tools/brand/build.mjs",
+  "sources": [
+    {
+      "path": "brand/originals/Sankhala-logo-dark.png",
+      "sha256": "6cbcb1642898dde736b251841de292600e72e492024c93bfad0145735da0d3ce",
+      "width": 6250,
+      "height": 6250,
+      "bounds": {
+        "left": 1313,
+        "top": 2191,
+        "width": 3641,
+        "height": 1628
+      }
+    },
+    {
+      "path": "brand/originals/Sankhala-logo-light.png",
+      "sha256": "dbfcb8e86c25d8978dd6f74a3695a606a77e56de9e1283dfa74acc3f96bb6453",
+      "width": 6250,
+      "height": 6250,
+      "bounds": {
+        "left": 1313,
+        "top": 2191,
+        "width": 3641,
+        "height": 1628
+      }
+    }
+  ],
+  "derivedMark": {
+    "description": "Original S and dot recomposed, without changing S aspect ratio; dot optical minimum is 2 pixels for small favicons.",
+    "sBounds": {
+      "left": 1313,
+      "top": 2191,
+      "width": 412,
+      "height": 1628
+    },
+    "dotBounds": {
+      "left": 4798,
+      "top": 3678,
+      "width": 140,
+      "height": 138
+    }
+  },
+  "assets": [
+    {
+      "path": "public/apple-touch-icon.png",
+      "width": 180,
+      "height": 180,
+      "format": "png",
+      "bytes": 2925,
+      "sha256": "53da8dfba40e58399aed43f6a4edd3d9e2d207976fe6a1e0febfa2b70d6b5d3a",
+      "usage": "Default touch icon alias"
+    },
+    {
+      "path": "public/brand/icons/apple-touch-icon-on-dark.png",
+      "width": 180,
+      "height": 180,
+      "format": "png",
+      "bytes": 2925,
+      "sha256": "53da8dfba40e58399aed43f6a4edd3d9e2d207976fe6a1e0febfa2b70d6b5d3a",
+      "usage": "Opaque Apple touch icon; OS applies corner mask"
+    },
+    {
+      "path": "public/brand/icons/apple-touch-icon-on-light.png",
+      "width": 180,
+      "height": 180,
+      "format": "png",
+      "bytes": 2966,
+      "sha256": "4e01068716abfd95f75fbff73f33f28bf32e116f17e8ecd1c405b775a69a8355",
+      "usage": "Opaque Apple touch icon; OS applies corner mask"
+    },
+    {
+      "path": "public/brand/icons/favicon-on-dark-16.png",
+      "width": 16,
+      "height": 16,
+      "format": "png",
+      "bytes": 292,
+      "sha256": "873e5b4c85f4d15d7072cfc4ef6aff9efaf61ec57b7c64ca464f9023640be3b5",
+      "usage": "Opaque browser icon; original S with optically adjusted dot"
+    },
+    {
+      "path": "public/brand/icons/favicon-on-dark-32.png",
+      "width": 32,
+      "height": 32,
+      "format": "png",
+      "bytes": 502,
+      "sha256": "5d7915ad27a19bbc874f53fd9833eee84d375907b9b1f0ef3a9f7b2cab61713c",
+      "usage": "Opaque browser icon; original S with optically adjusted dot"
+    },
+    {
+      "path": "public/brand/icons/favicon-on-dark-48.png",
+      "width": 48,
+      "height": 48,
+      "format": "png",
+      "bytes": 804,
+      "sha256": "e33455d069bfd6f2bf0b5b1d753ce797d4c0916cdd7ce2b7a57f6809b9ffaef8",
+      "usage": "Opaque browser icon; original S with optically adjusted dot"
+    },
+    {
+      "path": "public/brand/icons/favicon-on-light-16.png",
+      "width": 16,
+      "height": 16,
+      "format": "png",
+      "bytes": 301,
+      "sha256": "cb227cdd33472f96b99e8473ba5241de0eb46f9d471a98ecff57e0dce22c68a8",
+      "usage": "Opaque browser icon; original S with optically adjusted dot"
+    },
+    {
+      "path": "public/brand/icons/favicon-on-light-32.png",
+      "width": 32,
+      "height": 32,
+      "format": "png",
+      "bytes": 544,
+      "sha256": "1883447590d3c6f6f0515c608dcb8f42e50d1fd3048fea71d1bc8c4fbec9019d",
+      "usage": "Opaque browser icon; original S with optically adjusted dot"
+    },
+    {
+      "path": "public/brand/icons/favicon-on-light-48.png",
+      "width": 48,
+      "height": 48,
+      "format": "png",
+      "bytes": 845,
+      "sha256": "5cce6adeae2637c95ce2444ada89bf42a5ce7e3b56dca6a7df4296b3a345f271",
+      "usage": "Opaque browser icon; original S with optically adjusted dot"
+    },
+    {
+      "path": "public/brand/icons/icon-on-dark-192.png",
+      "width": 192,
+      "height": 192,
+      "format": "png",
+      "bytes": 3150,
+      "sha256": "af07959647df3e13b75b513d98e6a2483c4d9eb5deaf5346d99cb1a2446d0e4b",
+      "usage": "Opaque app icon; any purpose"
+    },
+    {
+      "path": "public/brand/icons/icon-on-dark-512.png",
+      "width": 512,
+      "height": 512,
+      "format": "png",
+      "bytes": 9778,
+      "sha256": "bccc4fd54727b80cc7f15a63648eb57887ca25282b4bd53c02fe655c5e3952d2",
+      "usage": "Opaque app icon; any purpose"
+    },
+    {
+      "path": "public/brand/icons/icon-on-light-192.png",
+      "width": 192,
+      "height": 192,
+      "format": "png",
+      "bytes": 3179,
+      "sha256": "3cf16b67121460dec0cd1d3fc23b68471ddbc0184c4c2d86c88f64488cb77e8e",
+      "usage": "Opaque app icon; any purpose"
+    },
+    {
+      "path": "public/brand/icons/icon-on-light-512.png",
+      "width": 512,
+      "height": 512,
+      "format": "png",
+      "bytes": 9922,
+      "sha256": "f86a9e24924331fe569a64c11f7dbc37307921cc5f3233980f0739cf1085f2bf",
+      "usage": "Opaque app icon; any purpose"
+    },
+    {
+      "path": "public/brand/icons/mark-on-dark.png",
+      "width": 1024,
+      "height": 1024,
+      "format": "png",
+      "bytes": 19234,
+      "sha256": "e93cca8dfe57605e193f38ce34ef2599fb100401e970983569d5dbd8efb03219",
+      "usage": "Transparent derived S and dot; not supplied as a separate original mark"
+    },
+    {
+      "path": "public/brand/icons/mark-on-light.png",
+      "width": 1024,
+      "height": 1024,
+      "format": "png",
+      "bytes": 23082,
+      "sha256": "c89cf95e4049bfeeab6776c5a51d93f9da9d056f1097c0ffbce867ba3816fb91",
+      "usage": "Transparent derived S and dot; not supplied as a separate original mark"
+    },
+    {
+      "path": "public/brand/icons/maskable-on-dark-512.png",
+      "width": 512,
+      "height": 512,
+      "format": "png",
+      "bytes": 8533,
+      "sha256": "d716c390ea13c13c45dba100dae36cb3f81c57abba48f776a3efba426a4a8608",
+      "usage": "Opaque maskable app icon with circular safe zone"
+    },
+    {
+      "path": "public/brand/icons/maskable-on-light-512.png",
+      "width": 512,
+      "height": 512,
+      "format": "png",
+      "bytes": 8674,
+      "sha256": "3a2eed012600b309ffa72b6c8dfa502f50cc2aeb88cf161610c571a5e493d474",
+      "usage": "Opaque maskable app icon with circular safe zone"
+    },
+    {
+      "path": "public/brand/logos/email-logo-on-light.png",
+      "width": 400,
+      "height": 179,
+      "format": "png",
+      "bytes": 18159,
+      "sha256": "f3f448cbe6683f8a4083d91b91e6ea7e329dc888dfcb7ff599a91410b72b9eaa",
+      "usage": "Opaque white backing; render at 240 CSS px or wider to retain descriptor"
+    },
+    {
+      "path": "public/brand/logos/logo-on-dark-1600.png",
+      "width": 1600,
+      "height": 715,
+      "format": "png",
+      "bytes": 68252,
+      "sha256": "4d73020f95b781565fd696a3798625e64e924bb47963369701c9d455066c0cc6",
+      "usage": "Website logo for dark surfaces"
+    },
+    {
+      "path": "public/brand/logos/logo-on-dark-1600.webp",
+      "width": 1600,
+      "height": 715,
+      "format": "webp",
+      "bytes": 33962,
+      "sha256": "2d68996d0473eac6e50494a10f73ca62d2afcd651597f54430296e1306dce332",
+      "usage": "Lossless website logo for dark surfaces"
+    },
+    {
+      "path": "public/brand/logos/logo-on-dark-400.png",
+      "width": 400,
+      "height": 179,
+      "format": "png",
+      "bytes": 13162,
+      "sha256": "567ae8268dc60d46f556e099b2278fe643c4b441936e86ce6129e2192df5722c",
+      "usage": "Website logo for dark surfaces"
+    },
+    {
+      "path": "public/brand/logos/logo-on-dark-400.webp",
+      "width": 400,
+      "height": 179,
+      "format": "webp",
+      "bytes": 8518,
+      "sha256": "ad17f2b277e0b1d0c2b71991f6b417681e3aecdeef6f90661b231af3d97cc945",
+      "usage": "Lossless website logo for dark surfaces"
+    },
+    {
+      "path": "public/brand/logos/logo-on-dark-800.png",
+      "width": 800,
+      "height": 358,
+      "format": "png",
+      "bytes": 29334,
+      "sha256": "2a737410b830dfc24d1573b5b7c01b3304bbca99098b05b4df5e81530d77076a",
+      "usage": "Website logo for dark surfaces"
+    },
+    {
+      "path": "public/brand/logos/logo-on-dark-800.webp",
+      "width": 800,
+      "height": 358,
+      "format": "webp",
+      "bytes": 17718,
+      "sha256": "06e47dd34322083989114d9189075d935ca8acbfc5ea67c9e33af9e2e9fb2b5e",
+      "usage": "Lossless website logo for dark surfaces"
+    },
+    {
+      "path": "public/brand/logos/logo-on-dark.png",
+      "width": 3641,
+      "height": 1628,
+      "format": "png",
+      "bytes": 186834,
+      "sha256": "ded2e23f76c41d18115e1d5ec4b371a4834ce3dffdecfd720d296810301331aa",
+      "usage": "Native trimmed logo master; transparent; preserve aspect ratio"
+    },
+    {
+      "path": "public/brand/logos/logo-on-light-1600.png",
+      "width": 1600,
+      "height": 715,
+      "format": "png",
+      "bytes": 80757,
+      "sha256": "81776dd852f0bd421e643c3e45bf93e3559353007edab20455d942dafa3460e6",
+      "usage": "Website logo for light surfaces"
+    },
+    {
+      "path": "public/brand/logos/logo-on-light-1600.webp",
+      "width": 1600,
+      "height": 715,
+      "format": "webp",
+      "bytes": 39834,
+      "sha256": "a9a0816e6c8506baaf86a4230911e9d84e9b206d398ed4330596a20c42bbfc7b",
+      "usage": "Lossless website logo for light surfaces"
+    },
+    {
+      "path": "public/brand/logos/logo-on-light-400.png",
+      "width": 400,
+      "height": 179,
+      "format": "png",
+      "bytes": 15756,
+      "sha256": "4ccb2acec8ce64a4f8c3932dac482e8b56dee55ed917fcd246584073c3db9043",
+      "usage": "Website logo for light surfaces"
+    },
+    {
+      "path": "public/brand/logos/logo-on-light-400.webp",
+      "width": 400,
+      "height": 179,
+      "format": "webp",
+      "bytes": 10268,
+      "sha256": "fb37db143e2746a550dd527c47e2fcff360fbc8005a8d41126b82d1a3cd7addb",
+      "usage": "Lossless website logo for light surfaces"
+    },
+    {
+      "path": "public/brand/logos/logo-on-light-800.png",
+      "width": 800,
+      "height": 358,
+      "format": "png",
+      "bytes": 34657,
+      "sha256": "d0c33d0964d053e13d613cbe851a86bfe94a770012b41a2e44a52c118e66dea2",
+      "usage": "Website logo for light surfaces"
+    },
+    {
+      "path": "public/brand/logos/logo-on-light-800.webp",
+      "width": 800,
+      "height": 358,
+      "format": "webp",
+      "bytes": 20674,
+      "sha256": "6dd14093f3ceee4daa2034be1093328b8568e512e80e6df57119ca56d3c16ab9",
+      "usage": "Lossless website logo for light surfaces"
+    },
+    {
+      "path": "public/brand/logos/logo-on-light.png",
+      "width": 3641,
+      "height": 1628,
+      "format": "png",
+      "bytes": 255973,
+      "sha256": "490aaaf55b84591fc837b582f0a5433db8da17151a3bc0e53aa60a9382ad4470",
+      "usage": "Native trimmed logo master; transparent; preserve aspect ratio"
+    },
+    {
+      "path": "public/brand/social/avatar-dark-1024.png",
+      "width": 1024,
+      "height": 1024,
+      "format": "png",
+      "bytes": 20055,
+      "sha256": "c7c6b0e8d7e637d08511da89d5adf7fd9b104e0dad1a2d72606d841ca806312c",
+      "usage": "Circle safe social profile avatar"
+    },
+    {
+      "path": "public/brand/social/avatar-light-1024.png",
+      "width": 1024,
+      "height": 1024,
+      "format": "png",
+      "bytes": 20421,
+      "sha256": "9a3777e3f98d3303e38845560f193e3038b32572201e97ea11c91371ed3942ff",
+      "usage": "Circle safe social profile avatar"
+    },
+    {
+      "path": "public/brand/social/cover-dark-1600x900.png",
+      "width": 1600,
+      "height": 900,
+      "format": "png",
+      "bytes": 46234,
+      "sha256": "5ac992c165970085b1f0f99a318f9002cb902b531ffa0e53c5d59ef44e26106c",
+      "usage": "Logo only social artwork; no unverified business claims"
+    },
+    {
+      "path": "public/brand/social/cover-light-1600x900.png",
+      "width": 1600,
+      "height": 900,
+      "format": "png",
+      "bytes": 47073,
+      "sha256": "c56dba321aa1854a8042f697206d90a2f5ca601a704513eaab191a15dda5431b",
+      "usage": "Logo only social artwork; no unverified business claims"
+    },
+    {
+      "path": "public/brand/social/og-dark-1200x630.png",
+      "width": 1200,
+      "height": 630,
+      "format": "png",
+      "bytes": 32999,
+      "sha256": "42d9756f9a8118442ba8d3101d3e7b3a448b736b597a8b793874455461e2adef",
+      "usage": "Logo only social artwork; no unverified business claims"
+    },
+    {
+      "path": "public/brand/social/og-light-1200x630.png",
+      "width": 1200,
+      "height": 630,
+      "format": "png",
+      "bytes": 33821,
+      "sha256": "905f12fdf4e3800d8315772d1be016f965e17c02d05d0fa78bd438897e574dbc",
+      "usage": "Logo only social artwork; no unverified business claims"
+    },
+    {
+      "path": "public/brand/social/share-dark-1200x1200.png",
+      "width": 1200,
+      "height": 1200,
+      "format": "png",
+      "bytes": 37369,
+      "sha256": "22a8fb5f90b50a3cfb7917a70e2ddc21c2c25e505b36fd319add9b4f046ebf60",
+      "usage": "Logo only social artwork; no unverified business claims"
+    },
+    {
+      "path": "public/brand/social/share-light-1200x1200.png",
+      "width": 1200,
+      "height": 1200,
+      "format": "png",
+      "bytes": 38533,
+      "sha256": "95bcfbd86d08505290642fa349513e9610ea2dae376bf10075ee93bf9ace11ad",
+      "usage": "Logo only social artwork; no unverified business claims"
+    },
+    {
+      "path": "public/favicon-16.png",
+      "width": 16,
+      "height": 16,
+      "format": "png",
+      "bytes": 292,
+      "sha256": "873e5b4c85f4d15d7072cfc4ef6aff9efaf61ec57b7c64ca464f9023640be3b5",
+      "usage": "Default favicon alias"
+    },
+    {
+      "path": "public/favicon-32.png",
+      "width": 32,
+      "height": 32,
+      "format": "png",
+      "bytes": 502,
+      "sha256": "5d7915ad27a19bbc874f53fd9833eee84d375907b9b1f0ef3a9f7b2cab61713c",
+      "usage": "Default favicon alias"
+    },
+    {
+      "path": "public/favicon.ico",
+      "format": "ico",
+      "sizes": [
+        16,
+        32,
+        48
+      ],
+      "bytes": 1652,
+      "sha256": "0172735efc69fc587a7ef6d4435c3a88f122dfb6f504f7c0d2a7f27ac45df7bf",
+      "usage": "Default multi resolution browser icon"
+    }
+  ]
+}

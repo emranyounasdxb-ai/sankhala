@@ -1,0 +1,17 @@
+{
+  "name": "Sankhala Employment",
+  "status": "Measured logo colors and asset backgrounds only; full UI design system pending",
+  "source": "brand/originals",
+  "colors": {
+    "charcoal": "#2E2E2E",
+    "white": "#FFFFFF",
+    "red": "#FF3131",
+    "darkSurface": "#181818"
+  },
+  "notes": [
+    "charcoal, white and red are sampled from opaque source artwork.",
+    "darkSurface is a supporting export background, not a sampled logo color.",
+    "Brand red is an accent; do not assume it passes normal text contrast with white.",
+    "Logo lettering is artwork, not an identified website font."
+  ]
+}

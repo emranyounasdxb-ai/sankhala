@@ -1,0 +1,7 @@
+/* Brand primitives only. Website typography and semantic UI tokens are pending. */
+:root {
+  --sankhala-charcoal: #2E2E2E;
+  --sankhala-white: #FFFFFF;
+  --sankhala-red: #FF3131;
+  --sankhala-asset-surface-dark: #181818;
+}

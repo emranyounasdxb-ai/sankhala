@@ -1,0 +1,15 @@
+{
+  "name": "sankhala-brand-assets",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Reproducible exports of the supplied Sankhala logo artwork; independent of the future site stack.",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "node build.mjs",
+    "verify": "node verify.mjs"
+  },
+  "devDependencies": {
+    "sharp": "0.34.5"
+  }
+}

@@ -1,0 +1,48 @@
+<!-- Integration reference only. The application and public origin are not chosen yet.
+     These paths assume the contents of public/ are served from the domain root.
+     Adjust the base path if the eventual site is hosted in a subdirectory. -->
+
+<!-- Put inside the application's <head>. -->
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#181818">
+<link rel="stylesheet" href="/brand/brand-colors.css">
+
+<!-- Social metadata example. Replace https://example.invalid with the real
+     canonical origin before enabling. Add page-specific title, description,
+     canonical URL and og:url when actual page content is known.
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sankhala Employment">
+<meta property="og:image" content="https://example.invalid/brand/social/og-dark-1200x630.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sankhala Employment logo on a dark background">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://example.invalid/brand/social/og-dark-1200x630.png">
+<meta name="twitter:image:alt" content="Sankhala Employment logo on a dark background">
+-->
+
+<!-- Full logo on a light surface. Swap on-light for on-dark when the actual
+     surrounding surface is dark. A manual theme setting must drive the asset,
+     rather than relying only on the operating system color scheme.
+     Aspect ratio follows the selected 800 x 358 export; do not force a height. -->
+<picture>
+  <source type="image/webp"
+    srcset="/brand/logos/logo-on-light-800.webp 800w, /brand/logos/logo-on-light-1600.webp 1600w"
+    sizes="240px">
+  <img src="/brand/logos/logo-on-light-800.png"
+    srcset="/brand/logos/logo-on-light-800.png 800w, /brand/logos/logo-on-light-1600.png 1600w"
+    sizes="240px" width="800" height="358"
+    style="display:block;width:240px;max-width:100%;height:auto"
+    alt="Sankhala Employment" decoding="async">
+</picture>
+
+<!-- An icon alone used in a home link needs an accessible name.
+     The 64px example is only an integration example, not a final header layout. -->
+<a href="/" aria-label="Sankhala Employment home">
+  <img src="/brand/icons/mark-on-light.png" width="64" height="64" alt="">
+</a>
