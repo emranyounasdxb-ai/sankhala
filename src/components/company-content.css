@@ -1,0 +1,194 @@
+.company-section {
+  margin-top: 64px;
+  scroll-margin-top: 128px;
+}
+.company-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+.company-section-heading h2 {
+  font-size: 48px;
+  line-height: 1;
+  text-wrap: balance;
+}
+.company-section-copy {
+  max-width: 480px;
+  color: var(--text-secondary);
+  text-wrap: pretty;
+}
+.company-client-grid,
+.company-step-grid,
+.company-option-grid,
+.company-principles {
+  display: grid;
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+}
+.company-client-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.company-client-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px;
+  min-width: 0;
+  min-height: 160px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  text-align: center;
+}
+.company-client-artwork {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 80px;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+.company-logo-filters {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.company-client-artwork img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+}
+[data-theme="dark"] .company-client-artwork img {
+  filter: url("#company-client-dark-ink");
+}
+[data-theme="dark"] .company-client-artwork .company-client-monochrome {
+  filter: brightness(0) invert(1);
+}
+.company-client-name {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  text-wrap: balance;
+}
+.company-client-wordmark {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+  text-wrap: balance;
+}
+.company-clients-compact .company-client-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 16px;
+}
+.company-clients-compact .company-client-card {
+  padding: 16px;
+}
+.company-purpose h3 {
+  font-size: 24px;
+  line-height: 32px;
+}
+.company-option-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.company-step-grid,
+.company-principles {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.company-step-grid > li,
+.company-principles > li,
+.company-option-grid > li {
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  min-width: 0;
+}
+.company-step-number {
+  display: block;
+  color: var(--link);
+  font-family: var(--font-barlow-condensed), sans-serif;
+  font-size: 36px;
+  line-height: 40px;
+  margin-bottom: 24px;
+}
+.company-step-grid h3,
+.company-principles h3,
+.company-option-grid h3 {
+  font-family: var(--font-barlow-condensed), sans-serif;
+  font-size: 24px;
+  line-height: 32px;
+  margin-bottom: 12px;
+  text-wrap: balance;
+}
+.company-step-grid p,
+.company-principles p,
+.company-option-grid p {
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 24px;
+  text-wrap: pretty;
+}
+@media (max-width: 1100px) {
+  .company-client-grid,
+  .company-step-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .company-clients-compact .company-client-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .company-principles {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 767px) {
+  .company-section {
+    margin-top: 48px;
+    scroll-margin-top: 96px;
+  }
+  .company-section-heading {
+    flex-direction: column;
+    align-items: start;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .company-section-heading h2 {
+    font-size: 36px;
+    line-height: 40px;
+  }
+  .company-client-grid,
+  .company-clients-compact .company-client-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .company-client-card {
+    padding: 12px;
+    min-height: 144px;
+    gap: 12px;
+  }
+  .company-client-artwork {
+    padding: 8px;
+    height: 64px;
+  }
+  .company-client-wordmark {
+    font-size: 18px;
+    line-height: 28px;
+  }
+  .company-option-grid,
+  .company-step-grid {
+    grid-template-columns: 1fr;
+  }
+  .company-step-grid > li,
+  .company-principles > li,
+  .company-option-grid > li {
+    padding: 24px;
+  }
+}

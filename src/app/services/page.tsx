@@ -4,6 +4,11 @@ import {
   FileTextIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
+import {
+  recruitmentProcess,
+  staffingOptions,
+  workforceSupport,
+} from "@/lib/company-content";
 import { createPageMetadata } from "@/lib/page-metadata";
 import {
   recruitmentServices,
@@ -13,7 +18,7 @@ import {
 
 export const metadata = createPageMetadata(
   "Recruitment & workforce services",
-  "Recruitment, manpower supply, staff outsourcing, HR & PRO support, payroll and bulk hiring across Dubai and all UAE emirates.",
+  "Recruitment, permanent and temporary staffing, payroll, PRO, staff accommodation, transport and workforce support across the UAE.",
   "/services",
 );
 
@@ -97,7 +102,94 @@ export default function ServicesPage() {
       </div>
 
       <section
-        className="content-panel content-panel-dark stack"
+        id="staffing-options"
+        className="company-section"
+        aria-labelledby="staffing-options-heading"
+      >
+        <div className="company-section-heading">
+          <div>
+            <p className="eyebrow">Staffing options</p>
+            <h2 id="staffing-options-heading">
+              A role, a project or a whole team.
+            </h2>
+          </div>
+          <p className="company-section-copy">
+            Start with the type of work and the duration. We can discuss a
+            staffing arrangement that fits the requirement.
+          </p>
+        </div>
+        <ul className="company-option-grid">
+          {staffingOptions.map(({ title, description }) => (
+            <li key={title}>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section
+        id="workforce-support"
+        className="company-section"
+        aria-labelledby="workforce-support-heading"
+      >
+        <div className="company-section-heading">
+          <div>
+            <p className="eyebrow">Beyond recruitment</p>
+            <h2 id="workforce-support-heading">Support for the working day.</h2>
+          </div>
+          <p className="company-section-copy">
+            Our accommodation, transport, catering and workplace HR operations
+            support the practical needs of a workforce. Scope and arrangements
+            are agreed for each requirement.
+          </p>
+        </div>
+        <ul className="company-option-grid">
+          {workforceSupport.map(({ id, title, description }) => (
+            <li id={id} key={id}>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </li>
+          ))}
+        </ul>
+        <Link href="/contact" className="inline-link">
+          Discuss workforce support{" "}
+          <ArrowRightIcon size={20} aria-hidden="true" />
+        </Link>
+      </section>
+
+      <section
+        id="recruitment-process"
+        className="company-section"
+        aria-labelledby="recruitment-process-heading"
+      >
+        <div className="company-section-heading">
+          <div>
+            <p className="eyebrow">Our recruitment process</p>
+            <h2 id="recruitment-process-heading">
+              From the first brief to joining.
+            </h2>
+          </div>
+          <p className="company-section-copy">
+            A clear sequence for your team and the candidate, with support after
+            joining based on the services you agree with us.
+          </p>
+        </div>
+        <ol className="company-step-grid">
+          {recruitmentProcess.map(({ title, description }, index) => (
+            <li key={title}>
+              <span className="company-step-number" aria-hidden="true">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section
+        className="content-panel content-panel-dark stack company-section"
         aria-labelledby="brief-heading"
       >
         <span className="section-label">A useful starting point</span>
@@ -121,8 +213,9 @@ export default function ServicesPage() {
             <h3>For your candidate introduction</h3>
             <p>
               Include your recent experience, relevant skills, preferred role
-              and current location. Keep your contact details up to date and
-              attach your CV when emailing the team.
+              and current location. Use the CV form to review your details and
+              choose your document. If you contact us by email, attach your CV
+              to the message.
             </p>
             <Link href="/submit-cv" className="inline-link">
               Prepare your introduction{" "}

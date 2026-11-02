@@ -8,8 +8,10 @@ export const recruitmentServices = [
       "Finding candidates, shortlisting CVs and supporting interviews and selection.",
     items: [
       "Find candidates for your required roles",
+      "Prepare a targeted job description and candidate brief",
       "Review CVs and prepare a shortlist",
       "Coordinate interviews and support selection",
+      "Support offers, documents and joining arrangements",
     ],
     href: "/hire-talent",
     action: "Discuss your hiring needs",
@@ -37,6 +39,7 @@ export const recruitmentServices = [
     items: [
       "Understand your staffing requirement",
       "Arrange a workforce to match the roles needed",
+      "Plan temporary assignments or longer contract requirements",
       "Coordinate workforce requirements with your team",
     ],
     href: "/hire-talent",
@@ -50,8 +53,10 @@ export const recruitmentServices = [
       "Helping with visa processing, labour contracts, documents and joining formalities.",
     items: [
       "Visa processing support",
+      "Labour card, Emirates ID and residency document coordination",
       "Labour contract and document support",
       "Help with employee joining formalities",
+      "HR advisory and labour dispute documentation and liaison support",
     ],
     href: "/contact",
     action: "Discuss HR & PRO support",
@@ -64,6 +69,7 @@ export const recruitmentServices = [
       "Supporting salary processing, attendance management and employee records.",
     items: [
       "Salary processing support",
+      "WPS payroll processing and employee benefits administration",
       "Attendance management",
       "Employee record management",
     ],
@@ -97,4 +103,7 @@ export const supportedSectors = [
   "Cleaning",
   "Security",
   "Logistics",
+  "Hospitality",
+  "Retail",
+  "Corporate services",
 ];

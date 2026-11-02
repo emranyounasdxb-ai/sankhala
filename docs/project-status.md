@@ -1,5 +1,9 @@
 # Saved project progress
 
+## Company profile update — 2 November 2026
+
+The owner authorized the supplied client names/logos and confirmed that listed workforce support services are its own operations. Added a public client portfolio, a homepage client strip, permanent/temporary staffing options, accommodation/transport/catering/workplace HR support, expanded payroll/PRO detail, the complete recruitment process, and mission/vision/working principles. Original client artwork uses native transparency and adapts to light/dark surfaces. Eight listed clients have text names pending their missing official artwork. Company history, legal identity, group relationship, leadership, metrics, support hours and project details remain pending. [Scope and source boundaries](company-services.md), [client asset manifest](brand/client-assets.json).
+
 ## Current ATS work — 31 October 2026
 
 The owner requested backend/ATS implementation and finalized **Node.js / Next.js on existing InMotion cPanel**, superseding the earlier frontend-only deferral and interim PHP request. The site is deployed for review at [sankhala.ae](https://sankhala.ae/), with private staff access at [/admin/login](https://sankhala.ae/admin/login). Initial admin and HR notification recipient: **admin@sankhala.ae**. Production database/private storage, scoped credentials, initial staff access, verified SMTP TLS and antivirus scanning are configured. The HR recipient mailbox decision is pending; no external inbox-delivery claim is made.

@@ -4,6 +4,7 @@ import {
   HandshakeIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
+import { companyPrinciples } from "@/lib/company-content";
 import { createPageMetadata } from "@/lib/page-metadata";
 
 export const metadata = createPageMetadata(
@@ -34,14 +35,17 @@ export default function AboutPage() {
           <p>
             We help companies find candidates, shortlist CVs, coordinate
             interviews and make selections. We also arrange workers for
-            construction, cleaning, security and logistics requirements,
-            including larger project and company hiring needs.
+            construction, cleaning, security, logistics, hospitality, retail and
+            corporate requirements, including larger project and company hiring
+            needs.
           </p>
           <p>
             Beyond hiring, our support covers visa processing, labour contracts,
             joining documents, salary processing, attendance and employee
-            records. Drivers, cleaners, helpers and construction workers are
-            among the workforce categories we support.
+            records. Our own accommodation, transport and catering operations
+            support the workforce beyond recruitment. Drivers, cleaners,
+            helpers, construction workers and office staff are among the
+            categories we support.
           </p>
           <Link href="/services" className="inline-link">
             Explore our services <ArrowRightIcon size={20} aria-hidden="true" />
@@ -62,7 +66,60 @@ export default function AboutPage() {
         </section>
       </div>
 
-      <section className="content-panel stack">
+      <section
+        className="company-section company-purpose"
+        aria-labelledby="purpose-heading"
+      >
+        <div className="company-section-heading">
+          <div>
+            <p className="eyebrow">Our purpose</p>
+            <h2 id="purpose-heading">People and businesses moving forward.</h2>
+          </div>
+        </div>
+        <div className="content-grid">
+          <article className="content-panel stack">
+            <span className="section-label">Our mission</span>
+            <h3>Practical support. People first.</h3>
+            <p>
+              To help businesses build dependable teams and support candidates
+              through their next career step, bringing recruitment and everyday
+              workforce needs into one conversation.
+            </p>
+          </article>
+          <article className="content-panel stack">
+            <span className="section-label">Our vision</span>
+            <h3>Trust built through the work.</h3>
+            <p>
+              To become a trusted employment services partner across the UAE
+              through clear communication, responsible recruitment and
+              consistent support for companies and candidates.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section className="company-section" aria-labelledby="approach-heading">
+        <div className="company-section-heading">
+          <div>
+            <p className="eyebrow">Why Sankhala</p>
+            <h2 id="approach-heading">A clear, personal way of working.</h2>
+          </div>
+        </div>
+        <ul className="company-principles">
+          {companyPrinciples.map(({ title, description }) => (
+            <li key={title}>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </li>
+          ))}
+        </ul>
+        <Link href="/clients" className="inline-link">
+          Explore our client portfolio{" "}
+          <ArrowRightIcon size={20} aria-hidden="true" />
+        </Link>
+      </section>
+
+      <section className="content-panel stack company-section">
         <HandshakeIcon size={40} weight="light" aria-hidden="true" />
         <span className="section-label">Choose your starting point</span>
         <h2 className="section-heading">Hiring staff or looking for work?</h2>

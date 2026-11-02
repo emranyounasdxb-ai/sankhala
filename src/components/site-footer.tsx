@@ -23,6 +23,7 @@ export function SiteFooter() {
           <h2>Company</h2>
           <Link href="/about">About Sankhala</Link>
           <Link href="/services">Our services</Link>
+          <Link href="/clients">Our clients</Link>
           <Link href="/contact">Get in touch</Link>
         </div>
         <div className="footer-links">

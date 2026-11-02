@@ -7,6 +7,7 @@ import { THEME_INIT_SCRIPT } from "@/lib/theme";
 import { bodyFont, headingFont } from "./fonts";
 import "./globals.css";
 import "@/components/navigation-polish.css";
+import "@/components/company-content.css";
 import "@/components/forms/intake-form-polish.css";
 import "@/components/ats/ats.css";
 

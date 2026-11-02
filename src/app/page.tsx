@@ -10,6 +10,7 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 import Link from "next/link";
+import { ClientPortfolio } from "@/components/client-portfolio";
 import { AnimatedHeading } from "@/components/motion/animated-heading";
 import { Reveal } from "@/components/motion/reveal";
 import { OrganizationData } from "@/components/organization-data";
@@ -63,8 +64,8 @@ const journeys = [
         "Our team reviews profiles and prepares a shortlist for your requirement.",
       ],
       [
-        "Meet your next hire",
-        "We coordinate interviews and follow the hiring process with you.",
+        "Select and prepare for joining",
+        "We coordinate interviews, offers and the joining formalities included in your staffing requirement.",
       ],
     ],
   },
@@ -97,7 +98,7 @@ const questions = [
   ],
   [
     "Which workers can my company request?",
-    "Our workforce categories include drivers, cleaners, helpers and construction workers. We support staffing needs in construction, cleaning, security and logistics. Tell our team the role, headcount and location.",
+    "Our workforce categories include drivers, cleaners, helpers, construction workers and office staff. We support construction, cleaning, security, logistics, hospitality, retail and corporate staffing needs. Tell our team the role, headcount and location.",
   ],
   [
     "How can my company request staff?",
@@ -105,7 +106,7 @@ const questions = [
   ],
   [
     "Can I share my CV without an open vacancy?",
-    "Yes. Visit Submit CV for the available options. While online submissions are being prepared, you can email your CV to info@sankhala.ae.",
+    "Yes. Visit Submit CV to share your details and CV for future opportunities. Our team can review your experience when a suitable requirement becomes available.",
   ],
   [
     "Where does Sankhala work?",
@@ -182,6 +183,9 @@ export default function Home() {
           See how it works <ArrowDownRightIcon size={16} aria-hidden="true" />
         </a>
       </div>
+      <div className="section wrap">
+        <ClientPortfolio compact />
+      </div>
       <section className="section wrap" aria-labelledby="services-heading">
         <div className="section-heading section-heading-split">
           <div>
@@ -236,6 +240,10 @@ export default function Home() {
             ))}
           </ul>
         </div>
+        <Link href="/services#workforce-support" className="inline-link">
+          Explore accommodation, transport, catering and workplace HR support
+          <ArrowUpRightIcon size={20} aria-hidden="true" />
+        </Link>
       </section>
       <section className="statement-section" aria-label="Our approach">
         <div className="statement-inner wrap">
@@ -302,8 +310,8 @@ export default function Home() {
                 <span className="accent-dot">.</span>
               </h2>
             </div>
-            <Link href="/about" className="inline-link">
-              Get to know Sankhala{" "}
+            <Link href="/services#recruitment-process" className="inline-link">
+              See the full recruitment process{" "}
               <ArrowUpRightIcon size={20} aria-hidden="true" />
             </Link>
           </div>
@@ -362,8 +370,8 @@ export default function Home() {
           </div>
           <h3>No suitable vacancy yet?</h3>
           <p>
-            Published jobs will appear on our careers page. You can still
-            introduce yourself by emailing your CV to our recruitment team.
+            Published jobs will appear on our careers page. You can also
+            introduce yourself with a general CV for future opportunities.
           </p>
           <div className="opportunity-actions">
             <Link href="/submit-cv" className="button button-primary">

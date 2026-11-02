@@ -1,5 +1,24 @@
 # Confirmed company services
 
+## Profile update — 2 November 2026
+
+The owner confirmed that the supplied profile's services belong to the business and that accommodation, transportation and catering are its own operations. The owner also authorized all supplied client names and logo artwork for the Sankhala website, with transparent presentation rather than white image backgrounds. No former company name, website, company logo or old office address is published in this update.
+
+- Services now explain permanent recruitment, temporary/project staffing, skilled/technical roles and operational/office teams.
+- The six core services remain the homepage service categories. Their detail includes job briefs, offers, joining documents, WPS/payroll, benefits administration, labour cards, Emirates ID/residency coordination, HR advisory and labour dispute documentation/liaison support.
+- Additional workforce support covers staff accommodation, employee transport, catering/meal arrangements and HR personnel at client premises. Service scope and arrangements are agreed per requirement; no visa approval, legal outcome or response-time guarantee is made.
+- Hospitality, retail and corporate services extend the earlier supported-sector list. The original workforce examples remain drivers, cleaners, helpers and construction workers.
+- A six-stage recruitment process covers the brief, screening, interviews, offer, joining formalities and support after joining. About includes mission, vision and working principles, without inventing company history or performance proof.
+- `/clients` shows the 23 names in the supplied client list plus Khansaheb and Wahat Siwa, which appear in logo artwork on the same page. These public portfolio entries are separate from private ATS client records.
+- All 17 supplied client logo artworks were exported from native PDF image objects. Empty transparent margins were trimmed and metadata stripped; artwork pixels and source alpha are preserved. Dark surfaces use an appropriate ink treatment for legibility. See `docs/brand/client-assets.json` for dimensions, hashes and provenance. Eight entries have a name only because the supplied profile contains no corresponding artwork: JSW Steel, Al Faraa General Contracting, Delma Investment, Saudi Binladin Group, Gulf Precast Concrete, Citiscape, Chirag Group and China State Construction. No substitute logo was invented.
+- Header and footer logo dimensions retain the previously approved sizes. Office 218, the Sankhala domain/email and separate calling/WhatsApp numbers remain the current contact information.
+
+Still pending: the current group relationship, legal company name/start year, leadership names/titles, verified workforce/candidate/visa/category statistics, support hours, detailed project examples and the eight missing official client logo files. Group founding dates and group workforce totals are not presented as Sankhala facts. The legacy PDF is not offered as a public download; a new company profile can be produced once current identity and proof details are supplied.
+
+The sections below record the earlier service milestone and its validation, superseded where noted above.
+
+## Earlier service milestone
+
 Confirmed by the company owner on 31 October 2026. This supersedes earlier notes that industry/service scope was pending.
 
 | Service | Confirmed work |

@@ -1,0 +1,245 @@
+{
+  "source": "Owner-supplied profile, physical page 8",
+  "ownerApproved": "2026-11-02",
+  "notes": "All 17 supplied artworks exported with their native alpha. Empty transparent artboard margins trimmed without changing artwork pixels. Eight additional supplied client names have no corresponding logo in the PDF. Dark ink adapts through a display filter; coloured panels within the Al Jaber logo remain part of the supplied artwork.",
+  "assets": [
+    {
+      "file": "public/images/clients/sterling.png",
+      "sourceObject": "X8.png",
+      "width": 233,
+      "height": 118,
+      "nativeAlphaPreserved": true,
+      "sha256": "bc4d17f8bf1da658348f57a040b179653ad733ad78c3f51b4363e9628e961971",
+      "sourceAlphaBounds": [
+        26,
+        22,
+        259,
+        140
+      ]
+    },
+    {
+      "file": "public/images/clients/dce.png",
+      "sourceObject": "X10.png",
+      "width": 439,
+      "height": 184,
+      "nativeAlphaPreserved": true,
+      "sha256": "b6bea10443e0e48df56d0de43beca7bb68b889e6f3ca2f43d6d346e2988869f4",
+      "sourceAlphaBounds": [
+        14,
+        9,
+        453,
+        193
+      ]
+    },
+    {
+      "file": "public/images/clients/rotana.png",
+      "sourceObject": "X12.png",
+      "width": 250,
+      "height": 88,
+      "nativeAlphaPreserved": true,
+      "sha256": "066f6cab58ff34f08f0035c03234348e0cb35872bce8c68e6f233fef80a8b1fd",
+      "sourceAlphaBounds": [
+        0,
+        0,
+        250,
+        88
+      ]
+    },
+    {
+      "file": "public/images/clients/radisson-blu.png",
+      "sourceObject": "X14.png",
+      "width": 512,
+      "height": 155,
+      "nativeAlphaPreserved": true,
+      "sha256": "dcce2a887edef05823e0d7a91e6c0af72c642b4ce7911807c4cf6a92b7232b72",
+      "sourceAlphaBounds": [
+        0,
+        0,
+        512,
+        155
+      ]
+    },
+    {
+      "file": "public/images/clients/noon.png",
+      "sourceObject": "X16.png",
+      "width": 277,
+      "height": 116,
+      "nativeAlphaPreserved": true,
+      "sha256": "a104db6200df2df0765e2829fa4c5505110150198cd618215359311cbea87970",
+      "sourceAlphaBounds": [
+        13,
+        8,
+        290,
+        124
+      ]
+    },
+    {
+      "file": "public/images/clients/brands-for-less.png",
+      "sourceObject": "X18.png",
+      "width": 635,
+      "height": 115,
+      "nativeAlphaPreserved": true,
+      "sha256": "2a993eecb4bc8107bbfdced227fdb5deb78ddada3e0ee348f151ceddefeefac7",
+      "sourceAlphaBounds": [
+        18,
+        89,
+        653,
+        204
+      ]
+    },
+    {
+      "file": "public/images/clients/mumzworld.png",
+      "sourceObject": "X20.png",
+      "width": 1000,
+      "height": 176,
+      "nativeAlphaPreserved": true,
+      "sha256": "93b8354b25e52b4335767f8a0a03bf2daf78f0067c1e7e3df04f5ad8d5a0ddce",
+      "sourceAlphaBounds": [
+        0,
+        0,
+        1000,
+        176
+      ]
+    },
+    {
+      "file": "public/images/clients/gmg.png",
+      "sourceObject": "X22.png",
+      "width": 287,
+      "height": 89,
+      "nativeAlphaPreserved": true,
+      "sha256": "c987f92d860fed2a44e02da5ceb3473b7d72fe2220216db2c87d779d46a181e7",
+      "sourceAlphaBounds": [
+        7,
+        21,
+        294,
+        110
+      ]
+    },
+    {
+      "file": "public/images/clients/khansaheb.png",
+      "sourceObject": "X24.png",
+      "width": 244,
+      "height": 94,
+      "nativeAlphaPreserved": true,
+      "sha256": "9b45c46124234bfbed7876cdce494ae7cb5fcd9ade3e7b7f183045ecbd1fcad0",
+      "sourceAlphaBounds": [
+        71,
+        35,
+        315,
+        129
+      ]
+    },
+    {
+      "file": "public/images/clients/wahat-siwa.png",
+      "sourceObject": "X26.png",
+      "width": 247,
+      "height": 88,
+      "nativeAlphaPreserved": true,
+      "sha256": "f45db6c1b5a544d01351b3e3317db835caa7154a7883efbea5c5c83d99e40691",
+      "sourceAlphaBounds": [
+        69,
+        36,
+        316,
+        124
+      ]
+    },
+    {
+      "file": "public/images/clients/concrete-technology.png",
+      "sourceObject": "X28.png",
+      "width": 345,
+      "height": 111,
+      "nativeAlphaPreserved": true,
+      "sha256": "e398df2e1cd93d878dbd16ac0a3c74ceb9c9c42c7327c60ad5f477df3a1daa3a",
+      "sourceAlphaBounds": [
+        96,
+        44,
+        441,
+        155
+      ]
+    },
+    {
+      "file": "public/images/clients/larsen-toubro.png",
+      "sourceObject": "X30.png",
+      "width": 245,
+      "height": 97,
+      "nativeAlphaPreserved": true,
+      "sha256": "f80aaf4b0faf43eecd5161891acb3e7da44a74505df420b3f5f0e97db636a97f",
+      "sourceAlphaBounds": [
+        71,
+        25,
+        316,
+        122
+      ]
+    },
+    {
+      "file": "public/images/clients/al-jaber.png",
+      "sourceObject": "X32.png",
+      "width": 280,
+      "height": 91,
+      "nativeAlphaPreserved": true,
+      "sha256": "209a5deb9e28b361134dd0f781a0634e1606ed4fad493888c1947523cbeb0d6b",
+      "sourceAlphaBounds": [
+        0,
+        0,
+        280,
+        91
+      ]
+    },
+    {
+      "file": "public/images/clients/fibrex.png",
+      "sourceObject": "X34.png",
+      "width": 147,
+      "height": 35,
+      "nativeAlphaPreserved": true,
+      "sha256": "fdcadd721ca75daa6fc7260ba6702a865225e1f517d93227f203f55afa238078",
+      "sourceAlphaBounds": [
+        1,
+        58,
+        148,
+        93
+      ]
+    },
+    {
+      "file": "public/images/clients/pivot.png",
+      "sourceObject": "X36.png",
+      "width": 200,
+      "height": 48,
+      "nativeAlphaPreserved": true,
+      "sha256": "a1a716312aca43c0b2adabae9d7b94456afea3eb7583025f861403c12e5130d6",
+      "sourceAlphaBounds": [
+        0,
+        76,
+        200,
+        124
+      ]
+    },
+    {
+      "file": "public/images/clients/hlg.png",
+      "sourceObject": "X38.png",
+      "width": 294,
+      "height": 122,
+      "nativeAlphaPreserved": true,
+      "sha256": "83cfc2880df6cef0675aa5665da89a1796427d557f65b98759cc43327acead8e",
+      "sourceAlphaBounds": [
+        5,
+        4,
+        299,
+        126
+      ]
+    },
+    {
+      "file": "public/images/clients/al-hamad.png",
+      "sourceObject": "X46.png",
+      "width": 402,
+      "height": 96,
+      "nativeAlphaPreserved": true,
+      "sha256": "4fd509988e6aa36f4e4ea945fd624512ec87602c71c10795a710bbf09f173c59",
+      "sourceAlphaBounds": [
+        9,
+        61,
+        411,
+        157
+      ]
+    }
+  ]
+}
