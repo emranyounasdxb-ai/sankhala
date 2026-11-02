@@ -197,6 +197,18 @@
       "usage": "Opaque maskable app icon with circular safe zone"
     },
     {
+      "path": "public/brand/icons/sankhala-favicon.ico",
+      "format": "ico",
+      "sizes": [
+        16,
+        32,
+        48
+      ],
+      "bytes": 1652,
+      "sha256": "0172735efc69fc587a7ef6d4435c3a88f122dfb6f504f7c0d2a7f27ac45df7bf",
+      "usage": "Branded browser icon alias that avoids hosting placeholder paths"
+    },
+    {
       "path": "public/brand/logos/email-logo-on-light.png",
       "width": 400,
       "height": 179,

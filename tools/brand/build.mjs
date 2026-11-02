@@ -126,6 +126,8 @@ const icoImages = await Promise.all([16, 32, 48].map(async size => ({ size, byte
 const icoBytes = ico(icoImages);
 await writeFile(at('public/favicon.ico'), icoBytes);
 inventory.push({ path: 'public/favicon.ico', format: 'ico', sizes: [16, 32, 48], bytes: icoBytes.length, sha256: sha256(icoBytes), usage: 'Default multi resolution browser icon' });
+await writeFile(at('public/brand/icons/sankhala-favicon.ico'), icoBytes);
+inventory.push({ path: 'public/brand/icons/sankhala-favicon.ico', format: 'ico', sizes: [16, 32, 48], bytes: icoBytes.length, sha256: sha256(icoBytes), usage: 'Branded browser icon alias that avoids hosting placeholder paths' });
 
 await writeFile(at('public/site.webmanifest'), JSON.stringify({
   name: 'Sankhala Employment', short_name: 'Sankhala', id: './', start_url: './', scope: './', display: 'browser',

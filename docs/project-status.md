@@ -1,5 +1,9 @@
 # Saved project progress
 
+## Homepage logos and favicon — 2 November 2026
+
+The homepage now scrolls all 17 supplied client logos continuously without separate name captions. Hover, keyboard focus and a pause/resume button stop the strip; reduced motion and no-JavaScript visits retain the complete static list. The dedicated Clients page retains all 25 names. Added versioned, branded favicon links and a deployment step that replaces the hosting placeholder at `/favicon.ico`, preserving its original bytes in private backup storage. Header/footer logo sizes are unchanged. [Verification](verification/homepage-logos-favicon.md).
+
 ## Company profile update — 2 November 2026
 
 The owner authorized the supplied client names/logos and confirmed that listed workforce support services are its own operations. Added a public client portfolio, a homepage client strip, permanent/temporary staffing options, accommodation/transport/catering/workplace HR support, expanded payroll/PRO detail, the complete recruitment process, and mission/vision/working principles. Original client artwork uses native transparency and adapts to light/dark surfaces. Eight listed clients have text names pending their missing official artwork. Company history, legal identity, group relationship, leadership, metrics, support hours and project details remain pending. [Scope and source boundaries](company-services.md), [client asset manifest](brand/client-assets.json).

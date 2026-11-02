@@ -2,6 +2,7 @@ import { execFile, spawn } from "node:child_process";
 import { once } from "node:events";
 import {
   chmod,
+  lstat,
   mkdir,
   readFile,
   readlink,
@@ -77,6 +78,42 @@ async function restart(root) {
   await mkdir(`${root}/tmp`, { recursive: true });
   await writeFile(`${root}/tmp/restart.txt`, new Date().toISOString());
 }
+async function publishFavicon(root) {
+  // cPanel may serve a pre-existing document-root icon before Passenger.
+  // Replace only that named public file, preserving its first previous value.
+  const icon = await readFile(`${root}/public/favicon.ico`);
+  const target = `${base}/public_html/favicon.ico`;
+  try {
+    const info = await lstat(target);
+    if (!info.isFile())
+      throw new Error("The public favicon must be a regular file.");
+    const previous = await readFile(target);
+    if (previous.equals(icon)) return;
+    await mkdir(`${privateRoot}/backups`, { recursive: true, mode: 0o700 });
+    try {
+      await writeFile(
+        `${privateRoot}/backups/favicon-before-sankhala.ico`,
+        previous,
+        { flag: "wx", mode: 0o600 },
+      );
+    } catch (error) {
+      if (error.code !== "EEXIST") throw error;
+    }
+  } catch (error) {
+    if (error.code !== "ENOENT") throw error;
+  }
+  const temporary = `${base}/public_html/.sankhala-favicon-${process.pid}.ico`;
+  try {
+    await writeFile(temporary, icon, { flag: "wx", mode: 0o644 });
+    await chmod(temporary, 0o644);
+    await rename(temporary, target);
+  } finally {
+    await rm(temporary, { force: true });
+  }
+  console.log(
+    "Public document-root favicon synchronized with the Sankhala release.",
+  );
+}
 async function switchLive(target) {
   if (
     !target.startsWith(`${releases}/`) ||
@@ -109,6 +146,7 @@ try {
           throw new Error("Live HTTPS health check failed.");
         console.log(`Live revision ${previous} verified.`);
       } else if (previous === revision) {
+        await publishFavicon(live);
         console.log(`Already deployed ${revision}.`);
       } else {
         const response = await fetch(
@@ -240,6 +278,7 @@ try {
               );
             }
           }
+          await publishFavicon(release);
           console.log(
             `Sankhala release ready: ${revision}${process.argv.includes("--prepare") ? "; first application registration is pending" : "; live HTTPS health verified"}.`,
           );

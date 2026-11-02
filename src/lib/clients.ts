@@ -86,15 +86,3 @@ export const portfolioClients: PortfolioClient[] = [
     darkVariant: "monochrome",
   },
 ];
-
-const featuredNames = new Set([
-  "Noon",
-  "Brands For Less",
-  "Mumzworld",
-  "GMG (Gulf Marketing Group)",
-  "Radisson Blu",
-  "Larsen & Toubro",
-]);
-export const featuredClients = portfolioClients.filter((client) =>
-  featuredNames.has(client.name),
-);

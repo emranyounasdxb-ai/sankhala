@@ -19,10 +19,29 @@ export const metadata: Metadata = {
   robots: { index: site.indexable, follow: site.indexable },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
-      { url: "/favicon-32.png", type: "image/png", sizes: "32x32" },
+      {
+        url: "/brand/icons/sankhala-favicon.ico?v=20261102",
+        type: "image/x-icon",
+        sizes: "16x16 32x32 48x48",
+      },
+      {
+        url: "/brand/icons/favicon-on-dark-32.png?v=20261102",
+        type: "image/png",
+        sizes: "32x32",
+      },
+      {
+        url: "/brand/icons/favicon-on-dark-48.png?v=20261102",
+        type: "image/png",
+        sizes: "48x48",
+      },
     ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    shortcut: "/brand/icons/sankhala-favicon.ico?v=20261102",
+    apple: [
+      {
+        url: "/brand/icons/apple-touch-icon-on-dark.png?v=20261102",
+        sizes: "180x180",
+      },
+    ],
   },
   manifest: "/site.webmanifest",
   ...(site.url

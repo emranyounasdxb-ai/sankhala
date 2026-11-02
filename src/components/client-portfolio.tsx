@@ -1,10 +1,62 @@
 import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 import Link from "next/link";
-import { featuredClients, portfolioClients } from "@/lib/clients";
+import { ClientMarquee } from "@/components/client-marquee";
+import { type PortfolioClient, portfolioClients } from "@/lib/clients";
+
+function ClientCards({
+  clients,
+  compact,
+  duplicate = false,
+}: {
+  clients: PortfolioClient[];
+  compact: boolean;
+  duplicate?: boolean;
+}) {
+  return (
+    <ul
+      className={
+        compact
+          ? `company-marquee-group${duplicate ? " company-marquee-duplicate" : ""}`
+          : "company-client-grid"
+      }
+      aria-label={duplicate ? undefined : "Sankhala clients"}
+      aria-hidden={duplicate || undefined}
+    >
+      {clients.map(({ name, logo, width, height, darkVariant }) => (
+        <li className="company-client-card" key={name}>
+          {logo ? (
+            <>
+              <div className="company-client-artwork">
+                <Image
+                  src={`/images/clients/${logo}.png`}
+                  alt={compact && !duplicate ? name : ""}
+                  width={width ?? 400}
+                  height={height ?? 180}
+                  unoptimized
+                  className={
+                    darkVariant === "monochrome"
+                      ? "company-client-monochrome"
+                      : undefined
+                  }
+                  style={{ maxWidth: width }}
+                />
+              </div>
+              {!compact && <span className="company-client-name">{name}</span>}
+            </>
+          ) : (
+            <span className="company-client-wordmark">{name}</span>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export function ClientPortfolio({ compact = false }: { compact?: boolean }) {
-  const clients = compact ? featuredClients : portfolioClients;
+  const clients = compact
+    ? portfolioClients.filter((client) => client.logo)
+    : portfolioClients;
   return (
     <section
       className={`company-clients${compact ? " company-clients-compact" : ""}`}
@@ -79,34 +131,15 @@ export function ClientPortfolio({ compact = false }: { compact?: boolean }) {
           </p>
         )}
       </div>
-      <ul className="company-client-grid" aria-label="Sankhala clients">
-        {clients.map(({ name, logo, width, height, darkVariant }) => (
-          <li className="company-client-card" key={name}>
-            {logo ? (
-              <>
-                <div className="company-client-artwork">
-                  <Image
-                    src={`/images/clients/${logo}.png`}
-                    alt=""
-                    width={width ?? 400}
-                    height={height ?? 180}
-                    unoptimized
-                    className={
-                      darkVariant === "monochrome"
-                        ? "company-client-monochrome"
-                        : undefined
-                    }
-                    style={{ maxWidth: width }}
-                  />
-                </div>
-                <span className="company-client-name">{name}</span>
-              </>
-            ) : (
-              <span className="company-client-wordmark">{name}</span>
-            )}
-          </li>
-        ))}
-      </ul>
+      {compact ? (
+        <ClientMarquee
+          duplicate={<ClientCards clients={clients} compact duplicate />}
+        >
+          <ClientCards clients={clients} compact />
+        </ClientMarquee>
+      ) : (
+        <ClientCards clients={clients} compact={false} />
+      )}
     </section>
   );
 }

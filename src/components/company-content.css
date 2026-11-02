@@ -85,12 +85,75 @@
   font-weight: 600;
   text-wrap: balance;
 }
-.company-clients-compact .company-client-grid {
+.company-marquee-group {
+  display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.company-marquee {
+  min-width: 0;
+}
+.company-marquee-viewport {
+  border-radius: 8px;
+}
+.company-marquee-controls,
+.company-marquee-duplicate {
+  display: none;
+}
+.company-marquee-controls {
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+.company-marquee-toggle {
+  padding: 8px 12px;
+  font-size: 14px;
+  line-height: 20px;
 }
 .company-clients-compact .company-client-card {
   padding: 16px;
+  min-height: 112px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.company-clients-compact .company-client-artwork {
+  height: 64px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .company-marquee[data-ready="true"] .company-marquee-viewport {
+    overflow: hidden;
+  }
+  .company-marquee[data-ready="true"] .company-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: company-client-crawl 80s linear infinite;
+    will-change: transform;
+  }
+  .company-marquee[data-ready="true"] .company-marquee-group {
+    display: flex;
+    flex-shrink: 0;
+    padding-inline-end: 16px;
+  }
+  .company-marquee[data-ready="true"] .company-client-card {
+    flex: 0 0 200px;
+    width: 200px;
+  }
+  .company-marquee[data-ready="true"] .company-marquee-controls {
+    display: flex;
+  }
+  .company-marquee[data-paused="true"] .company-marquee-track,
+  .company-marquee-viewport:hover .company-marquee-track,
+  .company-marquee-viewport:focus-within .company-marquee-track {
+    animation-play-state: paused;
+  }
+  @keyframes company-client-crawl {
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
 }
 .company-purpose h3 {
   font-size: 24px;
@@ -142,7 +205,7 @@
   .company-step-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  .company-clients-compact .company-client-grid {
+  .company-marquee-group {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .company-principles {
@@ -164,10 +227,12 @@
     font-size: 36px;
     line-height: 40px;
   }
-  .company-client-grid,
-  .company-clients-compact .company-client-grid {
+  .company-client-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
+  }
+  .company-marquee-group {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .company-client-card {
     padding: 12px;
@@ -190,5 +255,11 @@
   .company-principles > li,
   .company-option-grid > li {
     padding: 24px;
+  }
+}
+@media (max-width: 767px) and (prefers-reduced-motion: no-preference) {
+  .company-marquee[data-ready="true"] .company-client-card {
+    flex-basis: 176px;
+    width: 176px;
   }
 }
