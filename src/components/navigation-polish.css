@@ -35,9 +35,12 @@
 }
 .polished-header .header-brand {
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
 }
 .polished-header .header-brand .brand-logo {
-  width: 128px;
+  width: 96px;
   transform-origin: left center;
   transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -165,7 +168,15 @@
     min-height: 80px;
   }
   .polished-header .header-brand .brand-logo {
-    width: 112px;
+    width: 80px;
+  }
+  .polished-header .mobile-menu-header .brand-logo {
+    width: 80px;
+  }
+  .polished-header .mobile-menu-header > a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
   }
 }
 @media (prefers-reduced-motion: no-preference) {
